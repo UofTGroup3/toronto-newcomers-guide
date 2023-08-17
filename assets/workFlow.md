@@ -2,7 +2,7 @@
 
 # User Story:
 >**As a newcomer to the GTA,**
->*I want* to easily find essential places, services, transpotation and organizations,
+>*I want* to easily find essential places, services, transportation and organizations,
 >*so that* I can smoothly transition and adapt to my new environment.
 
 ---
@@ -23,7 +23,7 @@
 
 ### Given I need information in a different language,
 *When I* select my preferred language,
-*Then t*he site's content should be translated using the Google Translate API.
+*Then* the site's content should be translated using the Google Translate API.
 
 ### Given I attended an event or visited a place,
 *When I* navigate to that event or place in application
@@ -31,7 +31,7 @@
 
 ### Given I attended an event or visited a place,
 *When I* leave a review or feedback,
-*Then i*t should be saved and displayed for other users to see.
+*Then* it should be saved and displayed for other users to see.
 
 ### Given I am looking for specific assistance or information,
 *When I* navigate to the Essential Guides & Tips section,
