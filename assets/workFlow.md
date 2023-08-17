@@ -1,4 +1,4 @@
-![TeamName](./logo)
+![Toronto Newcomer's Guide](./images/TNG/400PngdpiLogo.png)
 
 # User Story:
 >**As a newcomer to the GTA,**
