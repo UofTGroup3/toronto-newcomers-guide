@@ -11,7 +11,8 @@
   <!--********************jQuery UI CSS************************-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
   <!--********************Material CSS link************************-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <!--********************Google Fonts************************-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,22 +29,23 @@
 
 <body>
 
-  <header>
+  <header class="container">
 
-    <section class="headContent" id="mainHeader">
+    <section class="row headContent" id="mainHeader">
 
-      <figure id="logo">
+      <div class="col s2 m1" id="logo">
         <img src="./assets/images/TNG/SmallSquareLogoJpg.jpg" alt="TNG Logo" />
-      </figure>
+      </div>
 
-      <div id="title">
+      <div class="col s8 m4" id="title">
         <h1>Toronto Newcomers' Guide(TNG)</h1>
         <p>Helping you settle in Toronto</p>
       </div>
 
-      <div id="user">
+      <div class="col s2 m1" id="user">
 
-        <button type="button" id="userBtn" aria-label="userBtn"><i class="fas fa-user"></i></button>
+        <button type="button" id="userBtn" aria-label="userBtn" aria-expanded="false"><i
+            class="fas fa-user"></i></button>
         <!-- Dropdown Menu when user button is clicked -->
         <div id="userDropdown" class="dropdown-content">
           <button type="button" id="loginBtn" aria-label="loginBtn">Login</button>
@@ -72,13 +74,13 @@
 
       </div>
 
-      <form id="searchForm">
+      <form class="col s4 m3" id="searchForm">
         <input type="text" name="search" id="search" placeholder="Search" />
         <!-- TODO: change the fontawesome icon -->
         <button type="submit" id="searchBtn" aria-label="searchBtn"><i class="fas fa-search"></i></button>
       </form>
 
-      <form id="selectForm">
+      <form class="col s8 m3" id="selectForm">
         <label for="lanSelect">Select your prefered Language</label>
         <select name="lanSelect" id="lanSelect">
           <option value="Farsi">Farsi</option>
@@ -90,13 +92,13 @@
 
     </section>
 
-    <section class="headContent" id="headerOptions">
+    <section class="row headContent" id="headerOptions">
 
       <nav id="mainNav">
         <ul>
           <li><a href="./index.html">Home</a></li>
           <li>
-            <a href="#essentialServices" rel="bookmark">Essential Services</a>
+            <a href="#essentialServices" rel="bookmark" aria-expanded="false">Essential Services</a>
             <ul>
               <li><a href="#jobs" rel="bookmark">Jobs</a></li>
               <li><a href="#housing" rel="bookmark">Housing</a></li>
@@ -105,13 +107,13 @@
               <li><a href="#transportation" rel="bookmark">Transportation</a></li>
               <li><a href="#sinNumber" rel="bookmark">SIN number</a></li>
               <li><a href="#banks" rel="bookmark">Banks</a></li>
+              <li><a href="#government" rel="bookmark">Government</a></li>
               <li><a href="#library" rel="bookmark">Library Information</a></li>
             </ul>
           </li>
           <li><a href="#sos" rel="bookmark">SOS</a></li>
           <li><a href="#about" rel="bookmark">About Us</a></li>
           <li><a href="#contact" rel="bookmark">Contact Us</a></li>
-          <li><a href="#government" rel="bookmark">Government</a></li>
           <li><a href="#news" rel="bookmark">News</a></li>
           <!-- This section is for later stretch goals
             <li><a href="#faq" rel="bookmark">FAQ</a></li>
@@ -126,6 +128,7 @@
       </nav>
 
       <div id="socialMedia">
+        <!-- TODO: change the fontawesome icon -->
         <a href="https://www.facebook.com/" target="_blank" aria-label="facebook" rel="noopener">
           <i class="fab fa-facebook"></i>
         </a>
@@ -156,7 +159,8 @@
   <!--********************JQuery UI CDN************************-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
   <!--********************Material JS link************************-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!--********************Fontawesome************************-->
   <script src="https://kit.fontawesome.com/cf8b3b67bf.js" crossorigin="anonymous"></script>
   <!--********************Dayjs************************-->
