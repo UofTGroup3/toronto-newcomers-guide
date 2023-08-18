@@ -42,13 +42,34 @@
       </div>
 
       <div id="user">
-        <!-- TODO: change the fontawesome icon -->
+
         <button type="button" id="userBtn" aria-label="userBtn"><i class="fas fa-user"></i></button>
-        <div id="userOptions">
+        <!-- Dropdown Menu when user button is clicked -->
+        <div id="userDropdown" class="dropdown-content">
           <button type="button" id="loginBtn" aria-label="loginBtn">Login</button>
-          <button type="submit" id="signupBtn" aria-label="signupBtn">Sign Up</button>
+          <button type="button" id="signupBtn" aria-label="signupBtn">Sign Up</button>
+          <hr>
+          <!-- Profile Type Selection -->
+          <form id="profileTypeForm">
+            <label for="profileType">Profile Type:</label>
+            <select name="profileType" id="profileType">
+              <option value="student">Student</option>
+              <option value="refugee">Refugee</option>
+              <option value="skilledWorker">Skilled Worker</option>
+              <option value="retiree">Retiree</option>
+              <option value="tempWorker">Temporary Worker</option>
+              <!--Later stretch
+              <option value="researcher">Researcher/Academic</option>
+              <option value="family">Family</option>
+              <option value="investor">Investor</option>
+              <option value="entrepreneur">Entrepreneur</option>
+              <option value="tourist">Tourist/Visitor</option>
+              <option value="artist">Artist/Creative</option>
+              <option value="healthcareSeeker">Healthcare Seeker</option>-->
+            </select>
+          </form>
         </div>
-        <div></div>
+
       </div>
 
       <form id="searchForm">
@@ -65,8 +86,6 @@
           <option value="Spanish">Spanish</option>
           <option value="Arabic">Arabic</option>
         </select>
-        <!-- TODO: change the fontawesome icon -->
-        <button type="submit" id="selectBtn" aria-label="selectBtn"><i class="fas fa-language"></i></button>
       </form>
 
     </section>
@@ -129,6 +148,7 @@
   </main>
 
   <footer>
+    <!-- Feedback & Reviews -->
   </footer>
 
   <!--********************JQuery CDN************************-->
