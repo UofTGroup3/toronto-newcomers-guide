@@ -252,28 +252,25 @@
       </div>
     </section>
 
-    <!-- Profile Type Selection Modal -->
-    <div id="profileTypeModal" class="modal">
-      <div class="modal-content">
+    <section id="interactiveMapContainer">
 
-        <h2>Welcome to TNG!</h2>
-        <p>To better tailor your experience, please select your profile type:</p>
+      <h2>Explore Essential Places Around You</h2>
+      <p>Use our interactive map to find key services and places in your vicinity.</p>
 
-        <form id="modalProfileTypeForm">
-          <label for="modalProfileType">Profile Type:</label>
-          <select name="modalProfileType" id="modalProfileType">
-            <option value="student">Student</option>
-            <option value="refugee">Refugee</option>
-            <option value="skilledWorker">Skilled Worker</option>
-            <option value="retiree">Retiree</option>
-            <option value="tempWorker">Temporary Worker</option>
-          </select>
-          <button type="submit" id="modalSubmitBtn">Submit</button>
-        </form>
+      <!-- Container for the map; -->
+      <div id="map"></div>
 
+      <!-- Additional controls or info related to the map can be added here.
+            For example, filters to only show certain types of places, 
+            or an info panel with details about a selected place. -->
+      <div id="mapControls">
+        <button type="button" class="mapFilter" data-filter="schools">Schools</button>
+        <button type="button" class="mapFilter" data-filter="hospitals">Hospitals</button>
+        <button type="button" class="mapFilter" data-filter="banks">Banks</button>
+        <!-- ... More filter buttons ... -->
       </div>
-    </div>
 
+    </section>
 
     <!--TODO: this section should have at least four cards with links and every other stuff-->
     <section id="newsContainer">
@@ -337,6 +334,28 @@
 
   <!-- TODO: Add links and other related stuff -->
   <footer>
+
+    <!-- Profile Type Selection Modal -->
+    <div id="profileTypeModal" class="modal">
+      <div class="modal-content">
+
+        <h2>Welcome to TNG!</h2>
+        <p>To better tailor your experience, please select your profile type:</p>
+
+        <form id="modalProfileTypeForm">
+          <label for="modalProfileType">Profile Type:</label>
+          <select name="modalProfileType" id="modalProfileType">
+            <option value="student">Student</option>
+            <option value="refugee">Refugee</option>
+            <option value="skilledWorker">Skilled Worker</option>
+            <option value="retiree">Retiree</option>
+            <option value="tempWorker">Temporary Worker</option>
+          </select>
+          <button type="submit" id="modalSubmitBtn">Submit</button>
+        </form>
+
+      </div>
+    </div>
 
     <div id="feedback">
       <h3>Feedback & Reviews</h3>
