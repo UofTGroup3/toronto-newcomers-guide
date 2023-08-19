@@ -42,7 +42,7 @@
         <p>Helping you settle in Toronto</p>
       </div>
 
-      <!-- Creating a section for the user login and signup-->
+      <!-- Creating a section for the user dropdown-->
       <div class="col s2 m1" id="user">
 
         <a class="btn-floating btn-large waves-effect waves-light red" id="userBtn" aria-label="userBtn">
@@ -51,7 +51,7 @@
 
         <!-- Dropdown Menu when user button is clicked -->
         <ul id="userDropdown" class="dropdown-content">
-          <li><a href="#!" id="loginBtn" aria-label="loginBtn">Login</a></li>
+          <li><a href="#loginModal" id="loginBtn" aria-label="loginBtn">Login</a></li>
           <li><a href="#!" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
           <li class="divider"></li>
           <li>
@@ -71,6 +71,28 @@
         </ul>
 
       </div>
+
+      <!-- Creating Login Modal Structure using Materialize CSS Library -->
+      <div id="loginModal" class="modal">
+        <div class="modal-content">
+          <h4>Login</h4>
+          <p>Please enter your username and password.</p>
+          <div class="input-field col s12">
+            <input id="username" type="text">
+            <label for="username">Username</label>
+          </div>
+          <div class="input-field col s12">
+            <input id="password" type="password">
+            <label for="password">Password</label>
+          </div>
+          <p class="red-text" id="loginError">Invalid username or password.</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="attemptLogin()">Login</a>
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+      </div>
+
 
       <form class="col s4 m3" id="searchForm">
         <input type="text" name="search" id="search" placeholder="Search" />
