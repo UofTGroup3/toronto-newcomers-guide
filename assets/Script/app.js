@@ -12,6 +12,14 @@ $(document).ready(function () {
   var password = $('#password');
   var loginModal = $('#loginModal');
   var loginError = $('#loginError');
+  var signupForm = $('#signupForm');
+  var signupModal = $('#signupModal');
+  var signupUsername = $('#signupUsername');
+  var signupEmail = $('#signupEmail');
+  var signupPassword = $('#signupPassword');
+  var signupConfirmPassword = $('#signupConfirmPassword');
+  var errorMsg = $('#errorMsg');
+  var errorMsgText = $('#errorMsgText');
 
   // Initialize dropdown, modals and select
   userBtn.dropdown();
@@ -45,5 +53,41 @@ $(document).ready(function () {
   modalFooterLogin.click(function () {
     attemptLogin();
   });
+
+  var signupValidation = function (event) {
+    event.preventDefault();
+
+    var signupUsernameValue = signupUsername.val();
+    var signupEmailValue = signupEmail.val();
+    var signupPasswordValue = signupPassword.val();
+    var signupConfirmPasswordValue = signupConfirmPassword.val();
+
+    //email validation regex from (https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript)
+    var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(signupEmailValue)) {
+      showError('Invalid email address');
+      return;
+    }
+
+    if (signupPasswordValue.length < 8) {
+      showError('Password must be at least 8 characters');
+      return;
+    }
+
+    if (signupPasswordValue !== signupConfirmPasswordValue) {
+      showError('Passwords do not match');
+      return;
+    }
+
+    localStorage.setItem('username', signupUsernameValue);
+    localStorage.setItem('email', signupEmailValue);
+    localStorage.setItem('password', signupPasswordValue);
+
+    //closing the modal and resetting the form.
+    signupModal.modal('close');
+    signupForm[0].reset();
+
+  };
+  signupForm.submit(signupValidation);
 
 });
