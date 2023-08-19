@@ -52,7 +52,7 @@
         <!-- Dropdown Menu when user button is clicked -->
         <ul id="userDropdown" class="dropdown-content">
           <li><a href="#loginModal" id="loginBtn" aria-label="loginBtn">Login</a></li>
-          <li><a href="#!" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
+          <li><a href="#signupModal" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
           <li class="divider"></li>
           <li>
             <form id="profileTypeForm" class="pl-20 pr-20">
@@ -92,6 +92,38 @@
           <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
       </div>
+
+      <!-- Creating Signup Modal Structure using Materialize CSS Library -->
+      <div id="signupModal" class="modal">
+        <div class="modal-content">
+          <h4>Sign Up</h4>
+          <form id="signupForm">
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="text" id="signupUsername" required>
+                <label for="signupUsername">Username</label>
+              </div>
+              <div class="input-field col s12">
+                <input type="email" id="signupEmail" required>
+                <label for="signupEmail">Email</label>
+              </div>
+              <div class="input-field col s12">
+                <input type="password" id="signupPassword" required>
+                <label for="signupPassword">Password</label>
+              </div>
+              <div class="input-field col s12">
+                <input type="password" id="signupConfirmPassword" required>
+                <label for="signupConfirmPassword">Confirm Password</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+          <button type="submit" form="signupForm" class="waves-effect waves-green btn-flat">Sign Up</button>
+        </div>
+      </div>
+
 
 
       <form class="col s4 m3" id="searchForm">
