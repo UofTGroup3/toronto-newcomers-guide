@@ -42,27 +42,33 @@
         <p>Helping you settle in Toronto</p>
       </div>
 
+      <!-- Creating a section for the user login and signup-->
       <div class="col s2 m1" id="user">
 
-        <button type="button" id="userBtn" aria-label="userBtn" aria-expanded="false"><i
-            class="fas fa-user"></i></button>
+        <a class="btn-floating btn-large waves-effect waves-light red" id="userBtn" aria-label="userBtn">
+          <i class="material-icons">account_circle</i>
+        </a>
+
         <!-- Dropdown Menu when user button is clicked -->
-        <div id="userDropdown" class="dropdown-content">
-          <button type="button" id="loginBtn" aria-label="loginBtn">Login</button>
-          <button type="button" id="signupBtn" aria-label="signupBtn">Sign Up</button>
-          <hr>
-          <!-- Profile Type Selection -->
-          <form id="profileTypeForm">
-            <label for="profileType">Profile Type:</label>
-            <select name="profileType" id="profileType">
-              <option value="student">Student</option>
-              <option value="refugee">Refugee</option>
-              <option value="skilledWorker">Skilled Worker</option>
-              <option value="retiree">Retiree</option>
-              <option value="tempWorker">Temporary Worker</option>
-            </select>
-          </form>
-        </div>
+        <ul id="userDropdown" class="dropdown-content">
+          <li><a href="#!" id="loginBtn" aria-label="loginBtn">Login</a></li>
+          <li><a href="#!" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
+          <li class="divider"></li>
+          <li>
+            <form id="profileTypeForm" class="pl-20 pr-20">
+              <div class="input-field">
+                <select name="profileType" id="profileType" aria-label="profileType">
+                  <option value="student">Student</option>
+                  <option value="refugee">Refugee</option>
+                  <option value="skilledWorker">Skilled Worker</option>
+                  <option value="retiree">Retiree</option>
+                  <option value="tempWorker">Temporary Worker</option>
+                </select>
+                <label>Profile Type:</label>
+              </div>
+            </form>
+          </li>
+        </ul>
 
       </div>
 
