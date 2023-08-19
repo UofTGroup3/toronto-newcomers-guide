@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Toronto Newcomers' Guide" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Code Breakers" />
+  <!--********************CSS Reset************************-->
+  <link rel="stylesheet" href="./assets/CSS/css-reset.css" />
+  <!--********************jQuery UI CSS************************-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+  <!--********************Material CSS link************************-->
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!--********************Google Fonts************************-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Comfortaa&family=Edu+SA+Beginner:wght@500&family=Josefin+Slab&family=Monoton&family=Quicksand&display=swap"
+    rel="stylesheet">
+  <!--********************Favicon Icon************************-->
+  <link rel="icon" href="./assets/images/TNG/FaviconLogo.png" type="image/x-icon">
+  <!--********************CSS custome file************************-->
+  <link rel="stylesheet" href="./assets/CSS/app.css" />
+  <!--********************Title************************-->
+  <title>Toronto Newcomers' Guide</title>
+</head>
+
+<body>
+
+  <header class="container">
+
+    <section class="row headContent" id="mainHeader">
+
+      <div class="col s2 m1" id="logo">
+        <img src="./assets/images/TNG/SmallSquareLogoJpg.jpg" alt="TNG Logo" />
+      </div>
+
+      <div class="col s8 m4" id="title">
+        <h1>Toronto Newcomers' Guide(TNG)</h1>
+        <p>Helping you settle in Toronto</p>
+      </div>
+
+      <div class="col s2 m1" id="user">
+
+        <button type="button" id="userBtn" aria-label="userBtn" aria-expanded="false"><i
+            class="fas fa-user"></i></button>
+        <!-- Dropdown Menu when user button is clicked -->
+        <div id="userDropdown" class="dropdown-content">
+          <button type="button" id="loginBtn" aria-label="loginBtn">Login</button>
+          <button type="button" id="signupBtn" aria-label="signupBtn">Sign Up</button>
+          <hr>
+          <!-- Profile Type Selection -->
+          <form id="profileTypeForm">
+            <label for="profileType">Profile Type:</label>
+            <select name="profileType" id="profileType">
+              <option value="student">Student</option>
+              <option value="refugee">Refugee</option>
+              <option value="skilledWorker">Skilled Worker</option>
+              <option value="retiree">Retiree</option>
+              <option value="tempWorker">Temporary Worker</option>
+            </select>
+          </form>
+        </div>
+
+      </div>
+
+      <form class="col s4 m3" id="searchForm">
+        <input type="text" name="search" id="search" placeholder="Search" />
+        <!-- TODO: change the fontawesome icon -->
+        <button type="submit" id="searchBtn" aria-label="searchBtn"><i class="fas fa-search"></i></button>
+      </form>
+
+      <!--TODO add other langs-->
+      <form class="col s8 m3" id="selectForm">
+        <label for="lanSelect">Select your prefered Language</label>
+        <select name="lanSelect" id="lanSelect">
+          <option value="Farsi">Farsi</option>
+          <option value="French">French</option>
+          <option value="Spanish">Spanish</option>
+          <option value="Arabic">Arabic</option>
+        </select>
+      </form>
+
+    </section>
+
+    <section class="row headContent" id="headerOptions">
+
+      <!--TODO: connect links -->
+      <nav id="mainNav">
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li>
+            <a href="#essentialServices" rel="bookmark" aria-expanded="false">Essential Services</a>
+            <ul>
+              <li><a href="#jobs" rel="bookmark">Jobs</a></li>
+              <li><a href="#housing" rel="bookmark">Housing</a></li>
+              <li><a href="#education" rel="bookmark">Education</a></li>
+              <li><a href="#health" rel="bookmark">Health</a></li>
+              <li><a href="#transportation" rel="bookmark">Transportation</a></li>
+              <li><a href="#banks" rel="bookmark">Banks</a></li>
+              <li><a href="#government" rel="bookmark">Government</a></li>
+              <li><a href="#library" rel="bookmark">Library Information</a></li>
+            </ul>
+          </li>
+          <li><a href="#sos" rel="bookmark">SOS</a></li>
+          <li><a href="#about" rel="bookmark">About Us</a></li>
+          <li><a href="#contact" rel="bookmark">Contact Us</a></li>
+          <li><a href="#newsContainer" rel="bookmark">News</a></li>
+        </ul>
+      </nav>
+
+      <div id="socialMedia">
+        <!-- TODO: change the fontawesome icon -->
+        <a href="https://www.facebook.com/" target="_blank" aria-label="facebook" rel="noopener">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" aria-label="instagram" rel="noopener">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.twitter.com/" target="_blank" aria-label="twitter" rel="noopener">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.youtube.com/" target="_blank" aria-label="youtube" rel="noopener">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+
+    </section>
+
+  </header>
+
+  <main>
+
+    <section id="heroContainer">
+
+      <!--NOTE: The image should change every 5 sec with all it's content. we can use Libraries like Slick or Owl Carousel. -->
+      <div id="heroImgContainer">
+        <div id="heroImage"> <!--NOTE: This element should hold the hero image as background image -->
+          <a href="" rel="" draggable="false" target="_blank">
+            <h2>New to GTA?</h2>
+            <p>Learn about living and working in GTA</p>
+          </a>
+        </div>
+        <!--NOTE: This element should hold all related images -->
+        <picture></picture>
+      </div>
+
+      <div id="heroText"> <!--NOTE: This element should hold a background image -->
+        <h1>Canada</h1>
+        <h2>Welcomes You</h2>
+      </div>
+
+      <div id="about"> <!--NOTE: This element should hold a background image -->
+        <h3>Learn more about TNG Services</h3>
+        <!--TODO: write a breif note about us and our services -->
+        <p>TNG is all about.......</p>
+        <!--TODO: Add link to "learn more about our services" webpage-->
+        <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+      </div>
+
+      <!--Here I want to add cards for each service we provide-->
+      <div id="essentialServices">
+
+        <h2>Essential Services</h2>
+
+        <!-- TODO: Add links to href attr -->
+        <div> <!--TODO: Add image to all cards-->
+          <div id="jobs" class="card">
+            <img src="./images" alt="Hero Image" />
+            <h3>Jobs</h3>
+            <p>Find a job that suits your skills</p>
+            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+          </div>
+
+          <div id="housing" class="card">
+            <img src="./images" alt="Hero Image" />
+            <h3>Housing</h3>
+            <p>Find a place to live</p>
+            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+          </div>
+
+          <div id="education" class="card">
+            <img src="./images" alt="Hero Image" />
+            <h3>Education</h3>
+            <p>Find a school for your kids</p>
+            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+          </div>
+
+          <div id="health" class="card">
+            <img src="./images" alt="Hero Image" />
+            <h3>Health</h3>
+            <p>Find a doctor</p>
+            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+          </div>
+
+          <div id="transportation" class="card">
+            <img src="./images" alt="Hero Image" />
+            <h3>Transportation</h3>
+            <p>Find a way to get around</p>
+            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+          </div>
+
+          <div id="banks" class="card">
+            <img src="./images" alt="Hero Image" />
+            <h3>Banks</h3>
+            <p>Find a bank</p>
+            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+          </div>
+
+          <div id="government" class="card">
+            <img src="./images" alt="Hero Image" />
+            <h3>Government</h3>
+            <p>Find government services</p>
+            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+          </div>
+
+          <div id="library" class="card">
+            <img src="./images" alt="Hero Image" />
+            <h3>Library Information</h3>
+            <p>Find a library</p>
+            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+          </div>
+
+          <div id="sos" class="card">
+            <img src="./images" alt="Hero Image" />
+            <h3>SOS</h3>
+            <p>Find help in an emergency</p>
+            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="interactiveMapContainer">
+
+      <h2>Explore Essential Places Around You</h2>
+      <p>Use our interactive map to find key services and places in your vicinity.</p>
+
+      <!-- Container for the map; -->
+      <div id="map"></div>
+
+      <!-- Additional controls or info related to the map can be added here.
+            For example, filters to only show certain types of places, 
+            or an info panel with details about a selected place. -->
+      <div id="mapControls">
+        <button type="button" class="mapFilter" data-filter="schools">Schools</button>
+        <button type="button" class="mapFilter" data-filter="hospitals">Hospitals</button>
+        <button type="button" class="mapFilter" data-filter="banks">Banks</button>
+        <!-- ... More filter buttons ... -->
+      </div>
+
+    </section>
+
+    <!--TODO: this section should have at least four cards with links and every other stuff-->
+    <section id="newsContainer">
+
+      <div id="newsTxt">
+        <h2>Featured News</h2>
+        <p>Stay up to date with the latest news about Settelment, Government updates, Jobs and much more.</p>
+      </div>
+
+      <div id="newsCard1" class="newsCards">
+        <div>
+          <img src="./images" alt="News Image" />
+        </div>
+        <div>
+          <h3>News Title</h3>
+          <p>News Description</p>
+          <a href="" rel="" draggable="false" target="_blank">read More</a>
+        </div>
+      </div>
+
+      <div id="newsCard2" class="newsCards">
+        <div>
+          <img src="./images" alt="News Image" />
+        </div>
+        <div>
+          <h3>News Title</h3>
+          <p>News Description</p>
+          <a href="" rel="" draggable="false" target="_blank">read More</a>
+        </div>
+      </div>
+
+      <div id="newsCard3" class="newsCards">
+        <div>
+          <img src="./images" alt="News Image" />
+        </div>
+        <div>
+          <h3>News Title</h3>
+          <p>News Description</p>
+          <a href="" rel="" draggable="false" target="_blank">read More</a>
+        </div>
+      </div>
+
+      <div id="newsCard4" class="newsCards">
+        <div>
+          <img src="./images" alt="News Image" />
+        </div>
+        <div>
+          <h3>News Title</h3>
+          <p>News Description</p>
+          <a href="" rel="" draggable="false" target="_blank">read More</a>
+        </div>
+      </div>
+
+      <div>
+        <a href="" rel="" draggable="false" target="_blank">More News Articles</a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- TODO: Add links and other related stuff -->
+  <footer>
+
+    <!-- Profile Type Selection Modal -->
+    <div id="profileTypeModal" class="modal">
+      <div class="modal-content">
+
+        <h2>Welcome to TNG!</h2>
+        <p>To better tailor your experience, please select your profile type:</p>
+
+        <form id="modalProfileTypeForm">
+          <label for="modalProfileType">Profile Type:</label>
+          <select name="modalProfileType" id="modalProfileType">
+            <option value="student">Student</option>
+            <option value="refugee">Refugee</option>
+            <option value="skilledWorker">Skilled Worker</option>
+            <option value="retiree">Retiree</option>
+            <option value="tempWorker">Temporary Worker</option>
+          </select>
+          <button type="submit" id="modalSubmitBtn">Submit</button>
+        </form>
+
+      </div>
+    </div>
+
+    <div id="feedback">
+      <h3>Feedback & Reviews</h3>
+      <p>What do you think about our services?</p>
+      <a href="" rel="" draggable="false" target="_blank">Leave a Review</a>
+    </div>
+
+    <div id="contact">
+      <h3>Contact Us</h3>
+      <p>Have a question? Contact us</p>
+      <a href="" rel="" draggable="false" target="_blank">Contact Us</a>
+    </div>
+
+    <div>
+      <p class="footerTxt">Toronto Newcomers' Guide</p>
+      <p class="footerTxt">
+        <i class="fa-regular fa-copyright"></i>
+        | Aug, 2023 | Developed by <span>Code Breakers Team</span>
+      </p>
+    </div>
+
+  </footer>
+
+  <!--********************JQuery CDN************************-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <!--********************JQuery UI CDN************************-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+  <!--********************Material JS link************************-->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!--********************Fontawesome************************-->
+  <script src="https://kit.fontawesome.com/cf8b3b67bf.js" crossorigin="anonymous"></script>
+  <!--********************Dayjs************************-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.9/dayjs.min.js"></script>
+  <!--********************JS custome file************************-->
+  <script src="./assets/Script/app.js"></script>
+
+</body>
+
+</html>
