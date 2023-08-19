@@ -90,4 +90,11 @@ $(document).ready(function () {
   };
   signupForm.submit(signupValidation);
 
+  //Helper function for showing error messages.
+  var showError = function (errorMessage) {
+    errorMsgText.text(errorMessage);
+    //using the jQuery method for opening modals with Materialize CSS
+    errorMsg.modal('open');
+  }
+
 });
