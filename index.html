@@ -43,18 +43,15 @@
       </div>
 
       <!-- Creating a section for the user dropdown-->
-      <div class="col s2 m1" id="user">
+      <div class="col s12" id="user">
 
         <a class="btn-floating btn-large waves-effect waves-light red dropdown-trigger" href="#"
           data-target="userDropdown" id="userBtn" aria-label="userBtn">
-          <i class="material-icons">account_circle</i>
+          <i class="material-icons">user</i>
         </a>
 
         <!-- Dropdown Menu when user button is clicked -->
         <ul id="userDropdown" class="dropdown-content">
-          <li><a href="#loginModal" id="loginBtn" aria-label="loginBtn">Login</a></li>
-          <li><a href="#signupModal" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
-          <li class="divider"></li>
           <li>
             <form id="profileTypeForm" class="pl-20 pr-20">
               <div class="input-field">
@@ -69,6 +66,9 @@
               </div>
             </form>
           </li>
+          <li class="divider"></li>
+          <li><a href="#loginModal" id="loginBtn" aria-label="loginBtn">Login</a></li>
+          <li><a href="#signupModal" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
         </ul>
 
       </div>
