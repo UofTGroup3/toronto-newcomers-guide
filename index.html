@@ -73,15 +73,7 @@
       </form>
 
       <!--TODO add other langs-->
-      <form class="col s8 m3" id="selectForm">
-        <label for="lanSelect">Select your prefered Language</label>
-        <select name="lanSelect" id="lanSelect">
-          <option value="Farsi">Farsi</option>
-          <option value="French">French</option>
-          <option value="Spanish">Spanish</option>
-          <option value="Arabic">Arabic</option>
-        </select>
-      </form>
+      <div id="google_translate_element"></div>
 
     </section>
 
@@ -362,6 +354,8 @@
 
   </footer>
 
+  <!--******************************Google Translate Library**************-->
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <!--********************JQuery CDN************************-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <!--********************JQuery UI CDN************************-->
