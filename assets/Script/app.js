@@ -28,6 +28,7 @@ $(document).ready(function () {
   var displayUsername = $('#displayUsername');
   var displayProfileType = $('#displayProfileType');
   var userProfile = $('#userProfile');
+  var logoutBtn = $('#logoutBtn');
 
   // Initialize dropdown, modals and select
   userBtn.dropdown();
@@ -58,8 +59,9 @@ $(document).ready(function () {
     var storedPassword = localStorage.getItem('password');
 
     if (loginUsername === storedUsername && loginPassword === storedPassword) {
-      //using the jQuery method for closing modals with Materialize CSS.
+      localStorage.setItem('isLoggedin', 'true');
       displayUserProfile();
+      //using the jQuery method for closing modals with Materialize CSS.
       loginModal.modal('close');
     } else {
       loginError.show();
@@ -114,8 +116,9 @@ $(document).ready(function () {
 
     var storedUsername = localStorage.getItem('username');
     var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
+    var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
 
-    if (localStorage.getItem('username')) {
+    if (isLoggedin && storedUsername && storedProfileType) {
       displayUsername.text(storedUsername);
       displayProfileType.text(storedProfileType);
       userProfile.show();
@@ -123,6 +126,22 @@ $(document).ready(function () {
       userProfile.hide();
     }
 
+  };
+
+  // Checking if the user is logged in and displaying the appropriate buttons.
+  if (localStorage.getItem('isLoggedin') === 'true') {
+    profileType.show();
+    loginBtn.hide();
+    signupBtn.hide();
+  } else {
+    profileType.hide();
+    loginBtn.show();
+    signupBtn.show();
+  }
+
+  var logoutUser = function () {
+    localStorage.setItem('isLoggedin', 'false');
+    location.reload();
   };
 
   //Helper function for showing error messages.
@@ -138,5 +157,6 @@ $(document).ready(function () {
   signupBtn.on('click', openSignupModal);
   signupForm.submit(signupValidation);
   displayUserProfile();
+  logoutBtn.on('click', logoutUser);
 
 });
