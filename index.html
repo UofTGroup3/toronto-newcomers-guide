@@ -44,7 +44,6 @@
 
       <!-- Creating a section for the user dropdown-->
       <div class="col s12" id="user">
-
         <a class="btn-floating btn-large waves-effect waves-light red dropdown-trigger" href="#"
           data-target="userDropdown" id="userBtn" aria-label="userBtn">
           <i class="material-icons">user</i>
@@ -53,24 +52,35 @@
         <!-- Dropdown Menu when user button is clicked -->
         <ul id="userDropdown" class="dropdown-content">
           <li>
-            <form id="profileTypeForm" class="pl-20 pr-20">
-              <div class="input-field">
-                <select name="profileType" id="profileType" aria-label="profileType">
-                  <option value="student">Student</option>
-                  <option value="refugee">Refugee</option>
-                  <option value="skilledWorker">Skilled Worker</option>
-                  <option value="retiree">Retiree</option>
-                  <option value="tempWorker">Temporary Worker</option>
-                </select>
-                <label>Profile Type:</label>
-              </div>
-            </form>
+            <a href="#profileTypeModal" id="profileTypeBtn" aria-label="profileTypeBtn">Select Profile Type</a>
           </li>
           <li class="divider"></li>
           <li><a href="#loginModal" id="loginBtn" aria-label="loginBtn">Login</a></li>
           <li><a href="#signupModal" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
         </ul>
+      </div>
 
+      <!-- Creating a modal for profile type selector -->
+      <div id="profileTypeModal" class="modal">
+        <div class="modal-content">
+          <h4>Select Profile Type</h4>
+          <form id="profileTypeForm">
+            <div class="input-field">
+              <select name="profileType" id="profileType" aria-label="profileType">
+                <option value="student">Student</option>
+                <option value="refugee">Refugee</option>
+                <option value="skilledWorker">Skilled Worker</option>
+                <option value="retiree">Retiree</option>
+                <option value="tempWorker">Temporary Worker</option>
+              </select>
+              <label>Profile Type:</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Select</a>
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
       </div>
 
       <!-- Creating Login Modal Structure using Materialize CSS Library -->
@@ -389,7 +399,7 @@
   <footer>
 
     <!-- Profile Type Selection Modal -->
-    <div id="profileTypeModal" class="modal">
+    <div id="profileTypeModal2" class="modal">
       <div class="modal-content">
 
         <h2>Welcome to TNG!</h2>
