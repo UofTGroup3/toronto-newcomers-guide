@@ -70,6 +70,7 @@ $(document).ready(function () {
       localStorage.setItem('isLoggedin', 'true');
       localStorage.setItem('username', loginUsername);
       localStorage.setItem('password', loginPassword);
+      newProfileType();
       displayUserProfile();
       //using the jQuery method for closing modals with Materialize CSS.
       loginModal.modal('close');
@@ -93,6 +94,7 @@ $(document).ready(function () {
     var signupEmailValue = signupEmail.val();
     var signupPasswordValue = signupPassword.val();
     var signupConfirmPasswordValue = signupConfirmPassword.val();
+    newProfileType();
 
     //email validation regex from (https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript)
     var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -114,15 +116,12 @@ $(document).ready(function () {
     var newUser = {
       username: signupUsernameValue,
       email: signupEmailValue,
-      password: signupPasswordValue
+      password: signupPasswordValue,
+      profileType: localStorage.getItem('profileType') || 'Not Selected'
     };
 
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
-
-    // localStorage.setItem('username', signupUsernameValue);
-    // localStorage.setItem('email', signupEmailValue);
-    // localStorage.setItem('password', signupPasswordValue);
 
     //closing the modal and resetting the form.
     signupModal.modal('close');

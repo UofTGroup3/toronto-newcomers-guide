@@ -51,10 +51,6 @@
 
         <!-- Dropdown Menu when user button is clicked -->
         <ul id="userDropdown" class="dropdown-content">
-          <li>
-            <a href="#profileTypeModal" id="profileTypeBtn" aria-label="profileTypeBtn">Select Profile Type</a>
-          </li>
-          <li class="divider"></li>
           <li><a href="#loginModal" id="loginBtn" aria-label="loginBtn">Login</a></li>
           <li><a href="#signupModal" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
           <li><a href="#!" id="logoutBtn" aria-label="logoutBtn">Logout</a></li>
@@ -73,8 +69,8 @@
                 <option value="skilledWorker">Skilled Worker</option>
                 <option value="retiree">Retiree</option>
                 <option value="tempWorker">Temporary Worker</option>
+                <option value="PR">Permanent Resident</option>
               </select>
-              <label>Profile Type:</label>
             </div>
           </form>
         </div>
@@ -87,28 +83,47 @@
       <!-- Creating Login Modal Structure using Materialize CSS Library -->
       <div id="loginModal" class="modal">
         <div class="modal-content">
+
           <h4>Login</h4>
           <p>Please enter your username and password.</p>
+
           <div class="input-field col s12">
             <input id="username" type="text">
             <label for="username">Username</label>
           </div>
+
           <div class="input-field col s12">
             <input id="password" type="password">
             <label for="password">Password</label>
           </div>
           <p class="red-text" id="loginError">Invalid username or password.</p>
+
         </div>
+
         <div class="modal-footer">
           <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="actualLoginBtn">Login</a>
           <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
+
       </div>
 
       <!-- Creating Signup Modal Structure using Materialize CSS Library -->
       <div id="signupModal" class="modal">
         <div class="modal-content">
-          <h4>Sign Up</h4>
+
+          <ul>
+            <li>
+              <h4>Sign Up</h4>
+              <p>Please enter a username, password and choose your current status by clicking on Profile Type Menu.</p>
+              <p>After you sign up, you will be redirected to the main page. Then you can attempt to login.</p>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#profileTypeModal" id="profileTypeBtn" aria-label="profileTypeBtn">Select Profile Type</a>
+            </li>
+            <li class="divider"></li>
+          </ul>
+
           <form id="signupForm">
             <div class="row">
               <div class="input-field col s12">
@@ -129,7 +144,9 @@
               </div>
             </div>
           </form>
+
         </div>
+
         <div class="modal-footer">
           <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
           <button type="submit" form="signupForm" class="waves-effect waves-green btn-flat">Sign Up</button>
