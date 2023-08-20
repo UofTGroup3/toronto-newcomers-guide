@@ -10,8 +10,10 @@ $(document).ready(function () {
   var modalFooterLogin = $('.modal-footer a:contains("Login")');
   var username = $('#username');
   var password = $('#password');
+  var loginBtn = $('#loginBtn');
   var loginModal = $('#loginModal');
   var loginError = $('#loginError');
+  var signupBtn = $('#signupBtn');
   var signupForm = $('#signupForm');
   var signupModal = $('#signupModal');
   var signupUsername = $('#signupUsername');
@@ -26,13 +28,16 @@ $(document).ready(function () {
   modal.modal();
   select.formSelect();
 
+  var openLoginModal = function () {
+    loginModal.modal('open');
+  };
+
   var newProfileType = function () {
 
     var selectedProfile = profileType.val();
     localStorage.setItem('profileType', selectedProfile);
 
-  }
-  profileType.change(newProfileType);
+  };
 
   window.attemptLogin = function () {
 
@@ -53,6 +58,10 @@ $(document).ready(function () {
   modalFooterLogin.click(function () {
     attemptLogin();
   });
+
+  var openSignupModal = function () {
+    signupModal.modal('open');
+  };
 
   var signupValidation = function (event) {
     event.preventDefault();
@@ -88,13 +97,17 @@ $(document).ready(function () {
     signupForm[0].reset();
 
   };
-  signupForm.submit(signupValidation);
 
   //Helper function for showing error messages.
   var showError = function (errorMessage) {
     errorMsgText.text(errorMessage);
     //using the jQuery method for opening modals with Materialize CSS
     errorMsg.modal('open');
-  }
+  };
+
+  profileType.change(newProfileType);
+  loginBtn.on('click', openLoginModal);
+  signupBtn.on('click', openSignupModal);
+  signupForm.submit(signupValidation);
 
 });
