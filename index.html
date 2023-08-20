@@ -146,12 +146,6 @@
         </div>
       </div>
 
-      <form class="col s4 m3" id="searchForm">
-        <input type="text" name="search" id="search" placeholder="Search" />
-        <!-- TODO: change the fontawesome icon -->
-        <button type="submit" id="searchBtn" aria-label="searchBtn"><i class="fas fa-search"></i></button>
-      </form>
-
       <!--TODO add other langs-->
       <form class="col s8 m3" id="selectForm">
         <label for="lanSelect">Select your prefered Language</label>
@@ -163,9 +157,15 @@
         </select>
       </form>
 
+      <div id="userProfile">
+        <h4>User Profile</h4>
+        <p><strong>Username:</strong> <span id="displayUsername"></span></p>
+        <p><strong>Profile Type:</strong> <span id="displayProfileType"></span></p>
+      </div>
+
     </section>
 
-    <section class="row headContent" id="headerOptions">
+    <section class="headContent" id="headerOptions">
 
       <!--TODO: connect links -->
       <nav id="mainNav">
@@ -189,7 +189,18 @@
           <li><a href="#contact" rel="bookmark">Contact Us</a></li>
           <li><a href="#newsContainer" rel="bookmark">News</a></li>
         </ul>
+
       </nav>
+
+      <form id="searchForm">
+        <input type="text" name="search" id="search" placeholder="Search" />
+        <!-- TODO: change the fontawesome icon -->
+        <button type="submit" id="searchBtn" aria-label="searchBtn"><i class="fas fa-search"></i></button>
+      </form>
+
+    </section>
+
+    <section class="headContent">
 
       <div id="socialMedia">
         <!-- TODO: change the fontawesome icon -->

@@ -25,6 +25,9 @@ $(document).ready(function () {
   var signupConfirmPassword = $('#signupConfirmPassword');
   var errorMsg = $('#errorMsg');
   var errorMsgText = $('#errorMsgText');
+  var displayUsername = $('#displayUsername');
+  var displayProfileType = $('#displayProfileType');
+  var userProfile = $('#userProfile');
 
   // Initialize dropdown, modals and select
   userBtn.dropdown();
@@ -56,6 +59,7 @@ $(document).ready(function () {
 
     if (loginUsername === storedUsername && loginPassword === storedPassword) {
       //using the jQuery method for closing modals with Materialize CSS.
+      displayUserProfile();
       loginModal.modal('close');
     } else {
       loginError.show();
@@ -102,6 +106,22 @@ $(document).ready(function () {
     //closing the modal and resetting the form.
     signupModal.modal('close');
     signupForm[0].reset();
+    displayUserProfile();
+
+  };
+
+  var displayUserProfile = function () {
+
+    var storedUsername = localStorage.getItem('username');
+    var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
+
+    if (localStorage.getItem('username')) {
+      displayUsername.text(storedUsername);
+      displayProfileType.text(storedProfileType);
+      userProfile.show();
+    } else {
+      userProfile.hide();
+    }
 
   };
 
@@ -117,5 +137,6 @@ $(document).ready(function () {
   loginBtn.on('click', openLoginModal);
   signupBtn.on('click', openSignupModal);
   signupForm.submit(signupValidation);
+  displayUserProfile();
 
 });
