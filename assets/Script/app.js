@@ -6,6 +6,9 @@ $(document).ready(function () {
   var modal = $('.modal');
   var select = $('select');
   var profileType = $('#profileType');
+  var profileTypeForm = $('#profileTypeForm');
+  var profileTypeBtn = $('#profileTypeBtn');
+  var profileTypeModal = $('#profileTypeModal');
   // Used(https://learn.jquery.com/using-jquery-core/selecting-elements/) as reference.
   var modalFooterLogin = $('.modal-footer a:contains("Login")');
   var username = $('#username');
@@ -28,8 +31,8 @@ $(document).ready(function () {
   modal.modal();
   select.formSelect();
 
-  var openLoginModal = function () {
-    loginModal.modal('open');
+  var openProfileTypeModal = function () {
+    profileTypeModal.modal('open');
   };
 
   var newProfileType = function () {
@@ -37,6 +40,10 @@ $(document).ready(function () {
     var selectedProfile = profileType.val();
     localStorage.setItem('profileType', selectedProfile);
 
+  };
+
+  var openLoginModal = function () {
+    loginModal.modal('open');
   };
 
   window.attemptLogin = function () {
@@ -105,6 +112,7 @@ $(document).ready(function () {
     errorMsg.modal('open');
   };
 
+  profileTypeBtn.on('click', openProfileTypeModal);
   profileType.change(newProfileType);
   loginBtn.on('click', openLoginModal);
   signupBtn.on('click', openSignupModal);
