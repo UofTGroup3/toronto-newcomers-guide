@@ -10,7 +10,7 @@ $(document).ready(function () {
   var profileTypeBtn = $('#profileTypeBtn');
   var profileTypeModal = $('#profileTypeModal');
   // Used(https://learn.jquery.com/using-jquery-core/selecting-elements/) as reference.
-  var modalFooterLogin = $('.modal-footer a:contains("Login")');
+  var actualLoginBtn = $('#actualLoginBtn');
   var username = $('#username');
   var password = $('#password');
   var loginBtn = $('#loginBtn');
@@ -29,11 +29,17 @@ $(document).ready(function () {
   var displayProfileType = $('#displayProfileType');
   var userProfile = $('#userProfile');
   var logoutBtn = $('#logoutBtn');
+  var users = JSON.parse(localStorage.getItem('users')) || [];
 
   // Initialize dropdown, modals and select
   userBtn.dropdown();
   modal.modal();
   select.formSelect();
+
+  //giving users a fresh start when they try again.
+  loginModal.on('close', function () {
+    loginError.hide();
+  });
 
   var openProfileTypeModal = function () {
     profileTypeModal.modal('open');
@@ -52,14 +58,18 @@ $(document).ready(function () {
 
   window.attemptLogin = function () {
 
+    loginError.hide();
     var loginUsername = username.val();
     var loginPassword = password.val();
 
-    var storedUsername = localStorage.getItem('username');
-    var storedPassword = localStorage.getItem('password');
+    var userExists = users.some(function(user) {
+        return user.username === loginUsername && user.password === loginPassword;
+    });
 
-    if (loginUsername === storedUsername && loginPassword === storedPassword) {
+    if (userExists) {
       localStorage.setItem('isLoggedin', 'true');
+      localStorage.setItem('username', loginUsername);
+      localStorage.setItem('password', loginPassword);
       displayUserProfile();
       //using the jQuery method for closing modals with Materialize CSS.
       loginModal.modal('close');
@@ -68,7 +78,7 @@ $(document).ready(function () {
     }
   };
 
-  modalFooterLogin.click(function () {
+  actualLoginBtn.click(function () {
     attemptLogin();
   });
 
@@ -101,9 +111,18 @@ $(document).ready(function () {
       return;
     }
 
-    localStorage.setItem('username', signupUsernameValue);
-    localStorage.setItem('email', signupEmailValue);
-    localStorage.setItem('password', signupPasswordValue);
+    var newUser = {
+      username: signupUsernameValue,
+      email: signupEmailValue,
+      password: signupPasswordValue
+    };
+
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // localStorage.setItem('username', signupUsernameValue);
+    // localStorage.setItem('email', signupEmailValue);
+    // localStorage.setItem('password', signupPasswordValue);
 
     //closing the modal and resetting the form.
     signupModal.modal('close');
@@ -118,7 +137,7 @@ $(document).ready(function () {
     var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
     var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
 
-    if (isLoggedin && storedUsername && storedProfileType) {
+    if (isLoggedin && storedUsername) {
       displayUsername.text(storedUsername);
       displayProfileType.text(storedProfileType);
       userProfile.show();
