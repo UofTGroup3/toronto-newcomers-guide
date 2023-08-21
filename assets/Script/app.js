@@ -147,17 +147,6 @@ $(document).ready(function () {
 
   };
 
-  // Checking if the user is logged in and displaying the appropriate buttons.
-  if (localStorage.getItem('isLoggedin') === 'true') {
-    profileType.show();
-    loginBtn.hide();
-    signupBtn.hide();
-  } else {
-    profileType.hide();
-    loginBtn.show();
-    signupBtn.show();
-  }
-
   var logoutUser = function () {
     localStorage.setItem('isLoggedin', 'false');
     location.reload();
