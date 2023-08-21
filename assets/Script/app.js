@@ -31,9 +31,10 @@ $(document).ready(function () {
   var logoutBtn = $('#logoutBtn');
   var users = JSON.parse(localStorage.getItem('users')) || [];
   var carouselImg = $('.carousel');
+  var dropdownTrigger = $('.dropdown-trigger');
 
   // Initialize dropdown, modals and select
-  userBtn.dropdown();
+  dropdownTrigger.dropdown();
   modal.modal();
   select.formSelect();
 
