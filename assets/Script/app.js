@@ -30,6 +30,7 @@ $(document).ready(function () {
   var userProfile = $('#userProfile');
   var logoutBtn = $('#logoutBtn');
   var users = JSON.parse(localStorage.getItem('users')) || [];
+  var carouselImg = $('.carousel');
 
   // Initialize dropdown, modals and select
   userBtn.dropdown();
@@ -169,6 +170,16 @@ $(document).ready(function () {
     errorMsg.modal('open');
   };
 
+  //Initializing the carousel
+  carouselImg.carousel({
+    indicators: true
+  });
+  var carouselTimer = function () {
+    carouselImg.carousel('next');
+  };
+
+
+
   profileTypeBtn.on('click', openProfileTypeModal);
   profileType.change(newProfileType);
   loginBtn.on('click', openLoginModal);
@@ -176,5 +187,6 @@ $(document).ready(function () {
   signupForm.submit(signupValidation);
   displayUserProfile();
   logoutBtn.on('click', logoutUser);
+  setInterval(carouselTimer, 5000);
 
 });
