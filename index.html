@@ -98,6 +98,11 @@
           </ul>
         </div>
 
+        <div id="userProfile">
+          <p id="displayUsername"></p>
+          <p id="displayProfileType"></p>
+        </div>
+
         <!-- Creating a modal for profile type selector -->
         <div id="profileTypeModal" class="modal">
           <div class="modal-content">
@@ -112,7 +117,6 @@
                   <option value="student">Student</option>
                   <option value="refugee">Refugee</option>
                   <option value="skilledWorker">Skilled Worker</option>
-                  <option value="retiree">Retiree</option>
                   <option value="tempWorker">Temporary Worker</option>
                   <option value="PR">Permanent Resident</option>
                 </select>
@@ -135,12 +139,12 @@
             <h4>Login</h4>
             <p>Please enter your username and password.</p>
 
-            <div class="input-field col s12">
+            <div class="input-field">
               <input id="username" type="text" />
               <label for="username">Username</label>
             </div>
 
-            <div class="input-field col s12">
+            <div class="input-field">
               <input id="password" type="password" />
               <label for="password">Password</label>
             </div>
@@ -177,7 +181,6 @@
                   Then you can attempt to login.
                 </p>
               </li>
-              <li class="divider"></li>
               <li>
                 <a
                   href="#profileTypeModal"
@@ -190,20 +193,20 @@
             </ul>
 
             <form id="signupForm">
-              <div class="row">
-                <div class="input-field col s12">
+              <div>
+                <div class="input-field">
                   <input type="text" id="signupUsername" required />
                   <label for="signupUsername">Username</label>
                 </div>
-                <div class="input-field col s12">
+                <div class="input-field">
                   <input type="email" id="signupEmail" required />
                   <label for="signupEmail">Email</label>
                 </div>
-                <div class="input-field col s12">
+                <div class="input-field">
                   <input type="password" id="signupPassword" required />
                   <label for="signupPassword">Password</label>
                 </div>
-                <div class="input-field col s12">
+                <div class="input-field">
                   <input type="password" id="signupConfirmPassword" required />
                   <label for="signupConfirmPassword">Confirm Password</label>
                 </div>
@@ -236,14 +239,6 @@
               >Close</a
             >
           </div>
-        </div>
-
-        <div id="userProfile">
-          <h4>User Profile</h4>
-          <p><strong>Username:</strong> <span id="displayUsername"></span></p>
-          <p>
-            <strong>Profile Type:</strong> <span id="displayProfileType"></span>
-          </p>
         </div>
       </section>
 
