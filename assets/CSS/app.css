@@ -3,13 +3,18 @@
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;
+  font-family: "Josefin Slab", serif;
 }
 
 header {
   width: 100%;
   height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #userDropdown {
