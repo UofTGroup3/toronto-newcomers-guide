@@ -103,3 +103,33 @@ label[for="lanSelect"] {
 .socialMediaIcons {
   color: #3b5998;
 }
+
+#searchForm {
+  display: flex;
+  align-items: center;
+}
+
+#search {
+  flex: 1;
+}
+
+#searchBtn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#searchBtn:focuse {
+  outline: none;
+}
+
+#magnifyingGlass {
+  display: inline;
+}
+
+.navTxt,
+#search::placeholder {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #005f73;
+}
