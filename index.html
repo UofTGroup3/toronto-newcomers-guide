@@ -242,36 +242,43 @@
         </div>
       </section>
 
-      <section class="headContent" id="headerOptions">
         <!--TODO: connect links -->
         <nav id="mainNav">
           <ul>
-            <li><a href="./index.html">Home</a></li>
+            <li><a href="./index.html" class="navTxt">Home</a></li>
             <li>
-              <a href="#essentialServices" rel="bookmark" aria-expanded="false"
-                >Essential Services</a
-              >
-              <ul>
-                <li><a href="#jobs" rel="bookmark">Jobs</a></li>
-                <li><a href="#housing" rel="bookmark">Housing</a></li>
-                <li><a href="#education" rel="bookmark">Education</a></li>
-                <li><a href="#health" rel="bookmark">Health</a></li>
-                <li>
-                  <a href="#transportation" rel="bookmark">Transportation</a>
-                </li>
-                <li><a href="#banks" rel="bookmark">Banks</a></li>
-                <li><a href="#government" rel="bookmark">Government</a></li>
-                <li>
-                  <a href="#library" rel="bookmark">Library Information</a>
-                </li>
+              <a href="#essentialServices" rel="bookmark" class="dropdown-trigger btn navTxt"
+                data-target="essentialsDropdown" aria-expanded="false" id="essentialsBtn">Essential Services</a>
+              <ul id="essentialsDropdown" class="dropdown-content">
+                <li><a href="#jobs" rel="bookmark" class="navTxt">Jobs</a></li>
+                <li><a href="#housing" rel="bookmark" class="navTxt">Housing</a></li>
+                <li><a href="#education" rel="bookmark" class="navTxt">Education</a></li>
+                <li><a href="#health" rel="bookmark" class="navTxt">Health</a></li>
+                <li><a href="#transportation" rel="bookmark" class="navTxt">Transportation</a></li>
+                <li><a href="#banks" rel="bookmark" class="navTxt">Banks</a></li>
+                <li><a href="#government" rel="bookmark" class="navTxt">Government</a></li>
+                <li><a href="#library" rel="bookmark" class="navTxt">Library Information</a></li>
               </ul>
             </li>
-            <li><a href="#sos" rel="bookmark">SOS</a></li>
-            <li><a href="#about" rel="bookmark">About Us</a></li>
-            <li><a href="#contact" rel="bookmark">Contact Us</a></li>
-            <li><a href="#newsContainer" rel="bookmark">News</a></li>
+            <li><a href="#sos" rel="bookmark" class="navTxt">SOS</a></li>
+            <li><a href="#about" rel="bookmark" class="navTxt">About Us</a></li>
+            <li><a href="#contact" rel="bookmark" class="navTxt">Contact Us</a></li>
+            <li><a href="#newsContainer" rel="bookmark" class="navTxt">News</a></li>
           </ul>
-        </nav>
+            </nav>
+
+            <div id="socialMedia">
+              <!-- TODO: change the fontawesome icon -->
+              <a href="https://www.facebook.com/" target="_blank" aria-label="facebook" rel="noopener"
+                class="socialMediaIcons"><i class="fa-brands fa-square-facebook fa-bounce"></i></a>
+              <a href="https://www.instagram.com/" target="_blank" aria-label="instagram" rel="noopener"
+                class="socialMediaIcons"><i class="fa-brands fa-instagram fa-bounce"></i></a>
+              <a href="https://www.twitter.com/" target="_blank" aria-label="twitter" rel="noopener"
+                class="socialMediaIcons"><i class="fa-brands fa-twitter fa-bounce"></i></a>
+              <a href="https://www.youtube.com/" target="_blank" aria-label="youtube" rel="noopener"
+                class="socialMediaIcons"><i class="fa-brands fa-youtube fa-bounce"></i></a>
+            </div>
+      
 
         <form id="searchForm">
           <input type="text" name="search" id="search" placeholder="Search" />
@@ -282,43 +289,6 @@
         </form>
       </section>
 
-      <section class="headContent">
-        <div id="socialMedia">
-          <!-- TODO: change the fontawesome icon -->
-          <a
-            href="https://www.facebook.com/"
-            target="_blank"
-            aria-label="facebook"
-            rel="noopener"
-          >
-            <i class="fab fa-facebook"></i>
-          </a>
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
-            aria-label="instagram"
-            rel="noopener"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a
-            href="https://www.twitter.com/"
-            target="_blank"
-            aria-label="twitter"
-            rel="noopener"
-          >
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a
-            href="https://www.youtube.com/"
-            target="_blank"
-            aria-label="youtube"
-            rel="noopener"
-          >
-            <i class="fab fa-youtube"></i>
-          </a>
-        </div>
-      </section>
     </header>
 
     <main>
