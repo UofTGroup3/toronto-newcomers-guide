@@ -49,10 +49,17 @@ header {
   font-size: 1.5rem;
 }
 
-#userDropdown {
-  display: none;
+label[for="lanSelect"] {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #005f73;
 }
 
-#userProfile {
-  display: none;
+#user {
+  margin-left: 15%;
+}
+
+#selectForm {
+  display: inline-block;
+  margin-left: 10%;
 }
