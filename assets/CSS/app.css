@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  font-family: "Josefin Slab", serif;
+}
+
+header {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: space-evenly;
+  background-color: rgba(238, 155, 0, 0.7);
+}
+
+#mainHeader {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5em 0;
+  margin: 0.5em 0;
+  color: #005f73;
+}
+
+#title {
+  padding: 0.5em;
+  margin: 0.3em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#title h1 {
+  font-size: 2rem;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  font-family: "Monoton", cursive;
+}
+
+#title p {
+  font-size: 1.5rem;
+}
+
+label[for="lanSelect"] {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #005f73;
+}
+
+#user {
+  margin-left: 15%;
+}
+
+#selectForm {
+  display: inline-block;
+  margin-left: 10%;
+}
+
+#userProfile {
+  align-self: flex-end;
+  font-family: "Edu SA Beginner", cursive;
+  font-size: 1rem;
+  padding: 0.5em;
+}
+
+#signupModal p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #005f73;
+  margin-bottom: 1em;
+}
+
+#userDropdown,
+#userProfile,
+#essentialsDropdown {
+  display: none;
+}
+
+#mainNav {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #e9d8a6;
+  padding: 0.5em 0;
+  margin: 1em 0;
+}
+
+#essentialsBtn {
+  background-color: transparent;
+}
+
+.socialMediaIcons {
+  color: #3b5998;
+}
+
+#searchForm {
+  display: flex;
+  align-items: center;
+}
+
+#search {
+  flex: 1;
+}
+
+#searchBtn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#searchBtn:focuse {
+  outline: none;
+}
+
+#magnifyingGlass {
+  display: inline;
+}
+
+.navTxt,
+#search::placeholder {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #005f73;
+}
