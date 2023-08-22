@@ -59,11 +59,6 @@ label[for="lanSelect"] {
   margin-left: 15%;
 }
 
-#selectForm {
-  display: inline-block;
-  margin-left: 10%;
-}
-
 #userProfile {
   align-self: flex-end;
   font-family: "Edu SA Beginner", cursive;
