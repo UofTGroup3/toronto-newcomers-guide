@@ -128,3 +128,7 @@ label[for="lanSelect"] {
   font-weight: bold;
   color: #005f73;
 }
+
+.map {
+  height: 500px;
+}

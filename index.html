@@ -340,15 +340,34 @@
       <p>Use our interactive map to find key services and places in your vicinity.</p>
 
       <!-- Container for the map; -->
-      <div id="map"></div>
-
+      <div class="map" id="attractionsMap">
+        <iframe src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/iwxq/neighborhood-discovery.html"
+          width="75%" height="100%"
+          style="border:0;"
+          loading="lazy">
+        </iframe>
+      </div>
+      <div class="map" id="schoolsMap">
+        <iframe src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/5432/neighborhood-discovery.html"
+        width="75%" height="100%"
+        style="border:0;"
+        loading="lazy">
+      </iframe>
+      </div>
+      <div class="map" id="hospitals-pharmaciesMap">
+        <iframe src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/5cdk/neighborhood-discovery.html"
+          width="75%" height="100%"
+          style="border:0;"
+          loading="lazy">
+        </iframe>
+      </div>
       <!-- Additional controls or info related to the map can be added here.
             For example, filters to only show certain types of places, 
             or an info panel with details about a selected place. -->
       <div id="mapControls">
-        <button type="button" class="mapFilter" data-filter="schools">Schools</button>
-        <button type="button" class="mapFilter" data-filter="hospitals">Hospitals</button>
-        <button type="button" class="mapFilter" data-filter="banks">Banks</button>
+        <button id="schoolsBtn" type="button" class="mapFilter" data-filter="schoolsMap">Schools</button>
+        <button id="hospitalsBtn" type="button" class="mapFilter" data-filter="hospitals-pharmaciesMap">Hospitals & Pharmacies</button>
+        <button id="banksBtn" type="button" class="mapFilter" data-filter="banksMap">Banks</button>
         <!-- ... More filter buttons ... -->
       </div>
 
