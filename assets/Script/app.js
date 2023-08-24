@@ -169,18 +169,6 @@ $(document).ready(function () {
     carouselImg.carousel('next');
   };
 
-
-
-  profileTypeBtn.on('click', openProfileTypeModal);
-  profileType.change(newProfileType);
-  loginBtn.on('click', openLoginModal);
-  signupBtn.on('click', openSignupModal);
-  signupForm.submit(signupValidation);
-  displayUserProfile();
-  logoutBtn.on('click', logoutUser);
-  setInterval(carouselTimer, 5000);
-  googleTranslateElementInit();
-
   //Map Functions
   //https://www.w3schools.com/jquery/jquery_hide_show.asp
   //https://www.geeksforgeeks.org/how-to-filter-objects-by-data-attribute-value-in-jquery/
@@ -197,8 +185,7 @@ $(document).ready(function () {
   //Click event listeners for map buttons
   $('.mapFilter').click(function () {
   var filter = $(this).data('filter');
-  //debug
-  // console.log("clicked filter:", filter);
+
   //Hide all maps on click
   hideMaps();
   //Show clicked on map
@@ -219,4 +206,14 @@ $(document).ready(function () {
     // };
     // googleTranslateElementInit();
 
+    profileTypeBtn.on('click', openProfileTypeModal);
+    profileType.change(newProfileType);
+    loginBtn.on('click', openLoginModal);
+    signupBtn.on('click', openSignupModal);
+    signupForm.submit(signupValidation);
+    displayUserProfile();
+    logoutBtn.on('click', logoutUser);
+    setInterval(carouselTimer, 5000);
+    googleTranslateElementInit();
+  
 });
