@@ -32,6 +32,10 @@ $(document).ready(function () {
   var carouselImg = $('.carousel');
   var dropdownTrigger = $('.dropdown-trigger');
   var dashboardBtn = $('#dashboardBtn');
+  var dashboardContent = $('#dashboardContent');
+  var usernameDisplay = $('#usernameDisplay');
+  var profileTypeDisplay = $('#profileTypeDisplay');
+  var recommendations = $('#recommendations');
 
   // Initialize dropdown, modals and select
   dropdownTrigger.dropdown();
