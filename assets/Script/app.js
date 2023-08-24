@@ -217,73 +217,73 @@ $(document).ready(function () {
       studentRecommendations: [
         {
           title: "How to get your student card?",
-          description: "This is a description of the recommendation",
+          description: "Steps to obtain an official student identification card for academic and campus activities.",
           link: "https://www.ryerson.ca/registrar/students/records/studentcard/",
           image: "assets/images/studentcard.jpg"
         },
         {
           title: "How to get your OHIP card and SIN number?",
-          description: "This is a description of the recommendation",
+          description: "Guidance on acquiring an Ontario Health Insurance Plan card and Social Insurance Number.",
           link: "https://www.ontario.ca/page/getting-health-card",
           image: "assets/images/healthcard.jpg"
         },
         {
           tiltle: "How to get your TTC student card?",
-          description: "This is a description of the recommendation",
+          description: "Instructions to secure a student card for discounted Toronto Transit Commission fares.",
           link: "https://www.ttc.ca/Fares_and_passes/Passes/Post-Secondary_Student_Pass.jsp",
           image: "assets/images/ttc.jpg"
         },
         {
           title: "How to get your Presto card?",
-          description: "This is a description of the recommendation",
+          description: "Learn how to acquire a Presto card for easy and contactless public transportation payments in Ontario.",
           link: "https://www.prestocard.ca/en",
           image: "assets/images/presto.jpg"
         },
         {
           title: "How to get your first credit card?",
-          description: "This is a description of the recommendation",
+          description: "Discover steps to apply for your first credit card, ensuring you build a strong financial foundation.",
           link: "https://www.nerdwallet.com/article/credit-cards/how-to-apply-for-a-credit-card",
           image: "assets/images/creditcard.jpg"
         },
         {
           title: "How to apply for a student loan?",
-          description: "This is a description of the recommendation",
+          description: "Detailed guidelines on how to navigate and apply for student loans in Ontario to support your education.",
           link: "https://www.ontario.ca/page/osap-ontario-student-assistance-program",
           image: "assets/images/studentloan.jpg"
         },
         {
           title: "How to get a part-time job?",
-          description: "This is a description of the recommendation",
+          description: "Strategies and resources to help you land a part-time job, providing both experience and financial support.",
           link: "https://www.ryerson.ca/career-coop/students/jobs/",
           image: "assets/images/parttimejob.jpg"
         },
         {
           title: "How can you locate a doctor?", 
-          description: "This is a description of the recommendation",
+          description: "Navigate the healthcare system and find a local family doctor or nurse practitioner in Ontario.",
           link: "https://www.ontario.ca/page/find-family-doctor-or-nurse-practitioner",
           image: "assets/images/doctor.jpg"
         },
         {
           title: "How can you locate a settelment?",
-          description: "This is a description of the recommendation",
-          link: "https://www.ontario.ca/page/settlement-agencies",
+          description: "Resources to find a suitable settlement or support agency to assist with your transition in Ontario.",
+          link: "https://www.nestpick.com/student-accommodation/toronto/",
           image: "assets/images/settlement.jpg"
         },
         {
           title: "How to get your G1 license?",
-          description: "This is a description of the recommendation",
+          description: "A guide on how to start your driving journey by obtaining a G1 license in Ontario.",
           link: "https://www.ontario.ca/page/get-g-drivers-licence-new-drivers",
           image: "assets/images/g1.jpg"
         },
         {
           title: "How to get your Library card?",
-          description: "This is a description of the recommendation",
+          description: "Steps to apply for a library card to access vast resources at Toronto Public Libraries.",
           link: "https://www.torontopubliclibrary.ca/using-the-library/library-cards/",
           image: "assets/images/library.jpg"
         },
         {
           title: "Are you looking for exciting events in Toronto?",
-          description: "This is a description of the recommendation",
+          description: "Discover the vibrant events happening around Toronto, perfect for students to relax, learn, and socialize.",
           link: "https://www.eventbrite.com/blog/college-event-ideas/",
           image: "assets/images/events.jpg"
         },
@@ -294,67 +294,67 @@ $(document).ready(function () {
       refugeeRecommendations: [
         {
           title: "Find a refugee settlement agency near you",
-          description: "This is a description of the recommendation",
+          description: "Discover agencies dedicated to helping refugees settle in Canada.",
           link: "https://www.canrefugee.ca/settling/settlement_agencies",
           image: "assets/images/settlement.jpg"
         },
         {
           title: "find a welcome centre near you.",
-          description: "This is a description of the recommendation",
+          description: "Explore local welcome centres designed to assist newcomers in understanding and navigating the resources available in their community.",
           link: "https://welcomecentre.ca/",
           image: "assets/images/welcomecentre.jpg"
         },
         {
           title: "How to enter Interim Federal Health Program?",
-          description: "This is a description of the recommendation",
+          description: "The Interim Federal Health Program (IFHP) offers temporary health insurance to refugees, protected persons, and other specified groups in Canada who aren't eligible for provincial or territorial health insurance.",
           link: "https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/help-within-canada/health-care/interim-federal-health-program/apply.html",
           image: "assets/images/healthcard.jpg"
         },
         {
           title: "How to get your SIN number?",
-          description: "This is a description of the recommendation",
+          description: "Guidance on acquiring a Social Insurance Number.",
           link: "https://www.canada.ca/en/employment-social-development/services/sin/apply.html",
           image: "assets/images/sin.jpg"
         },
         {
           title: "How to get your TTC refugee card?",
-          description: "This is a description of the recommendation",
+          description: "A concise guide to obtaining your Toronto Transit Commission (TTC) refugee card, granting eligible refugees discounted transit access in Toronto.",
           link: "https://www.ttc.ca/Fares_and_passes/Passes/Refugee_Pass.jsp",
           image: "assets/images/ttc.jpg"
         },
         {
           title: "How to get your Presto card?",
-          description: "This is a description of the recommendation",
+          description: "Learn how to acquire a Presto card for easy and contactless public transportation payments in Ontario.",
           link: "https://www.prestocard.ca/en",
           image: "assets/images/presto.jpg"
         },
         {
-          title: "How to open an account as a refugee?",
-          description: "This is a description of the recommendation",
+          title: "How to open an account?",
+          description: "A straightforward guide to setting up a new bank account.",
           link: "https://www.ontario.ca/page/opening-bank-account",
           image: "assets/images/bankaccount.jpg"
         },
         {
           title: "How to get help from government?",
-          description: "This is a description of the recommendation",
+          description: "A concise guide on accessing various government assistance programs",
           link: "https://www.ontario.ca/page/get-help-government",
           image: "assets/images/government.jpg"
         },
         {
           title: "How to find a job?",
-          description: "This is a description of the recommendation",
+          description: "A step-by-step guide to navigating the job market.",
           link: "https://www.ontario.ca/page/employment-ontario",
           link2: " https://www.jobbank.gc.ca/",
         },
         {
           title: "How can you locate a doctor?",
-          description: "This is a description of the recommendation",
+          description: "Navigate the healthcare system and find a local family doctor or nurse practitioner in Ontario.",
           link: "https://www.ontario.ca/page/find-family-doctor-or-nurse-practitioner",
           image: "assets/images/doctor.jpg"
         },
         {
           title: "How can you locate a settelment?",
-          description: "This is a description of the recommendation",
+          description: "Resources to find a suitable settlement or support agency to assist with your transition in Ontario.",
           link: "https://www.ontario.ca/page/settlement-agencies",
           image: "assets/images/settlement.jpg"
         },
@@ -365,67 +365,67 @@ $(document).ready(function () {
       temporaryRecommendations: [
         {
           title: "How to get your OHIP card?",
-          description: "This is a description of the recommendation",
+          description: "A guide to acquiring Ontario's health insurance card for temporary residents.",
           link: "https://www.ontario.ca/page/apply-ohip-and-get-health-card",
           image: "assets/images/healthcard.jpg"
         },
         {
           title: "find a welcome centre near you.",
-          description: "This is a description of the recommendation",
+          description: "Explore local welcome centres designed to assist newcomers in understanding and navigating the resources available in their community.",
           link: "https://welcomecentre.ca/",
           image: "assets/images/welcomecentre.jpg"
         },
         {
           title: "How to get your SIN number?",
-          description: "This is a description of the recommendation",
+          description: "Guidance on acquiring a Social Insurance Number.",
           link: "https://www.canada.ca/en/employment-social-development/services/sin/apply.html",
           image: "assets/images/sin.jpg"
         },
         {
           title: "How to get your TTC card?",
-          description: "This is a description of the recommendation",
+          description: "A concise guide to obtaining your Toronto Transit Commission (TTC) card.",
           link: "https://www.ttc.ca/Fares-and-passes/How-to-buy-fares-and-passes",
           image: "assets/images/ttc.jpg"
         },
         {
           title: "How to get your Presto card?",
-          description: "This is a description of the recommendation",
+          description: "Learn how to acquire a Presto card for easy and contactless public transportation payments in Ontario.",
           link: "https://www.prestocard.ca/en",
           image: "assets/images/presto.jpg"
         },
         {
           title: "How to open a bank account?",
-          description: "This is a description of the recommendation",
+          description: "A straightforward guide to setting up a new bank account.",
           link: "https://www.ontario.ca/page/opening-bank-account",
           image: "assets/images/bankaccount.jpg"
         },
         {
           title: "How to get help from government?",
-          description: "This is a description of the recommendation",
+          description: "A concise guide on accessing various government assistance programs",
           link: "https://www.ontario.ca/page/get-help-government",
           image: "assets/images/government.jpg"
         },
         {
           title: "How to find a job?",
-          description: "This is a description of the recommendation",
+          description: "A step-by-step guide to navigating the job market.",
           link: "https://www.ontario.ca/page/employment-ontario",
           image: "assets/images/job.jpg"
         },
         {
           title: "How can you locate a doctor?",
-          description: "This is a description of the recommendation",
+          description: "Navigate the healthcare system and find a local family doctor or nurse practitioner in Ontario.",
           link: "https://www.ontario.ca/page/find-family-doctor-or-nurse-practitioner",
           image: "assets/images/doctor.jpg"
         },
         {
           title: "How can you locate a settelment?",
-          description: "This is a description of the recommendation",
+          description: "Resources to find a suitable settlement or support agency to assist with your transition in Ontario.",
           link: "https://www.ontario.ca/page/settlement-agencies",
           image: "assets/images/settlement.jpg"
         },
         {
           title: "How to get your G1 license?",
-          description: "This is a description of the recommendation",
+          description: "A guide on how to start your driving journey by obtaining a G1 license in Ontario.",
           link: "https://www.ontario.ca/page/get-g-drivers-licence-new-drivers",
           image: "assets/images/g1.jpg"
         },
@@ -436,79 +436,79 @@ $(document).ready(function () {
       prRecommendations: [
         {
           title: "How to get your OHIP card?",
-          description: "This is a description of the recommendation",
+          description: "Steps to avail Ontario's health insurance card for permanent residents.",
           link: "https://www.ontario.ca/page/apply-ohip-and-get-health-card",
           image: "assets/images/healthcard.jpg"
         },
         {
           title: "find a welcome centre near you.",
-          description: "This is a description of the recommendation",
+          description: "Explore local welcome centres designed to assist newcomers in understanding and navigating the resources available in their community.",
           link: "https://welcomecentre.ca/",
           image: "assets/images/welcomecentre.jpg"
         },
         {
           title: "How to get your SIN number?",
-          description: "This is a description of the recommendation",
+          description: "Guidance on acquiring a Social Insurance Number.",
           link: "https://www.canada.ca/en/employment-social-development/services/sin/apply.html",
           image: "assets/images/sin.jpg" 
         },
         {
           title: "How to get your TTC card?",
-          description: "This is a description of the recommendation",
+          description: "A concise guide to obtaining your Toronto Transit Commission (TTC) card.",
           link: "https://www.ttc.ca/Fares-and-passes/How-to-buy-fares-and-passes",
           image: "assets/images/ttc.jpg"
         },
         {
           title: "How to get your Presto card?",
-          description: "This is a description of the recommendation",
+          description: "Learn how to acquire a Presto card for easy and contactless public transportation payments in Ontario.",
           link: "https://www.prestocard.ca/en",
           image: "assets/images/presto.jpg"
         },
         {
           title: "How to open a bank account?",
-          description: "This is a description of the recommendation",
+          description: "A straightforward guide to setting up a new bank account.",
           link: "https://www.ontario.ca/page/opening-bank-account",
           image: "assets/images/bankaccount.jpg"
         },
         {
           title: "How to get help from government?",
-          description: "This is a description of the recommendation",
+          description: "A concise guide on accessing various government assistance programs",
           link: "https://www.ontario.ca/page/get-help-government",
           image: "assets/images/government.jpg"
         },
         {
           title: "How to find a job?",
-          description: "This is a description of the recommendation",
+          description: "A step-by-step guide to navigating the job market",
           link: "https://www.ontario.ca/page/employment-ontario",
           image: "assets/images/job.jpg"
         },
         {
           title: "How can you locate a doctor?",
-          description: "This is a description of the recommendation",
+          description: "Navigate the healthcare system and find a local family doctor or nurse practitioner in Ontario.",
           link: "https://www.ontario.ca/page/find-family-doctor-or-nurse-practitioner",
           image: "assets/images/doctor.jpg"
         },
         {
           title: "How can you locate a settelment?",
-          description: "This is a description of the recommendation",
+          description: "Resources to find a suitable settlement or support agency to assist with your transition in Ontario.",
           link: "https://www.ontario.ca/page/settlement-agencies",
           image: "assets/images/settlement.jpg"
         },
         {
           title: "How to get your G1 license?",
-          description: "This is a description of the recommendation",
+          description: "A guide on how to start your driving journey by obtaining a G1 license in Ontario.",
           link: "https://www.ontario.ca/page/get-g-drivers-licence-new-drivers",
           image: "assets/images/g1.jpg"
         },
         {
           title: "Are you eligible for citizenship?",
-          description: "This is a description of the recommendation",
+          description: "Determine your readiness and qualifications for citizenship with this comprehensive overview of requirements, documentation, and processes, ensuring you're on the right path towards obtaining your citizenship status.",
           link: "https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/check-eligibility.html",
           image: "assets/images/citizenship.jpg"
         },
         {
           title: "Are you looking for exciting events in Toronto?",
-          description: "This is a description of the recommendation",
+          description: "Discover Toronto's vibrant scene of upcoming events, festivals, and cultural happenings",
           link: "https://www.eventbrite.ca/",
           image: "assets/images/events.jpg"
         }
