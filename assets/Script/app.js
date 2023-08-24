@@ -1,4 +1,3 @@
-
 // Used(https://learn.jquery.com/using-jquery-core) and (https://materializecss.com) documentations as reference.
 $(document).ready(function () {
 
@@ -10,7 +9,6 @@ $(document).ready(function () {
   var profileTypeForm = $('#profileTypeForm');
   var profileTypeBtn = $('#profileTypeBtn');
   var profileTypeModal = $('#profileTypeModal');
-  // Used(https://learn.jquery.com/using-jquery-core/selecting-elements/) as reference.
   var actualLoginBtn = $('#actualLoginBtn');
   var username = $('#username');
   var password = $('#password');
@@ -33,6 +31,7 @@ $(document).ready(function () {
   var users = JSON.parse(localStorage.getItem('users')) || [];
   var carouselImg = $('.carousel');
   var dropdownTrigger = $('.dropdown-trigger');
+  var dashboardBtn = $('#dashboardBtn');
 
   // Initialize dropdown, modals and select
   dropdownTrigger.dropdown();
@@ -149,6 +148,33 @@ $(document).ready(function () {
 
   };
 
+  var openDashboard = function (event) {
+
+    event.stopPropagation();
+    var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
+    var storedUsername = localStorage.getItem('username');
+    var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
+    var isProfileTypeSelected = storedProfileType !== 'Not Selected';
+
+    if (storedProfileType === 'Not Selected') {
+      showError('Please select a profile type');
+      return;
+    }
+    if(!isLoggedin) {
+      showError('Please login or signup');
+      return;
+    }
+    if (isLoggedin && storedUsername && isProfileTypeSelected) {
+      window.location.href = "dashboard.html";
+      displayUsername.text(storedUsername);
+      displayProfileType.text(storedProfileType);
+      userProfile.show();
+    } else {
+      userProfile.hide();
+    }
+
+  };
+
   var logoutUser = function () {
     localStorage.setItem('isLoggedin', 'false');
     location.reload();
@@ -184,6 +210,7 @@ $(document).ready(function () {
   loginBtn.on('click', openLoginModal);
   signupBtn.on('click', openSignupModal);
   signupForm.submit(signupValidation);
+  dashboardBtn.on('click', openDashboard);
   displayUserProfile();
   logoutBtn.on('click', logoutUser);
   setInterval(carouselTimer, 5000);
