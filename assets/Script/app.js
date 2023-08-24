@@ -182,6 +182,8 @@ $(document).ready(function () {
   googleTranslateElementInit();
 
   //Map Functions
+  //https://www.w3schools.com/jquery/jquery_hide_show.asp
+  //https://www.geeksforgeeks.org/how-to-filter-objects-by-data-attribute-value-in-jquery/
 
   //Hide All Maps
   function hideMaps() {
@@ -194,17 +196,18 @@ $(document).ready(function () {
 
   //Click event listeners for map buttons
   $('.mapFilter').click(function () {
-  var filter = $(this).data("filter");
+  var filter = $(this).data('filter');
   //debug
   // console.log("clicked filter:", filter);
   //Hide all maps on click
   hideMaps();
   //Show clicked on map
-  $("#" + filter).show();
+  $('#' + filter).show();
   });
 
     // // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
-
+    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate_dropdown
+    // https://codepen.io/j_holtslander/pen/PjPWMe
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({ pageLanguage: 'en', 
       includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu', 
