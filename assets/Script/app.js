@@ -68,8 +68,8 @@ $(document).ready(function () {
     var loginUsername = username.val();
     var loginPassword = password.val();
 
-    var userExists = users.some(function(user) {
-        return user.username === loginUsername && user.password === loginPassword;
+    var userExists = users.some(function (user) {
+      return user.username === loginUsername && user.password === loginPassword;
     });
 
     if (userExists) {
@@ -164,7 +164,7 @@ $(document).ready(function () {
       showError('Please select a profile type');
       return;
     }
-    if(!isLoggedin) {
+    if (!isLoggedin) {
       showError('Please login or signup');
       return;
     }
@@ -194,9 +194,11 @@ $(document).ready(function () {
   // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
 
   function googleTranslateElementInit() {
-  new google.translate.TranslateElement({ pageLanguage: 'en', 
-  includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu', 
-  layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
   };
 
   //Initializing the carousel
@@ -207,6 +209,312 @@ $(document).ready(function () {
     carouselImg.carousel('next');
   };
 
+  // Here I'm trying to create an array to store the recommendations based on the profile type selected. based 
+  //TODO: check all links and images
+  var recommendationsArray = [
+    {
+      student: "Here are some recommendations for you based on your status as a student",
+      studentRecommendations: [
+        {
+          title: "How to get your student card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ryerson.ca/registrar/students/records/studentcard/",
+          image: "assets/images/studentcard.jpg"
+        },
+        {
+          title: "How to get your OHIP card and SIN number?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/getting-health-card",
+          image: "assets/images/healthcard.jpg"
+        },
+        {
+          tiltle: "How to get your TTC student card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ttc.ca/Fares_and_passes/Passes/Post-Secondary_Student_Pass.jsp",
+          image: "assets/images/ttc.jpg"
+        },
+        {
+          title: "How to get your Presto card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.prestocard.ca/en",
+          image: "assets/images/presto.jpg"
+        },
+        {
+          title: "How to get your first credit card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.nerdwallet.com/article/credit-cards/how-to-apply-for-a-credit-card",
+          image: "assets/images/creditcard.jpg"
+        },
+        {
+          title: "How to apply for a student loan?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/osap-ontario-student-assistance-program",
+          image: "assets/images/studentloan.jpg"
+        },
+        {
+          title: "How to get a part-time job?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ryerson.ca/career-coop/students/jobs/",
+          image: "assets/images/parttimejob.jpg"
+        },
+        {
+          title: "How can you locate a doctor?", 
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/find-family-doctor-or-nurse-practitioner",
+          image: "assets/images/doctor.jpg"
+        },
+        {
+          title: "How can you locate a settelment?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/settlement-agencies",
+          image: "assets/images/settlement.jpg"
+        },
+        {
+          title: "How to get your G1 license?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/get-g-drivers-licence-new-drivers",
+          image: "assets/images/g1.jpg"
+        },
+        {
+          title: "How to get your Library card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.torontopubliclibrary.ca/using-the-library/library-cards/",
+          image: "assets/images/library.jpg"
+        },
+        {
+          title: "Are you looking for exciting events in Toronto?",
+          description: "This is a description of the recommendation",
+          link: "https://www.eventbrite.com/blog/college-event-ideas/",
+          image: "assets/images/events.jpg"
+        },
+      ] 
+    },
+    {
+      refugee: "Here are some recommendations for you based on your status as a refugee",
+      refugeeRecommendations: [
+        {
+          title: "Find a refugee settlement agency near you",
+          description: "This is a description of the recommendation",
+          link: "https://www.canrefugee.ca/settling/settlement_agencies",
+          image: "assets/images/settlement.jpg"
+        },
+        {
+          title: "find a welcome centre near you.",
+          description: "This is a description of the recommendation",
+          link: "https://welcomecentre.ca/",
+          image: "assets/images/welcomecentre.jpg"
+        },
+        {
+          title: "How to enter Interim Federal Health Program?",
+          description: "This is a description of the recommendation",
+          link: "https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/help-within-canada/health-care/interim-federal-health-program/apply.html",
+          image: "assets/images/healthcard.jpg"
+        },
+        {
+          title: "How to get your SIN number?",
+          description: "This is a description of the recommendation",
+          link: "https://www.canada.ca/en/employment-social-development/services/sin/apply.html",
+          image: "assets/images/sin.jpg"
+        },
+        {
+          title: "How to get your TTC refugee card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ttc.ca/Fares_and_passes/Passes/Refugee_Pass.jsp",
+          image: "assets/images/ttc.jpg"
+        },
+        {
+          title: "How to get your Presto card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.prestocard.ca/en",
+          image: "assets/images/presto.jpg"
+        },
+        {
+          title: "How to open an account as a refugee?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/opening-bank-account",
+          image: "assets/images/bankaccount.jpg"
+        },
+        {
+          title: "How to get help from government?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/get-help-government",
+          image: "assets/images/government.jpg"
+        },
+        {
+          title: "How to find a job?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/employment-ontario",
+          link2: " https://www.jobbank.gc.ca/",
+        },
+        {
+          title: "How can you locate a doctor?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/find-family-doctor-or-nurse-practitioner",
+          image: "assets/images/doctor.jpg"
+        },
+        {
+          title: "How can you locate a settelment?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/settlement-agencies",
+          image: "assets/images/settlement.jpg"
+        },
+      ]
+    },
+    {
+      temporary: "Here are some recommendations for you based on your status as a temporary resident",
+      temporaryRecommendations: [
+        {
+          title: "How to get your OHIP card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/apply-ohip-and-get-health-card",
+          image: "assets/images/healthcard.jpg"
+        },
+        {
+          title: "find a welcome centre near you.",
+          description: "This is a description of the recommendation",
+          link: "https://welcomecentre.ca/",
+          image: "assets/images/welcomecentre.jpg"
+        },
+        {
+          title: "How to get your SIN number?",
+          description: "This is a description of the recommendation",
+          link: "https://www.canada.ca/en/employment-social-development/services/sin/apply.html",
+          image: "assets/images/sin.jpg"
+        },
+        {
+          title: "How to get your TTC card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ttc.ca/Fares-and-passes/How-to-buy-fares-and-passes",
+          image: "assets/images/ttc.jpg"
+        },
+        {
+          title: "How to get your Presto card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.prestocard.ca/en",
+          image: "assets/images/presto.jpg"
+        },
+        {
+          title: "How to open a bank account?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/opening-bank-account",
+          image: "assets/images/bankaccount.jpg"
+        },
+        {
+          title: "How to get help from government?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/get-help-government",
+          image: "assets/images/government.jpg"
+        },
+        {
+          title: "How to find a job?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/employment-ontario",
+          image: "assets/images/job.jpg"
+        },
+        {
+          title: "How can you locate a doctor?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/find-family-doctor-or-nurse-practitioner",
+          image: "assets/images/doctor.jpg"
+        },
+        {
+          title: "How can you locate a settelment?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/settlement-agencies",
+          image: "assets/images/settlement.jpg"
+        },
+        {
+          title: "How to get your G1 license?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/get-g-drivers-licence-new-drivers",
+          image: "assets/images/g1.jpg"
+        },
+      ]
+    },
+    {
+      pr: "Here are some recommendations for you based on your status as a permanent resident",
+      prRecommendations: [
+        {
+          title: "How to get your OHIP card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/apply-ohip-and-get-health-card",
+          image: "assets/images/healthcard.jpg"
+        },
+        {
+          title: "find a welcome centre near you.",
+          description: "This is a description of the recommendation",
+          link: "https://welcomecentre.ca/",
+          image: "assets/images/welcomecentre.jpg"
+        },
+        {
+          title: "How to get your SIN number?",
+          description: "This is a description of the recommendation",
+          link: "https://www.canada.ca/en/employment-social-development/services/sin/apply.html",
+          image: "assets/images/sin.jpg" 
+        },
+        {
+          title: "How to get your TTC card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ttc.ca/Fares-and-passes/How-to-buy-fares-and-passes",
+          image: "assets/images/ttc.jpg"
+        },
+        {
+          title: "How to get your Presto card?",
+          description: "This is a description of the recommendation",
+          link: "https://www.prestocard.ca/en",
+          image: "assets/images/presto.jpg"
+        },
+        {
+          title: "How to open a bank account?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/opening-bank-account",
+          image: "assets/images/bankaccount.jpg"
+        },
+        {
+          title: "How to get help from government?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/get-help-government",
+          image: "assets/images/government.jpg"
+        },
+        {
+          title: "How to find a job?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/employment-ontario",
+          image: "assets/images/job.jpg"
+        },
+        {
+          title: "How can you locate a doctor?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/find-family-doctor-or-nurse-practitioner",
+          image: "assets/images/doctor.jpg"
+        },
+        {
+          title: "How can you locate a settelment?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/settlement-agencies",
+          image: "assets/images/settlement.jpg"
+        },
+        {
+          title: "How to get your G1 license?",
+          description: "This is a description of the recommendation",
+          link: "https://www.ontario.ca/page/get-g-drivers-licence-new-drivers",
+          image: "assets/images/g1.jpg"
+        },
+        {
+          title: "Are you eligible for citizenship?",
+          description: "This is a description of the recommendation",
+          link: "https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-citizenship/become-canadian-citizen/check-eligibility.html",
+          image: "assets/images/citizenship.jpg"
+        },
+        {
+          title: "Are you looking for exciting events in Toronto?",
+          description: "This is a description of the recommendation",
+          link: "https://www.eventbrite.ca/",
+          image: "assets/images/events.jpg"
+        }
+      ]
+    },
+  ];
 
 
   profileTypeBtn.on('click', openProfileTypeModal);
