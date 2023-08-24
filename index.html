@@ -1,481 +1,655 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Toronto Newcomers' Guide" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Code Breakers" />
+    <!--********************CSS Reset************************-->
+    <link rel="stylesheet" href="./assets/CSS/css-reset.css" />
+    <!--********************jQuery UI CSS************************-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
+    />
+    <!--********************Materialize CSS link************************-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--********************Google Fonts************************-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Comfortaa&family=Edu+SA+Beginner:wght@500&family=Josefin+Slab&family=Monoton&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <!--********************Favicon Icon************************-->
+    <link
+      rel="icon"
+      href="./assets/images/TNG/FaviconLogo.png"
+      type="image/x-icon"
+    />
+    <!--********************CSS custome file************************-->
+    <link rel="stylesheet" href="./assets/CSS/app.css" />
+    <!--********************Title************************-->
+    <title>Toronto Newcomers' Guide</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="Toronto Newcomers' Guide" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Code Breakers" />
-  <!--********************CSS Reset************************-->
-  <link rel="stylesheet" href="./assets/CSS/css-reset.css" />
-  <!--********************jQuery UI CSS************************-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
-  <!--********************Materialize CSS link************************-->
-  <link type="text/css" rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <!--********************Google Fonts************************-->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Comfortaa&family=Edu+SA+Beginner:wght@500&family=Josefin+Slab&family=Monoton&family=Quicksand&display=swap"
-    rel="stylesheet" />
-  <!--********************Favicon Icon************************-->
-  <link rel="icon" href="./assets/images/TNG/FaviconLogo.png" type="image/x-icon" />
-  <!--********************CSS custome file************************-->
-  <link rel="stylesheet" href="./assets/CSS/app.css" />
-  <!--********************Title************************-->
-  <title>Toronto Newcomers' Guide</title>
-</head>
+  <body>
+    <header>
+      <section class="headContent" id="mainHeader">
+        <div id="logo">
+          <img
+            class="responsive-img"
+            src="./assets/images/TNG/FaviconLogo.png"
+            alt="TNG Logo"
+          />
+        </div>
 
-<body>
+        <div id="title">
+          <h1>Toronto Newcomers' Guide(TNG)</h1>
+          <p>Helping you settle in Toronto</p>
+        </div>
 
-  <header>
+        <div id="google_translate_element"></div>
 
-    <section class="headContent" id="mainHeader">
+        <!-- Creating a section for the user dropdown-->
+        <div id="user">
+          <a
+            class="btn-floating btn-large cyan pulse dropdown-trigger"
+            href="#"
+            data-target="userDropdown"
+            id="userBtn"
+            aria-label="userBtn"
+          >
+            <i class="material-icons">account_box</i>
+          </a>
 
-      <div id="logo">
-        <img class="responsive-img" src="./assets/images/TNG/FaviconLogo.png" alt="TNG Logo" />
-      </div>
+          <!-- Dropdown Menu when user button is clicked -->
+          <ul id="userDropdown" class="dropdown-content">
+            <li>
+              <a href="#loginModal" id="loginBtn" aria-label="loginBtn"
+                >Login</a
+              >
+            </li>
+            <li>
+              <a href="#signupModal" id="signupBtn" aria-label="signupBtn"
+                >Sign Up</a
+              >
+            </li>
+            <li>
+              <a href="#!" id="logoutBtn" aria-label="logoutBtn">Logout</a>
+            </li>
+          </ul>
 
-      <div id="title">
-        <h1>Toronto Newcomers' Guide(TNG)</h1>
-        <p>Helping you settle in Toronto</p>
-      </div>
+          <div id="userProfile">
+            <p id="displayUsername"></p>
+            <p id="displayProfileType"></p>
+          </div>
+        </div>
 
-      <div id="google_translate_element"></div>
+        <!-- Creating a modal for profile type selector -->
+        <div id="profileTypeModal" class="modal">
+          <div class="modal-content">
+            <h4>Select Profile Type</h4>
+            <form id="profileTypeForm">
+              <div class="input-field">
+                <select
+                  name="profileType"
+                  id="profileType"
+                  aria-label="profileType"
+                >
+                  <option value="student">Student</option>
+                  <option value="refugee">Refugee</option>
+                  <option value="skilledWorker">Skilled Worker</option>
+                  <option value="tempWorker">Temporary Worker</option>
+                  <option value="PR">Permanent Resident</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+              >Select</a
+            >
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+              >Close</a
+            >
+          </div>
+        </div>
 
+        <!-- Creating Login Modal Structure using Materialize CSS Library -->
+        <div id="loginModal" class="modal">
+          <div class="modal-content">
+            <h4>Login</h4>
+            <p>Please enter your username and password.</p>
 
-      <!-- Creating a section for the user dropdown-->
-      <div id="user">
-        <a class="btn-floating btn-large cyan pulse dropdown-trigger" href="#" data-target="userDropdown" id="userBtn"
-          aria-label="userBtn">
-          <i class="material-icons">account_box</i>
-        </a>
+            <div class="input-field">
+              <input id="username" type="text" />
+              <label for="username">Username</label>
+            </div>
 
-        <!-- Dropdown Menu when user button is clicked -->
-        <ul id="userDropdown" class="dropdown-content">
-          <li><a href="#loginModal" id="loginBtn" aria-label="loginBtn">Login</a></li>
-          <li><a href="#signupModal" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
-          <li><a href="#!" id="logoutBtn" aria-label="logoutBtn">Logout</a></li>
+            <div class="input-field">
+              <input id="password" type="password" />
+              <label for="password">Password</label>
+            </div>
+            <p class="red-text" id="loginError">
+              Invalid username or password.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <a
+              href="#!"
+              class="modal-close waves-effect waves-green btn-flat"
+              id="actualLoginBtn"
+              >Login</a
+            >
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+              >Close</a
+            >
+          </div>
+        </div>
+
+        <!-- Creating Signup Modal Structure using Materialize CSS Library -->
+        <div id="signupModal" class="modal">
+          <div class="modal-content">
+            <ul>
+              <li>
+                <h4>Sign Up</h4>
+                <p>
+                  Please enter a username, password and choose your current
+                  status by clicking on Profile Type Menu.
+                </p>
+                <p>
+                  After you sign up, you will be redirected to the main
+                  page.Then you can attempt to login.
+                </p>
+              </li>
+              <li>
+                <a
+                  href="#profileTypeModal"
+                  id="profileTypeBtn"
+                  aria-label="profileTypeBtn"
+                  >Select Profile Type</a
+                >
+              </li>
+              <li class="divider"></li>
+            </ul>
+
+            <form id="signupForm">
+              <div>
+                <div class="input-field">
+                  <input type="text" id="signupUsername" required />
+                  <label for="signupUsername">Username</label>
+                </div>
+                <div class="input-field">
+                  <input type="email" id="signupEmail" required />
+                  <label for="signupEmail">Email</label>
+                </div>
+                <div class="input-field">
+                  <input type="password" id="signupPassword" required />
+                  <label for="signupPassword">Password</label>
+                </div>
+                <div class="input-field">
+                  <input type="password" id="signupConfirmPassword" required />
+                  <label for="signupConfirmPassword">Confirm Password</label>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+              >Cancel</a
+            >
+            <button
+              type="submit"
+              form="signupForm"
+              class="waves-effect waves-green btn-flat"
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+
+        <!-- Creating Error Modal Structure using Materialize CSS Library -->
+        <div id="errorMsg" class="modal">
+          <div class="modal-content">
+            <h4>Error</h4>
+            <p id="errorMsgText"></p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+              >Close</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!--TODO: connect links -->
+      <nav id="mainNav">
+        <ul>
+          <li><a href="./index.html" class="navTxt">Home</a></li>
+          <li>
+            <a
+              href="#essentialServices"
+              rel="bookmark"
+              class="dropdown-trigger btn navTxt"
+              data-target="essentialsDropdown"
+              aria-expanded="false"
+              id="essentialsBtn"
+              >Essential Services</a
+            >
+            <ul id="essentialsDropdown" class="dropdown-content">
+              <li><a href="#jobs" rel="bookmark" class="navTxt">Jobs</a></li>
+              <li>
+                <a href="#housing" rel="bookmark" class="navTxt">Housing</a>
+              </li>
+              <li>
+                <a href="#education" rel="bookmark" class="navTxt">Education</a>
+              </li>
+              <li>
+                <a href="#health" rel="bookmark" class="navTxt">Health</a>
+              </li>
+              <li>
+                <a href="#transportation" rel="bookmark" class="navTxt"
+                  >Transportation</a
+                >
+              </li>
+              <li><a href="#banks" rel="bookmark" class="navTxt">Banks</a></li>
+              <li>
+                <a href="#government" rel="bookmark" class="navTxt"
+                  >Government</a
+                >
+              </li>
+              <li>
+                <a href="#library" rel="bookmark" class="navTxt"
+                  >Library Information</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="#sos" rel="bookmark" class="navTxt">SOS</a></li>
+          <li><a href="#about" rel="bookmark" class="navTxt">About Us</a></li>
+          <li>
+            <a href="#contact" rel="bookmark" class="navTxt">Contact Us</a>
+          </li>
+          <li>
+            <a href="#newsContainer" rel="bookmark" class="navTxt">News</a>
+          </li>
         </ul>
 
-        <div id="userProfile">
-          <p id="displayUsername"></p>
-          <p id="displayProfileType"></p>
+        <div id="socialMedia">
+          <!-- TODO: change the fontawesome icon -->
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            aria-label="facebook"
+            rel="noopener"
+            class="socialMediaIcons"
+            ><i class="fa-brands fa-square-facebook fa-bounce"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            aria-label="instagram"
+            rel="noopener"
+            class="socialMediaIcons"
+            ><i class="fa-brands fa-instagram fa-bounce"></i
+          ></a>
+          <a
+            href="https://www.twitter.com/"
+            target="_blank"
+            aria-label="twitter"
+            rel="noopener"
+            class="socialMediaIcons"
+            ><i class="fa-brands fa-twitter fa-bounce"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/"
+            target="_blank"
+            aria-label="youtube"
+            rel="noopener"
+            class="socialMediaIcons"
+            ><i class="fa-brands fa-youtube fa-bounce"></i
+          ></a>
         </div>
 
+        <form id="searchForm">
+          <input type="text" name="search" id="search" placeholder="Search" />
+          <!-- TODO: change the fontawesome icon -->
+          <button
+            type="submit"
+            name="query"
+            id="searchBtn"
+            aria-label="searchBtn"
+          >
+            <i class="material-icons">search</i>
+          </button>
+        </form>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Creating Carousel Structure using Materialize CSS Library -->
+      <div class="carousel">
+        <a class="carousel-item"
+          ><img
+            src="./assets/images/Header-images/Nathan-Phillips-Square-1.jpg"
+            alt="Nathan Philips Square"
+        /></a>
+        <a class="carousel-item"
+          ><img
+            src="./assets/images/Header-images/Polson-Pier-Toronto.jpg"
+            alt="Polson Pier Toronto"
+        /></a>
+        <a class="carousel-item"
+          ><img
+            src="./assets/images/Header-images/Toronto-City.jpg"
+            alt="Toronto City"
+        /></a>
+        <a class="carousel-item"
+          ><img
+            src="./assets/images/Header-images/Toronto-Night-Shopping.jpg"
+            alt="Toronto Night Shopping"
+        /></a>
       </div>
 
-      <!-- Creating a modal for profile type selector -->
-      <div id="profileTypeModal" class="modal">
-        <div class="modal-content">
-          <h4>Select Profile Type</h4>
-          <form id="profileTypeForm">
-            <div class="input-field">
-              <select name="profileType" id="profileType" aria-label="profileType">
-                <option value="student">Student</option>
-                <option value="refugee">Refugee</option>
-                <option value="skilledWorker">Skilled Worker</option>
-                <option value="tempWorker">Temporary Worker</option>
-                <option value="PR">Permanent Resident</option>
-              </select>
+      <section id="heroContainer">
+        <!--NOTE: The image should change every 5 sec with all it's content. we can use Libraries like Slick or Owl Carousel. -->
+        <div id="heroImgContainer">
+          <div id="heroImage">
+            <!--NOTE: This element should hold the hero image as background image -->
+            <a href="" rel="" draggable="false" target="_blank">
+              <h2>New to GTA?</h2>
+              <p>Learn about living and working in GTA</p>
+            </a>
+          </div>
+          <!--NOTE: This element should hold all related images -->
+          <picture></picture>
+        </div>
+
+        <div id="heroText">
+          <!--NOTE: This element should hold a background image -->
+          <h1>Canada</h1>
+          <h2>Welcomes You</h2>
+        </div>
+
+        <div id="about">
+          <!--NOTE: This element should hold a background image -->
+          <h3>Learn more about TNG Services</h3>
+          <!--TODO: write a breif note about us and our services -->
+          <p>TNG is all about.......</p>
+          <!--TODO: Add link to "learn more about our services" webpage-->
+          <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+        </div>
+
+        <!--Here I want to add cards for each service we provide-->
+        <div id="essentialServices">
+          <h2>Essential Services</h2>
+
+          <!-- TODO: Add links to href attr -->
+          <div class="row">
+            <!--TODO: Add image to all cards-->
+            <div id="jobs" class="col l4 m5 s12">
+              <div class="card">
+                <div class="card-image">
+                  <img src="././assets/images/Essential Services/Jobs.jpg" />
+                </div>
+                <div class="card-content center">
+                  <span class="card-title"><b>Jobs</b></span>
+                  <p>
+                    The Toronto Newcomers’ Guide is a platform that offers
+                    direct links to job opportunities available in Toronto from
+                    the Government of Canada, the Government of Ontario, and the
+                    City of Toronto.
+                  </p>
+                </div>
+                <div class="card-links">
+                  <ul>
+                    <li>
+                      <a
+                        href="https://jobs.toronto.ca/jobsatcity/"
+                        target="_blank"
+                        >Municipality Jobs Opportunity
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.gojobs.gov.on.ca/Search.aspx"
+                        target="_blank"
+                        >Government of Ontario Job Opportunity (Toronto Area)
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.jobbank.gc.ca/jobsearch/jobsearch?searchstring=&locationstring=Toronto%2C+ON&sort=M"
+                        target="_blank"
+                        >Government of Canada – Job Bank (Toronto Area)
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Select</a>
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-      </div>
 
-      <!-- Creating Login Modal Structure using Materialize CSS Library -->
-      <div id="loginModal" class="modal">
-        <div class="modal-content">
-
-          <h4>Login</h4>
-          <p>Please enter your username and password.</p>
-
-          <div class="input-field">
-            <input id="username" type="text" />
-            <label for="username">Username</label>
-          </div>
-
-          <div class="input-field">
-            <input id="password" type="password" />
-            <label for="password">Password</label>
-          </div>
-          <p class="red-text" id="loginError">Invalid username or password.</p>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="actualLoginBtn">Login</a>
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-      </div>
-
-      <!-- Creating Signup Modal Structure using Materialize CSS Library -->
-      <div id="signupModal" class="modal">
-        <div class="modal-content">
-
-          <ul>
-            <li>
-              <h4>Sign Up</h4>
-              <p>Please enter a username, password and choose your current status by clicking on Profile Type Menu.</p>
-              <p>After you sign up, you will be redirected to the main page.Then you can attempt to login.</p>
-            </li>
-            <li>
-              <a href="#profileTypeModal" id="profileTypeBtn" aria-label="profileTypeBtn">Select Profile Type</a>
-            </li>
-            <li class="divider"></li>
-          </ul>
-
-          <form id="signupForm">
-            <div>
-              <div class="input-field">
-                <input type="text" id="signupUsername" required />
-                <label for="signupUsername">Username</label>
-              </div>
-              <div class="input-field">
-                <input type="email" id="signupEmail" required />
-                <label for="signupEmail">Email</label>
-              </div>
-              <div class="input-field">
-                <input type="password" id="signupPassword" required />
-                <label for="signupPassword">Password</label>
-              </div>
-              <div class="input-field">
-                <input type="password" id="signupConfirmPassword" required />
-                <label for="signupConfirmPassword">Confirm Password</label>
-              </div>
+            <div id="housing" class="card">
+              <img src="./images" alt="Hero Image" />
+              <h3>Housing</h3>
+              <p>Find a place to live</p>
+              <a href="" rel="" draggable="false" target="_blank">Learn More</a>
             </div>
-          </form>
+
+            <div id="education" class="card">
+              <img src="./images" alt="Hero Image" />
+              <h3>Education</h3>
+              <p>Find a school for your kids</p>
+              <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+            </div>
+
+            <div id="health" class="card">
+              <img src="./images" alt="Hero Image" />
+              <h3>Health</h3>
+              <p>Find a doctor</p>
+              <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+            </div>
+
+            <div id="transportation" class="card">
+              <img src="./images" alt="Hero Image" />
+              <h3>Transportation</h3>
+              <p>Find a way to get around</p>
+              <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+            </div>
+
+            <div id="banks" class="card">
+              <img src="./images" alt="Hero Image" />
+              <h3>Banks</h3>
+              <p>Find a bank</p>
+              <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+            </div>
+
+            <div id="government" class="card">
+              <img src="./images" alt="Hero Image" />
+              <h3>Government</h3>
+              <p>Find government services</p>
+              <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+            </div>
+
+            <div id="library" class="card">
+              <img src="./images" alt="Hero Image" />
+              <h3>Library Information</h3>
+              <p>Find a library</p>
+              <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+            </div>
+
+            <div id="sos" class="card">
+              <img src="./images" alt="Hero Image" />
+              <h3>SOS</h3>
+              <p>Find help in an emergency</p>
+              <a href="" rel="" draggable="false" target="_blank">Learn More</a>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-          <button type="submit" form="signupForm" class="waves-effect waves-green btn-flat">Sign Up</button>
-        </div>
+      <section id="interactiveMapContainer">
+        <h2>Explore Essential Places Around You</h2>
+        <p>
+          Use our interactive map to find key services and places in your
+          vicinity.
+        </p>
 
-      </div>
+        <!-- Container for the map; -->
+        <div id="map"></div>
 
-      <!-- Creating Error Modal Structure using Materialize CSS Library -->
-      <div id="errorMsg" class="modal">
-        <div class="modal-content">
-          <h4>Error</h4>
-          <p id="errorMsgText"></p>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-      </div>
-
-    </section>
-
-    <!--TODO: connect links -->
-    <nav id="mainNav">
-
-      <ul>
-        <li><a href="./index.html" class="navTxt">Home</a></li>
-        <li>
-          <a href="#essentialServices" rel="bookmark" class="dropdown-trigger btn navTxt"
-            data-target="essentialsDropdown" aria-expanded="false" id="essentialsBtn">Essential Services</a>
-          <ul id="essentialsDropdown" class="dropdown-content">
-            <li><a href="#jobs" rel="bookmark" class="navTxt">Jobs</a></li>
-            <li><a href="#housing" rel="bookmark" class="navTxt">Housing</a></li>
-            <li><a href="#education" rel="bookmark" class="navTxt">Education</a></li>
-            <li><a href="#health" rel="bookmark" class="navTxt">Health</a></li>
-            <li><a href="#transportation" rel="bookmark" class="navTxt">Transportation</a></li>
-            <li><a href="#banks" rel="bookmark" class="navTxt">Banks</a></li>
-            <li><a href="#government" rel="bookmark" class="navTxt">Government</a></li>
-            <li><a href="#library" rel="bookmark" class="navTxt">Library Information</a></li>
-          </ul>
-        </li>
-        <li><a href="#sos" rel="bookmark" class="navTxt">SOS</a></li>
-        <li><a href="#about" rel="bookmark" class="navTxt">About Us</a></li>
-        <li><a href="#contact" rel="bookmark" class="navTxt">Contact Us</a></li>
-        <li><a href="#newsContainer" rel="bookmark" class="navTxt">News</a></li>
-      </ul>
-
-      <div id="socialMedia">
-        <!-- TODO: change the fontawesome icon -->
-        <a href="https://www.facebook.com/" target="_blank" aria-label="facebook" rel="noopener"
-          class="socialMediaIcons"><i class="fa-brands fa-square-facebook fa-bounce"></i></a>
-        <a href="https://www.instagram.com/" target="_blank" aria-label="instagram" rel="noopener"
-          class="socialMediaIcons"><i class="fa-brands fa-instagram fa-bounce"></i></a>
-        <a href="https://www.twitter.com/" target="_blank" aria-label="twitter" rel="noopener"
-          class="socialMediaIcons"><i class="fa-brands fa-twitter fa-bounce"></i></a>
-        <a href="https://www.youtube.com/" target="_blank" aria-label="youtube" rel="noopener"
-          class="socialMediaIcons"><i class="fa-brands fa-youtube fa-bounce"></i></a>
-      </div>
-
-      <form id="searchForm">
-        <input type="text" name="search" id="search" placeholder="Search" />
-        <!-- TODO: change the fontawesome icon -->
-        <button type="submit" name="query" id="searchBtn" aria-label="searchBtn"> <i
-            class="material-icons">search</i></button>
-      </form>
-
-    </nav>
-
-  </header>
-
-  <main>
-
-    <!-- Creating Carousel Structure using Materialize CSS Library -->
-    <div class="carousel">
-      <a class="carousel-item"><img src="./assets/images/Header-images/Nathan-Phillips-Square-1.jpg"
-          alt="Nathan Philips Square"></a>
-      <a class="carousel-item"><img src="./assets/images/Header-images/Polson-Pier-Toronto.jpg"
-          alt="Polson Pier Toronto"></a>
-      <a class="carousel-item"><img src="./assets/images/Header-images/Toronto-City.jpg" alt="Toronto City"></a>
-      <a class="carousel-item"><img src="./assets/images/Header-images/Toronto-Night-Shopping.jpg"
-          alt="Toronto Night Shopping"></a>
-    </div>
-
-    <section id="heroContainer">
-
-      <!--NOTE: The image should change every 5 sec with all it's content. we can use Libraries like Slick or Owl Carousel. -->
-      <div id="heroImgContainer">
-        <div id="heroImage"><!--NOTE: This element should hold the hero image as background image -->
-          <a href="" rel="" draggable="false" target="_blank">
-            <h2>New to GTA?</h2>
-            <p>Learn about living and working in GTA</p>
-          </a>
-        </div>
-        <!--NOTE: This element should hold all related images -->
-        <picture></picture>
-      </div>
-
-      <div id="heroText"><!--NOTE: This element should hold a background image -->
-        <h1>Canada</h1>
-        <h2>Welcomes You</h2>
-      </div>
-
-      <div id="about"><!--NOTE: This element should hold a background image -->
-        <h3>Learn more about TNG Services</h3>
-        <!--TODO: write a breif note about us and our services -->
-        <p>TNG is all about.......</p>
-        <!--TODO: Add link to "learn more about our services" webpage-->
-        <a href="" rel="" draggable="false" target="_blank">Learn More</a>
-      </div>
-
-      <!--Here I want to add cards for each service we provide-->
-      <div id="essentialServices">
-
-        <h2>Essential Services</h2>
-
-        <!-- TODO: Add links to href attr -->
-        <div><!--TODO: Add image to all cards-->
-          <div id="jobs" class="card">
-            <img src="./images" alt="Hero Image" />
-            <h3>Jobs</h3>
-            <p>Find a job that suits your skills</p>
-            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
-          </div>
-
-          <div id="housing" class="card">
-            <img src="./images" alt="Hero Image" />
-            <h3>Housing</h3>
-            <p>Find a place to live</p>
-            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
-          </div>
-
-          <div id="education" class="card">
-            <img src="./images" alt="Hero Image" />
-            <h3>Education</h3>
-            <p>Find a school for your kids</p>
-            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
-          </div>
-
-          <div id="health" class="card">
-            <img src="./images" alt="Hero Image" />
-            <h3>Health</h3>
-            <p>Find a doctor</p>
-            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
-          </div>
-
-          <div id="transportation" class="card">
-            <img src="./images" alt="Hero Image" />
-            <h3>Transportation</h3>
-            <p>Find a way to get around</p>
-            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
-          </div>
-
-          <div id="banks" class="card">
-            <img src="./images" alt="Hero Image" />
-            <h3>Banks</h3>
-            <p>Find a bank</p>
-            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
-          </div>
-
-          <div id="government" class="card">
-            <img src="./images" alt="Hero Image" />
-            <h3>Government</h3>
-            <p>Find government services</p>
-            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
-          </div>
-
-          <div id="library" class="card">
-            <img src="./images" alt="Hero Image" />
-            <h3>Library Information</h3>
-            <p>Find a library</p>
-            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
-          </div>
-
-          <div id="sos" class="card">
-            <img src="./images" alt="Hero Image" />
-            <h3>SOS</h3>
-            <p>Find help in an emergency</p>
-            <a href="" rel="" draggable="false" target="_blank">Learn More</a>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <section id="interactiveMapContainer">
-
-      <h2>Explore Essential Places Around You</h2>
-      <p>Use our interactive map to find key services and places in your vicinity.</p>
-
-      <!-- Container for the map; -->
-      <div id="map"></div>
-
-      <!-- Additional controls or info related to the map can be added here.
+        <!-- Additional controls or info related to the map can be added here.
             For example, filters to only show certain types of places, 
             or an info panel with details about a selected place. -->
-      <div id="mapControls">
-        <button type="button" class="mapFilter" data-filter="schools">Schools</button>
-        <button type="button" class="mapFilter" data-filter="hospitals">Hospitals</button>
-        <button type="button" class="mapFilter" data-filter="banks">Banks</button>
-        <!-- ... More filter buttons ... -->
+        <div id="mapControls">
+          <button type="button" class="mapFilter" data-filter="schools">
+            Schools
+          </button>
+          <button type="button" class="mapFilter" data-filter="hospitals">
+            Hospitals
+          </button>
+          <button type="button" class="mapFilter" data-filter="banks">
+            Banks
+          </button>
+          <!-- ... More filter buttons ... -->
+        </div>
+      </section>
+
+      <!--TODO: this section should have at least four cards with links and every other stuff-->
+      <section id="newsContainer">
+        <div id="newsTxt">
+          <h2>Featured News</h2>
+          <p>
+            Stay up to date with the latest news about Settelment, Government
+            updates, Jobs and much more.
+          </p>
+        </div>
+
+        <div id="newsCard1" class="newsCards">
+          <div>
+            <img src="./images" alt="News Image" />
+          </div>
+          <div>
+            <h3>News Title</h3>
+            <p>News Description</p>
+            <a href="" rel="" draggable="false" target="_blank">read More</a>
+          </div>
+        </div>
+
+        <div id="newsCard2" class="newsCards">
+          <div>
+            <img src="./images" alt="News Image" />
+          </div>
+          <div>
+            <h3>News Title</h3>
+            <p>News Description</p>
+            <a href="" rel="" draggable="false" target="_blank">read More</a>
+          </div>
+        </div>
+
+        <div id="newsCard3" class="newsCards">
+          <div>
+            <img src="./images" alt="News Image" />
+          </div>
+          <div>
+            <h3>News Title</h3>
+            <p>News Description</p>
+            <a href="" rel="" draggable="false" target="_blank">read More</a>
+          </div>
+        </div>
+
+        <div id="newsCard4" class="newsCards">
+          <div>
+            <img src="./images" alt="News Image" />
+          </div>
+          <div>
+            <h3>News Title</h3>
+            <p>News Description</p>
+            <a href="" rel="" draggable="false" target="_blank">read More</a>
+          </div>
+        </div>
+
+        <div>
+          <a href="" rel="" draggable="false" target="_blank"
+            >More News Articles</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- TODO: Add links and other related stuff -->
+    <footer>
+      <!-- Profile Type Selection Modal -->
+      <div id="profileTypeModal2" class="modal">
+        <div class="modal-content">
+          <h2>Welcome to TNG!</h2>
+          <p>
+            To better tailor your experience, please select your profile type:
+          </p>
+
+          <form id="modalProfileTypeForm">
+            <label for="modalProfileType">Profile Type:</label>
+            <select name="modalProfileType" id="modalProfileType">
+              <option value="student">Student</option>
+              <option value="refugee">Refugee</option>
+              <option value="skilledWorker">Skilled Worker</option>
+              <option value="tempWorker">Temporary Worker</option>
+            </select>
+            <button type="submit" id="modalSubmitBtn">Submit</button>
+          </form>
+        </div>
       </div>
 
-    </section>
-
-    <!--TODO: this section should have at least four cards with links and every other stuff-->
-    <section id="newsContainer">
-
-      <div id="newsTxt">
-        <h2>Featured News</h2>
-        <p>Stay up to date with the latest news about Settelment, Government updates, Jobs and much more.</p>
+      <div id="feedback">
+        <h3>Feedback & Reviews</h3>
+        <p>What do you think about our services?</p>
+        <a href="" rel="" draggable="false" target="_blank">Leave a Review</a>
       </div>
 
-      <div id="newsCard1" class="newsCards">
-        <div>
-          <img src="./images" alt="News Image" />
-        </div>
-        <div>
-          <h3>News Title</h3>
-          <p>News Description</p>
-          <a href="" rel="" draggable="false" target="_blank">read More</a>
-        </div>
-      </div>
-
-      <div id="newsCard2" class="newsCards">
-        <div>
-          <img src="./images" alt="News Image" />
-        </div>
-        <div>
-          <h3>News Title</h3>
-          <p>News Description</p>
-          <a href="" rel="" draggable="false" target="_blank">read More</a>
-        </div>
-      </div>
-
-      <div id="newsCard3" class="newsCards">
-        <div>
-          <img src="./images" alt="News Image" />
-        </div>
-        <div>
-          <h3>News Title</h3>
-          <p>News Description</p>
-          <a href="" rel="" draggable="false" target="_blank">read More</a>
-        </div>
-      </div>
-
-      <div id="newsCard4" class="newsCards">
-        <div>
-          <img src="./images" alt="News Image" />
-        </div>
-        <div>
-          <h3>News Title</h3>
-          <p>News Description</p>
-          <a href="" rel="" draggable="false" target="_blank">read More</a>
-        </div>
+      <div id="contact">
+        <h3>Contact Us</h3>
+        <p>Have a question? Contact us</p>
+        <a href="" rel="" draggable="false" target="_blank">Contact Us</a>
       </div>
 
       <div>
-        <a href="" rel="" draggable="false" target="_blank">More News Articles</a>
+        <p class="footerTxt">Toronto Newcomers' Guide</p>
+        <p class="footerTxt">
+          <i class="fa-regular fa-copyright"></i>
+          | Aug, 2023 | Developed by <span>Code Breakers Team</span>
+        </p>
       </div>
+    </footer>
 
-    </section>
-
-  </main>
-
-  <!-- TODO: Add links and other related stuff -->
-  <footer>
-
-    <!-- Profile Type Selection Modal -->
-    <div id="profileTypeModal2" class="modal">
-      <div class="modal-content">
-
-        <h2>Welcome to TNG!</h2>
-        <p>To better tailor your experience, please select your profile type:</p>
-
-        <form id="modalProfileTypeForm">
-          <label for="modalProfileType">Profile Type:</label>
-          <select name="modalProfileType" id="modalProfileType">
-            <option value="student">Student</option>
-            <option value="refugee">Refugee</option>
-            <option value="skilledWorker">Skilled Worker</option>
-            <option value="tempWorker">Temporary Worker</option>
-          </select>
-          <button type="submit" id="modalSubmitBtn">Submit</button>
-        </form>
-
-      </div>
-    </div>
-
-    <div id="feedback">
-      <h3>Feedback & Reviews</h3>
-      <p>What do you think about our services?</p>
-      <a href="" rel="" draggable="false" target="_blank">Leave a Review</a>
-    </div>
-
-    <div id="contact">
-      <h3>Contact Us</h3>
-      <p>Have a question? Contact us</p>
-      <a href="" rel="" draggable="false" target="_blank">Contact Us</a>
-    </div>
-
-    <div>
-      <p class="footerTxt">Toronto Newcomers' Guide</p>
-      <p class="footerTxt">
-        <i class="fa-regular fa-copyright"></i>
-        | Aug, 2023 | Developed by <span>Code Breakers Team</span>
-      </p>
-    </div>
-
-  </footer>
-
-  <!--******************************Google Translate Library**************-->
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <!--********************JQuery CDN************************-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-  <!--********************JQuery UI CDN************************-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-  <!--********************Materialize JS link************************-->
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <!--********************Fontawesome************************-->
-  <script src="https://kit.fontawesome.com/cf8b3b67bf.js" crossorigin="anonymous"></script>
-  <!--********************Dayjs************************-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.9/dayjs.min.js"></script>
-  <!--********************JS custome file************************-->
-  <script src="./assets/Script/app.js"></script>
-
-</body>
-
+    <!--******************************Google Translate Library**************-->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!--********************JQuery CDN************************-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <!--********************JQuery UI CDN************************-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <!--********************Materialize JS link************************-->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+    ></script>
+    <!--********************Fontawesome************************-->
+    <script
+      src="https://kit.fontawesome.com/cf8b3b67bf.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--********************Dayjs************************-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.9/dayjs.min.js"></script>
+    <!--********************JS custome file************************-->
+    <script src="./assets/Script/app.js"></script>
+  </body>
 </html>
