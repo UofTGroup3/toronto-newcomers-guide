@@ -516,6 +516,20 @@ $(document).ready(function () {
     },
   ];
 
+  // Here I'm trying to create a function that will display the recommendations based on the profile type selected. based on the profile type selected, the recommendations will be displayed in the dashboard.html page.
+  var displayRecommendations = function () {
+    var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
+    var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
+    var storedUsername = localStorage.getItem('username');
+    var isProfileTypeSelected = storedProfileType !== 'Not Selected';
+
+    if (isLoggedin && storedUsername && isProfileTypeSelected) {
+      recommendations.show();
+    } else {
+      recommendations.hide();
+    }
+  };
+
 
   profileTypeBtn.on('click', openProfileTypeModal);
   profileType.change(newProfileType);
