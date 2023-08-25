@@ -129,6 +129,7 @@ label[for="lanSelect"] {
   color: #005f73;
 }
 
+
 .card {
   background-color: rgba(0, 0, 0, 0.162);
   height: 800px;
@@ -151,4 +152,8 @@ label[for="lanSelect"] {
 .card-links {
   font-size: 20px;
   color: #08339e;
+}
+.map {
+  height: 500px;
+
 }
