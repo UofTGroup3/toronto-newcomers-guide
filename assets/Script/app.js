@@ -36,180 +36,6 @@ $(document).ready(function () {
   var usernameDisplay = $('#usernameDisplay');
   var profileTypeDisplay = $('#profileTypeDisplay');
   var recommendations = $('#recommendations');
-
-  // Initialize dropdown, modals and select
-  dropdownTrigger.dropdown();
-  modal.modal();
-  select.formSelect();
-
-  //giving users a fresh start when they try again.
-  loginModal.on('close', function () {
-    loginError.hide();
-  });
-
-  var openProfileTypeModal = function () {
-    profileTypeModal.modal('open');
-  };
-
-  var newProfileType = function () {
-
-    var selectedProfile = profileType.val();
-    localStorage.setItem('profileType', selectedProfile);
-
-  };
-
-  var openLoginModal = function () {
-    loginModal.modal('open');
-  };
-
-  window.attemptLogin = function () {
-
-    loginError.hide();
-    var loginUsername = username.val().toLowerCase();
-    var loginPassword = password.val();
-    // used(https://www.w3schools.com/jsref/jsref_some.asp) as a reference.
-    //checking if any array element matches the login credentials.
-    var userExists = users.some(function (user) {
-      return user.username === loginUsername && user.password === loginPassword;
-    });
-
-    if (userExists) {
-      localStorage.setItem('isLoggedin', 'true');
-      localStorage.setItem('username', loginUsername);
-      localStorage.setItem('password', loginPassword);
-      newProfileType();
-      displayUserProfile();
-      //using the jQuery method for closing modals with Materialize CSS.
-      loginModal.modal('close');
-    } else {
-      loginError.show();
-    }
-  };
-
-  actualLoginBtn.click(function () {
-    attemptLogin();
-  });
-
-  var openSignupModal = function () {
-    signupModal.modal('open');
-  };
-
-  var signupValidation = function (event) {
-    event.preventDefault();
-
-    var signupUsernameValue = signupUsername.val().toLowerCase();
-    var signupEmailValue = signupEmail.val();
-    var signupPasswordValue = signupPassword.val();
-    var signupConfirmPasswordValue = signupConfirmPassword.val();
-    newProfileType();
-
-    //email validation regex from (https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript)
-    var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    if (!emailRegex.test(signupEmailValue)) {
-      showError('Invalid email address');
-      return;
-    }
-
-    if (signupPasswordValue.length < 8) {
-      showError('Password must be at least 8 characters');
-      return;
-    }
-
-    if (signupPasswordValue !== signupConfirmPasswordValue) {
-      showError('Passwords do not match');
-      return;
-    }
-
-    var newUser = {
-      username: signupUsernameValue,
-      email: signupEmailValue,
-      password: signupPasswordValue,
-      profileType: localStorage.getItem('profileType') || 'Not Selected'
-    };
-
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
-
-    //closing the modal and resetting the form.
-    signupModal.modal('close');
-    signupForm[0].reset();
-    displayUserProfile();
-
-  };
-
-  var displayUserProfile = function () {
-
-    var storedUsername = localStorage.getItem('username');
-    var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
-    var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
-
-    if (isLoggedin && storedUsername) {
-      displayUsername.text(storedUsername);
-      displayProfileType.text(storedProfileType);
-      userProfile.show();
-    } else {
-      userProfile.hide();
-    }
-
-  };
-
-  var openDashboard = function (event) {
-
-    event.stopPropagation();
-    var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
-    var storedUsername = localStorage.getItem('username');
-    var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
-    var isProfileTypeSelected = storedProfileType !== 'Not Selected';
-
-    if (storedProfileType === 'Not Selected') {
-      showError('Please select a profile type');
-      return;
-    }
-    if (!isLoggedin) {
-      showError('Please login or signup');
-      return;
-    }
-    if (isLoggedin && storedUsername && isProfileTypeSelected) {
-      window.location.href = "dashboard.html";
-      displayUsername.text(storedUsername);
-      displayProfileType.text(storedProfileType);
-      userProfile.show();
-    } else {
-      userProfile.hide();
-    }
-
-  };
-
-  var logoutUser = function () {
-    localStorage.setItem('isLoggedin', 'false');
-    location.reload();
-  };
-
-  //Helper function for showing error messages.
-  var showError = function (errorMessage) {
-    errorMsgText.text(errorMessage);
-    //using the jQuery method for opening modals with Materialize CSS
-    errorMsg.modal('open');
-  };
-
-  // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
-
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-  };
-
-  //Initializing the carousel
-  carouselImg.carousel({
-    indicators: true
-  });
-  var carouselTimer = function () {
-    carouselImg.carousel('next');
-  };
-
   // Here I'm trying to create an array to store the recommendations based on the profile type selected. based 
   //TODO: check all links and images
   var recommendationsArray = [
@@ -514,180 +340,327 @@ $(document).ready(function () {
           image: "assets/images/events.jpg"
         }
       ]
-    },
+    }
   ];
 
-  //Here I'm trying to loop over the recommendation array to dispaly the recommendations for each profile type by using the profile type selected and creating needed divs and elements dynamicly and add them to the main div by id of recommendations.
-  var displayRecommendations = function () {
+  // Initialize dropdown, modals and select
+  dropdownTrigger.dropdown();
+  modal.modal();
+  select.formSelect();
+
+  //giving users a fresh start when they try again.
+  loginModal.on('close', function () {
+    loginError.hide();
+  });
+
+  var openProfileTypeModal = function () {
+    profileTypeModal.modal('open');
+  };
+
+  var newProfileType = function () {
+    var selectedProfile = profileType.val();
+    localStorage.setItem('profileType', selectedProfile);
+  };
+
+  var openLoginModal = function () {
+    loginModal.modal('open');
+  };
+
+  window.attemptLogin = function () {
+
+    loginError.hide();
+    var loginUsername = username.val().toLowerCase();
+    var loginPassword = password.val();
+    // used(https://www.w3schools.com/jsref/jsref_some.asp) as a reference.
+    //checking if any array element matches the login credentials.
+    var userExists = users.some(function (user) {
+      return user.username === loginUsername && user.password === loginPassword;
+    });
+
+    if (userExists) {
+      localStorage.setItem('isLoggedin', 'true');
+      localStorage.setItem('username', loginUsername);
+      localStorage.setItem('password', loginPassword);
+      newProfileType();
+      displayUserProfile();
+      //using the jQuery method for closing modals with Materialize CSS.
+      loginModal.modal('close');
+    } else {
+      loginError.show();
+    }
+  };
+
+  actualLoginBtn.click(function () {
+    attemptLogin();
+  });
+
+  var openSignupModal = function () {
+    signupModal.modal('open');
+  };
+
+  var signupValidation = function (event) {
+
+    event.preventDefault();
+    var signupUsernameValue = signupUsername.val().toLowerCase();
+    var signupEmailValue = signupEmail.val();
+    var signupPasswordValue = signupPassword.val();
+    var signupConfirmPasswordValue = signupConfirmPassword.val();
+    newProfileType();
+
+    //email validation regex from (https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript)
+    var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(signupEmailValue)) {
+      showError('Invalid email address');
+      return;
+    }
+
+    if (signupPasswordValue.length < 8) {
+      showError('Password must be at least 8 characters');
+      return;
+    }
+
+    if (signupPasswordValue !== signupConfirmPasswordValue) {
+      showError('Passwords do not match');
+      return;
+    }
+
+    var newUser = {
+      username: signupUsernameValue,
+      email: signupEmailValue,
+      password: signupPasswordValue,
+      profileType: localStorage.getItem('profileType') || 'Not Selected'
+    };
+
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+
+    //closing the modal and resetting the form.
+    signupModal.modal('close');
+    signupForm[0].reset();
+    displayUserProfile();
+
+  };
+
+  var displayUserProfile = function () {
+
+    var storedUsername = localStorage.getItem('username');
     var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
     var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
-    var storedUsername = localStorage.getItem('username');
     var isProfileTypeSelected = storedProfileType !== 'Not Selected';
 
     if (isLoggedin && storedUsername && isProfileTypeSelected) {
-      switch (storedProfileType) {
-        case 'student':
-          recommendationsArray.studentRecommendations.forEach(function (recommendation) {
-            var recommendationDiv = $('<div>');
-            recommendationDiv.addClass('col s12 m6 l4');
-            var cardDiv = $('<div>');
-            cardDiv.addClass('recCards');
-            var cardImageDiv = $('<div>');
-            cardImageDiv.addClass('recCardsImage');
-            var cardImage = $('<img>');
-            cardImage.attr('src', recommendation.image);
-            cardImage.attr('alt', 'specific recommendation image');
-            var cardContentDiv = $('<div>');
-            cardContentDiv.addClass('recCardsContent');
-            var cardTitle = $('<span>');
-            cardTitle.addClass('recCardsTitle');
-            cardTitle.text(recommendation.title);
-            var cardDescription = $('<p>');
-            cardDescription.text(recommendation.description);
-            var cardActionDiv = $('<div>');
-            cardActionDiv.addClass('recCardsAction');
-            var cardActionLink = $('<a>');
-            cardActionLink.attr('href', recommendation.link);
-            cardActionLink.attr('target', '_blank');
-            cardActionLink.text('Learn More');
-            cardImageDiv.append(cardImage);
-            cardContentDiv.append(cardTitle);
-            cardContentDiv.append(cardDescription);
-            cardActionDiv.append(cardActionLink);
-            cardDiv.append(cardImageDiv);
-            cardDiv.append(cardContentDiv);
-            cardDiv.append(cardActionDiv);
-            recommendationDiv.append(cardDiv);
-            recommendations.append(recommendationDiv);
-          });
-          break;
-        case 'refugee':
-          recommendationsArray.refugeeRecommendations.forEach(function (recommendation) {
-            var recommendationDiv = $('<div>');
-            recommendationDiv.addClass('col s12 m6 l4');
-            var cardDiv = $('<div>');
-            cardDiv.addClass('recCards');
-            var cardImageDiv = $('<div>');
-            cardImageDiv.addClass('recCardsImage');
-            var cardImage = $('<img>');
-            cardImage.attr('src', recommendation.image);
-            cardImage.attr('alt', 'specific recommendation image');
-            var cardContentDiv = $('<div>');
-            cardContentDiv.addClass('recCardsContent');
-            var cardTitle = $('<span>');
-            cardTitle.addClass('recCardsTitle');
-            cardTitle.text(recommendation.title);
-            var cardDescription = $('<p>');
-            cardDescription.text(recommendation.description);
-            var cardActionDiv = $('<div>');
-            cardActionDiv.addClass('recCardsAction');
-            var cardActionLink = $('<a>');
-            cardActionLink.attr('href', recommendation.link);
-            cardActionLink.attr('target', '_blank');
-            cardActionLink.text('Learn More');
-            cardImageDiv.append(cardImage);
-            cardContentDiv.append(cardTitle);
-            cardContentDiv.append(cardDescription);
-            cardActionDiv.append(cardActionLink);
-            cardDiv.append(cardImageDiv);
-            cardDiv.append(cardContentDiv);
-            cardDiv.append(cardActionDiv);
-            recommendationDiv.append(cardDiv);
-            recommendations.append(recommendationDiv);
-          });
-          break;
-        case 'temporary resident':
-          recommendationsArray.temporaryRecommendations.forEach(function (recommendation) {
-            var recommendationDiv = $('<div>');
-            recommendationDiv.addClass('col s12 m6 l4');
-            var cardDiv = $('<div>');
-            cardDiv.addClass('recCards');
-            var cardImageDiv = $('<div>');
-            cardImageDiv.addClass('recCardsImage');
-            var cardImage = $('<img>');
-            cardImage.attr('src', recommendation.image);
-            cardImage.attr('alt', 'specific recommendation image');
-            var cardContentDiv = $('<div>');
-            cardContentDiv.addClass('recCardsContent');
-            var cardTitle = $('<span>');
-            cardTitle.addClass('recCardsTitle');
-            cardTitle.text(recommendation.title);
-            var cardDescription = $('<p>');
-            cardDescription.text(recommendation.description);
-            var cardActionDiv = $('<div>');
-            cardActionDiv.addClass('recCardsAction');
-            var cardActionLink = $('<a>');
-            cardActionLink.attr('href', recommendation.link);
-            cardActionLink.attr('target', '_blank');
-            cardActionLink.text('Learn More');
-            cardImageDiv.append(cardImage);
-            cardContentDiv.append(cardTitle);
-            cardContentDiv.append(cardDescription);
-            cardActionDiv.append(cardActionLink);
-            cardDiv.append(cardImageDiv);
-            cardDiv.append(cardContentDiv);
-            cardDiv.append(cardActionDiv);
-            recommendationDiv.append(cardDiv);
-            recommendations.append(recommendationDiv);
-          });
-          break;
-        case 'permanent resident':
-          recommendationsArray.prRecommendations.forEach(function (recommendation) {
-            var recommendationDiv = $('<div>');
-            recommendationDiv.addClass('col s12 m6 l4');
-            var cardDiv = $('<div>');
-            cardDiv.addClass('recCards');
-            var cardImageDiv = $('<div>');
-            cardImageDiv.addClass('recCardsImage');
-            var cardImage = $('<img>');
-            cardImage.attr('src', recommendation.image);
-            cardImage.attr('alt', 'specific recommendation image');
-            var cardContentDiv = $('<div>');
-            cardContentDiv.addClass('recCardsContent');
-            var cardTitle = $('<span>');
-            cardTitle.addClass('recCardsTitle');
-            cardTitle.text(recommendation.title);
-            var cardDescription = $('<p>');
-            cardDescription.text(recommendation.description);
-            var cardActionDiv = $('<div>');
-            cardActionDiv.addClass('recCardsAction');
-            var cardActionLink = $('<a>');
-            cardActionLink.attr('href', recommendation.link);
-            cardActionLink.attr('target', '_blank');
-            cardActionLink.text('Learn More');
-            cardImageDiv.append(cardImage);
-            cardContentDiv.append(cardTitle);
-            cardContentDiv.append(cardDescription);
-            cardActionDiv.append(cardActionLink);
-            cardDiv.append(cardImageDiv);
-            cardDiv.append(cardContentDiv);
-            cardDiv.append(cardActionDiv);
-            recommendationDiv.append(cardDiv);
-            recommendations.append(recommendationDiv);
-          });
-          break;
-        default:
-          text = "No recommendation found";
-          
-      }
+      displayUsername.text(storedUsername);
+      displayProfileType.text(storedProfileType);
+      userProfile.show();
+    } else {
+      userProfile.hide();
+    }
+
+  };
+
+  var openDashboard = function (event) {
+
+    event.stopPropagation();
+    var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
+    var storedUsername = localStorage.getItem('username');
+    var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
+    var isProfileTypeSelected = storedProfileType !== 'Not Selected';
+
+    if (storedProfileType === 'Not Selected') {
+      showError('Please select a profile type');
+      return;
+    }
+    if (!isLoggedin) {
+      showError('Please login or signup');
+      return;
+    }
+    if (isLoggedin && storedUsername && isProfileTypeSelected) {
+      window.location.href = "dashboard.html";
+      displayUsername.text(storedUsername);
+      displayProfileType.text(storedProfileType);
+      userProfile.show();
+      displayRecommendations(storedProfileType);
+    } else {
+      userProfile.hide();
+    }
+
+  };
+
+    //Here I'm trying to loop over the recommendation array to dispaly the recommendations for each profile type by using the profile type selected and creating needed divs and elements dynamicly and add them to the main div by id of recommendations.
+  var displayRecommendations = function (profileType) {
+
+    switch (profileType) {
+      case 'student':
+        recommendationsArray.studentRecommendations.forEach(function (recommendation) {
+          var recommendationDiv = $('<div>');
+          recommendationDiv.addClass('col s12 m6 l4');
+          var cardDiv = $('<div>');
+          cardDiv.addClass('recCards');
+          var cardImageDiv = $('<div>');
+          cardImageDiv.addClass('recCardsImage');
+          var cardImage = $('<img>');
+          cardImage.attr('src', recommendation.image);
+          cardImage.attr('alt', 'specific recommendation image');
+          var cardContentDiv = $('<div>');
+          cardContentDiv.addClass('recCardsContent');
+          var cardTitle = $('<span>');
+          cardTitle.addClass('recCardsTitle');
+          cardTitle.text(recommendation.title);
+          var cardDescription = $('<p>');
+          cardDescription.text(recommendation.description);
+          var cardActionDiv = $('<div>');
+          cardActionDiv.addClass('recCardsAction');
+          var cardActionLink = $('<a>');
+          cardActionLink.attr('href', recommendation.link);
+          cardActionLink.attr('target', '_blank');
+          cardActionLink.text('Learn More');
+          cardImageDiv.append(cardImage);
+          cardContentDiv.append(cardTitle);
+          cardContentDiv.append(cardDescription);
+          cardActionDiv.append(cardActionLink);
+          cardDiv.append(cardImageDiv);
+          cardDiv.append(cardContentDiv);
+          cardDiv.append(cardActionDiv);
+          recommendationDiv.append(cardDiv);
+          recommendations.append(recommendationDiv);
+          // recommendations.show();
+        });
+        break;
+      case 'refugee':
+        recommendationsArray.refugeeRecommendations.forEach(function (recommendation) {
+          var recommendationDiv = $('<div>');
+          recommendationDiv.addClass('col s12 m6 l4');
+          var cardDiv = $('<div>');
+          cardDiv.addClass('recCards');
+          var cardImageDiv = $('<div>');
+          cardImageDiv.addClass('recCardsImage');
+          var cardImage = $('<img>');
+          cardImage.attr('src', recommendation.image);
+          cardImage.attr('alt', 'specific recommendation image');
+          var cardContentDiv = $('<div>');
+          cardContentDiv.addClass('recCardsContent');
+          var cardTitle = $('<span>');
+          cardTitle.addClass('recCardsTitle');
+          cardTitle.text(recommendation.title);
+          var cardDescription = $('<p>');
+          cardDescription.text(recommendation.description);
+          var cardActionDiv = $('<div>');
+          cardActionDiv.addClass('recCardsAction');
+          var cardActionLink = $('<a>');
+          cardActionLink.attr('href', recommendation.link);
+          cardActionLink.attr('target', '_blank');
+          cardActionLink.text('Learn More');
+          cardImageDiv.append(cardImage);
+          cardContentDiv.append(cardTitle);
+          cardContentDiv.append(cardDescription);
+          cardActionDiv.append(cardActionLink);
+          cardDiv.append(cardImageDiv);
+          cardDiv.append(cardContentDiv);
+          cardDiv.append(cardActionDiv);
+          recommendationDiv.append(cardDiv);
+          recommendations.append(recommendationDiv);
+          // recommendations.show();
+        });
+        break;
+      case 'temporary resident':
+        recommendationsArray.temporaryRecommendations.forEach(function (recommendation) {
+          var recommendationDiv = $('<div>');
+          recommendationDiv.addClass('col s12 m6 l4');
+          var cardDiv = $('<div>');
+          cardDiv.addClass('recCards');
+          var cardImageDiv = $('<div>');
+          cardImageDiv.addClass('recCardsImage');
+          var cardImage = $('<img>');
+          cardImage.attr('src', recommendation.image);
+          cardImage.attr('alt', 'specific recommendation image');
+          var cardContentDiv = $('<div>');
+          cardContentDiv.addClass('recCardsContent');
+          var cardTitle = $('<span>');
+          cardTitle.addClass('recCardsTitle');
+          cardTitle.text(recommendation.title);
+          var cardDescription = $('<p>');
+          cardDescription.text(recommendation.description);
+          var cardActionDiv = $('<div>');
+          cardActionDiv.addClass('recCardsAction');
+          var cardActionLink = $('<a>');
+          cardActionLink.attr('href', recommendation.link);
+          cardActionLink.attr('target', '_blank');
+          cardActionLink.text('Learn More');
+          cardImageDiv.append(cardImage);
+          cardContentDiv.append(cardTitle);
+          cardContentDiv.append(cardDescription);
+          cardActionDiv.append(cardActionLink);
+          cardDiv.append(cardImageDiv);
+          cardDiv.append(cardContentDiv);
+          cardDiv.append(cardActionDiv);
+          recommendationDiv.append(cardDiv);
+          recommendations.append(recommendationDiv);
+          // recommendations.show();
+        });
+        break;
+      case 'permanent resident':
+        recommendationsArray.prRecommendations.forEach(function (recommendation) {
+          var recommendationDiv = $('<div>');
+          recommendationDiv.addClass('col s12 m6 l4');
+          var cardDiv = $('<div>');
+          cardDiv.addClass('recCards');
+          var cardImageDiv = $('<div>');
+          cardImageDiv.addClass('recCardsImage');
+          var cardImage = $('<img>');
+          cardImage.attr('src', recommendation.image);
+          cardImage.attr('alt', 'specific recommendation image');
+          var cardContentDiv = $('<div>');
+          cardContentDiv.addClass('recCardsContent');
+          var cardTitle = $('<span>');
+          cardTitle.addClass('recCardsTitle');
+          cardTitle.text(recommendation.title);
+          var cardDescription = $('<p>');
+          cardDescription.text(recommendation.description);
+          var cardActionDiv = $('<div>');
+          cardActionDiv.addClass('recCardsAction');
+          var cardActionLink = $('<a>');
+          cardActionLink.attr('href', recommendation.link);
+          cardActionLink.attr('target', '_blank');
+          cardActionLink.text('Learn More');
+          cardImageDiv.append(cardImage);
+          cardContentDiv.append(cardTitle);
+          cardContentDiv.append(cardDescription);
+          cardActionDiv.append(cardActionLink);
+          cardDiv.append(cardImageDiv);
+          cardDiv.append(cardContentDiv);
+          cardDiv.append(cardActionDiv);
+          recommendationDiv.append(cardDiv);
+          recommendations.append(recommendationDiv);
+          // recommendations.show();
+        });
+        break;
+      default:
+        recommendations.text('No recommendations available');
+
     };
   };
 
+  var logoutUser = function () {
+    localStorage.setItem('isLoggedin', 'false');
+    location.reload();
+  };
 
-    // Here I'm trying to create a function that will display the recommendations based on the profile type selected. based on the profile type selected, the recommendations will be displayed in the dashboard.html page.
-    // var displayRecommendations = function () {
-    //   var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
-    //   var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
-    //   var storedUsername = localStorage.getItem('username');
-    //   var isProfileTypeSelected = storedProfileType !== 'Not Selected';
+  //Helper function for showing error messages.
+  var showError = function (errorMessage) {
+    errorMsgText.text(errorMessage);
+    //using the jQuery method for opening modals with Materialize CSS
+    errorMsg.modal('open');
+  };
 
-    //   if (isLoggedin && storedUsername && isProfileTypeSelected) {
-    //     recommendations.show();
-    //   } else {
-    //     recommendations.hide();
-    //   }
-    // };
+  // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
 
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  };
 
     profileTypeBtn.on('click', openProfileTypeModal);
     profileType.change(newProfileType);
@@ -699,6 +672,5 @@ $(document).ready(function () {
     logoutBtn.on('click', logoutUser);
     setInterval(carouselTimer, 5000);
     googleTranslateElementInit();
-    displayRecommendations();
 
 });
