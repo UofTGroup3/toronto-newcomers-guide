@@ -214,7 +214,7 @@ $(document).ready(function () {
   var recommendationsArray = [
     {
       student: "Here are some recommendations for you based on your status as a student",
-      studentRecommendations: [
+      recommendation: [
         {
           title: "How to get your student card?",
           description: "Steps to obtain an official student identification card for academic and campus activities.",
@@ -258,7 +258,7 @@ $(document).ready(function () {
           image: "assets/images/parttimejob.jpg"
         },
         {
-          title: "How can you locate a doctor?", 
+          title: "How can you locate a doctor?",
           description: "Navigate the healthcare system and find a local family doctor or nurse practitioner in Ontario.",
           link: "https://www.ontario.ca/page/find-family-doctor-or-nurse-practitioner",
           image: "assets/images/doctor.jpg"
@@ -287,11 +287,11 @@ $(document).ready(function () {
           link: "https://www.eventbrite.com/blog/college-event-ideas/",
           image: "assets/images/events.jpg"
         },
-      ] 
+      ]
     },
     {
       refugee: "Here are some recommendations for you based on your status as a refugee",
-      refugeeRecommendations: [
+      recommendation: [
         {
           title: "Find a refugee settlement agency near you",
           description: "Discover agencies dedicated to helping refugees settle in Canada.",
@@ -362,7 +362,7 @@ $(document).ready(function () {
     },
     {
       temporary: "Here are some recommendations for you based on your status as a temporary resident",
-      temporaryRecommendations: [
+      recommendation: [
         {
           title: "How to get your OHIP card?",
           description: "A guide to acquiring Ontario's health insurance card for temporary residents.",
@@ -433,7 +433,7 @@ $(document).ready(function () {
     },
     {
       pr: "Here are some recommendations for you based on your status as a permanent resident",
-      prRecommendations: [
+      recommendation: [
         {
           title: "How to get your OHIP card?",
           description: "Steps to avail Ontario's health insurance card for permanent residents.",
@@ -450,7 +450,7 @@ $(document).ready(function () {
           title: "How to get your SIN number?",
           description: "Guidance on acquiring a Social Insurance Number.",
           link: "https://www.canada.ca/en/employment-social-development/services/sin/apply.html",
-          image: "assets/images/sin.jpg" 
+          image: "assets/images/sin.jpg"
         },
         {
           title: "How to get your TTC card?",
@@ -516,7 +516,7 @@ $(document).ready(function () {
     },
   ];
 
-  // Here I'm trying to create a function that will display the recommendations based on the profile type selected. based on the profile type selected, the recommendations will be displayed in the dashboard.html page.
+  //Here I'm trying to loop over the recommendation array to dispaly the recommendations for each profile type by using the profile type selected and creating needed divs and elements dynamicly and add them to the main div by id of recommendations.
   var displayRecommendations = function () {
     var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
     var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
@@ -524,22 +524,71 @@ $(document).ready(function () {
     var isProfileTypeSelected = storedProfileType !== 'Not Selected';
 
     if (isLoggedin && storedUsername && isProfileTypeSelected) {
-      recommendations.show();
-    } else {
-      recommendations.hide();
-    }
+      switch (storedProfileType) {
+        case 'student':
+          recommendationsArray.studentRecommendations.forEach(function (recommendation) {
+            var recommendationDiv = $('<div>');
+            recommendationDiv.addClass('col s12 m6 l4');
+            var cardDiv = $('<div>');
+            cardDiv.addClass('recCards');
+            var cardImageDiv = $('<div>');
+            cardImageDiv.addClass('recCardsImage');
+            var cardImage = $('<img>');
+            cardImage.attr('src', recommendation.image);
+            cardImage.attr('alt', 'specific recommendation image');
+            var cardContentDiv = $('<div>');
+            cardContentDiv.addClass('recCardsContent');
+            var cardTitle = $('<span>');
+            cardTitle.addClass('recCardsTitle');
+            cardTitle.text(recommendation.title);
+            var cardDescription = $('<p>');
+            cardDescription.text(recommendation.description);
+            var cardActionDiv = $('<div>');
+            cardActionDiv.addClass('recCardsAction');
+            var cardActionLink = $('<a>');
+            cardActionLink.attr('href', recommendation.link);
+            cardActionLink.attr('target', '_blank');
+            cardActionLink.text('Learn More');
+            cardImageDiv.append(cardImage);
+            cardContentDiv.append(cardTitle);
+            cardContentDiv.append(cardDescription);
+            cardActionDiv.append(cardActionLink);
+            cardDiv.append(cardImageDiv);
+            cardDiv.append(cardContentDiv);
+            cardDiv.append(cardActionDiv);
+            recommendationDiv.append(cardDiv);
+            recommendations.append(recommendationDiv);
+          });
+          break;
+      }
+    };
   };
 
 
-  profileTypeBtn.on('click', openProfileTypeModal);
-  profileType.change(newProfileType);
-  loginBtn.on('click', openLoginModal);
-  signupBtn.on('click', openSignupModal);
-  signupForm.submit(signupValidation);
-  dashboardBtn.on('click', openDashboard);
-  displayUserProfile();
-  logoutBtn.on('click', logoutUser);
-  setInterval(carouselTimer, 5000);
-  googleTranslateElementInit();
+    // Here I'm trying to create a function that will display the recommendations based on the profile type selected. based on the profile type selected, the recommendations will be displayed in the dashboard.html page.
+    // var displayRecommendations = function () {
+    //   var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
+    //   var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
+    //   var storedUsername = localStorage.getItem('username');
+    //   var isProfileTypeSelected = storedProfileType !== 'Not Selected';
+
+    //   if (isLoggedin && storedUsername && isProfileTypeSelected) {
+    //     recommendations.show();
+    //   } else {
+    //     recommendations.hide();
+    //   }
+    // };
+
+
+    profileTypeBtn.on('click', openProfileTypeModal);
+    profileType.change(newProfileType);
+    loginBtn.on('click', openLoginModal);
+    signupBtn.on('click', openSignupModal);
+    signupForm.submit(signupValidation);
+    dashboardBtn.on('click', openDashboard);
+    displayUserProfile();
+    logoutBtn.on('click', logoutUser);
+    setInterval(carouselTimer, 5000);
+    googleTranslateElementInit();
 
 });
