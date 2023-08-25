@@ -128,3 +128,27 @@ label[for="lanSelect"] {
   font-weight: bold;
   color: #005f73;
 }
+
+.card {
+  background-color: rgba(0, 0, 0, 0.162);
+  height: 800px;
+  padding: 3%;
+  border: 2px solid black;
+}
+.card-image img {
+  max-width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.card-content,
+.title {
+  max-height: initial;
+  font-size: 18px;
+  color: rgb(17, 12, 12);
+}
+
+.card-links {
+  font-size: 20px;
+  color: #08339e;
+}
