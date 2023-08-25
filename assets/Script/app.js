@@ -192,6 +192,43 @@ $(document).ready(function () {
   $('#' + filter).show();
   });
 
+  //News Section
+  //https://mediastack.com/
+  // http://api.mediastack.com/v1/
+  //key 400ac6f6b4a53023ad0df9c54d691c7b
+  //http://api.mediastack.com/v1/news? access_key = 400ac6f6b4a53023ad0df9c54d691c7b
+  //get todays date in proper format for parameter filter
+  var today = dayjs();
+  today = today.format('YYYY-MM-DD');
+  
+  var showNews = function() {
+  var key = "400ac6f6b4a53023ad0df9c54d691c7b"
+  var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&keywords=toronto&date=2023-08-20," + today;
+    fetch(queryURL)
+      .then(function (response) {
+        if(response.ok) {
+          return response.json();
+        } else {
+          alert('Something went wrong'); //change later to proper throw error, no alerts allowed for project, 'catch (error)'?
+        };
+      })
+      .then(function (data) {
+        console.log(data);
+        
+
+          var newsTitle = $('<h3>').text(data.data[0].title);
+          var newsDescription = $('<p>').text(data.data[0].description);
+          var newsImageUrl = $('<img>').attr("src", data.data[0].image);
+          var newsUrl = $('<a>').attr("href", data.data[0].url).text('Click to read article');
+
+
+          $('#newsCard1').append(newsImageUrl, newsTitle, newsDescription, newsUrl);
+      });
+    };
+    
+
+
+
     // // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
     // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate_dropdown
     // https://codepen.io/j_holtslander/pen/PjPWMe
@@ -215,5 +252,6 @@ $(document).ready(function () {
     logoutBtn.on('click', logoutUser);
     setInterval(carouselTimer, 5000);
     googleTranslateElementInit();
+    showNews();
   
 });
