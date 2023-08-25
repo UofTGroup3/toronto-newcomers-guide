@@ -65,9 +65,10 @@ $(document).ready(function () {
   window.attemptLogin = function () {
 
     loginError.hide();
-    var loginUsername = username.val();
+    var loginUsername = username.val().toLowerCase();
     var loginPassword = password.val();
-
+    // used(https://www.w3schools.com/jsref/jsref_some.asp) as a reference.
+    //checking if any array element matches the login credentials.
     var userExists = users.some(function (user) {
       return user.username === loginUsername && user.password === loginPassword;
     });
@@ -96,7 +97,7 @@ $(document).ready(function () {
   var signupValidation = function (event) {
     event.preventDefault();
 
-    var signupUsernameValue = signupUsername.val();
+    var signupUsernameValue = signupUsername.val().toLowerCase();
     var signupEmailValue = signupEmail.val();
     var signupPasswordValue = signupPassword.val();
     var signupConfirmPasswordValue = signupConfirmPassword.val();
@@ -214,7 +215,7 @@ $(document).ready(function () {
   var recommendationsArray = [
     {
       student: "Here are some recommendations for you based on your status as a student",
-      recommendation: [
+      studentRecommendations: [
         {
           title: "How to get your student card?",
           description: "Steps to obtain an official student identification card for academic and campus activities.",
@@ -291,7 +292,7 @@ $(document).ready(function () {
     },
     {
       refugee: "Here are some recommendations for you based on your status as a refugee",
-      recommendation: [
+      refugeeRecommendations: [
         {
           title: "Find a refugee settlement agency near you",
           description: "Discover agencies dedicated to helping refugees settle in Canada.",
@@ -362,7 +363,7 @@ $(document).ready(function () {
     },
     {
       temporary: "Here are some recommendations for you based on your status as a temporary resident",
-      recommendation: [
+      temporaryRecommendations: [
         {
           title: "How to get your OHIP card?",
           description: "A guide to acquiring Ontario's health insurance card for temporary residents.",
@@ -433,7 +434,7 @@ $(document).ready(function () {
     },
     {
       pr: "Here are some recommendations for you based on your status as a permanent resident",
-      recommendation: [
+      prRecommendations: [
         {
           title: "How to get your OHIP card?",
           description: "Steps to avail Ontario's health insurance card for permanent residents.",
@@ -560,6 +561,114 @@ $(document).ready(function () {
             recommendations.append(recommendationDiv);
           });
           break;
+        case 'refugee':
+          recommendationsArray.refugeeRecommendations.forEach(function (recommendation) {
+            var recommendationDiv = $('<div>');
+            recommendationDiv.addClass('col s12 m6 l4');
+            var cardDiv = $('<div>');
+            cardDiv.addClass('recCards');
+            var cardImageDiv = $('<div>');
+            cardImageDiv.addClass('recCardsImage');
+            var cardImage = $('<img>');
+            cardImage.attr('src', recommendation.image);
+            cardImage.attr('alt', 'specific recommendation image');
+            var cardContentDiv = $('<div>');
+            cardContentDiv.addClass('recCardsContent');
+            var cardTitle = $('<span>');
+            cardTitle.addClass('recCardsTitle');
+            cardTitle.text(recommendation.title);
+            var cardDescription = $('<p>');
+            cardDescription.text(recommendation.description);
+            var cardActionDiv = $('<div>');
+            cardActionDiv.addClass('recCardsAction');
+            var cardActionLink = $('<a>');
+            cardActionLink.attr('href', recommendation.link);
+            cardActionLink.attr('target', '_blank');
+            cardActionLink.text('Learn More');
+            cardImageDiv.append(cardImage);
+            cardContentDiv.append(cardTitle);
+            cardContentDiv.append(cardDescription);
+            cardActionDiv.append(cardActionLink);
+            cardDiv.append(cardImageDiv);
+            cardDiv.append(cardContentDiv);
+            cardDiv.append(cardActionDiv);
+            recommendationDiv.append(cardDiv);
+            recommendations.append(recommendationDiv);
+          });
+          break;
+        case 'temporary resident':
+          recommendationsArray.temporaryRecommendations.forEach(function (recommendation) {
+            var recommendationDiv = $('<div>');
+            recommendationDiv.addClass('col s12 m6 l4');
+            var cardDiv = $('<div>');
+            cardDiv.addClass('recCards');
+            var cardImageDiv = $('<div>');
+            cardImageDiv.addClass('recCardsImage');
+            var cardImage = $('<img>');
+            cardImage.attr('src', recommendation.image);
+            cardImage.attr('alt', 'specific recommendation image');
+            var cardContentDiv = $('<div>');
+            cardContentDiv.addClass('recCardsContent');
+            var cardTitle = $('<span>');
+            cardTitle.addClass('recCardsTitle');
+            cardTitle.text(recommendation.title);
+            var cardDescription = $('<p>');
+            cardDescription.text(recommendation.description);
+            var cardActionDiv = $('<div>');
+            cardActionDiv.addClass('recCardsAction');
+            var cardActionLink = $('<a>');
+            cardActionLink.attr('href', recommendation.link);
+            cardActionLink.attr('target', '_blank');
+            cardActionLink.text('Learn More');
+            cardImageDiv.append(cardImage);
+            cardContentDiv.append(cardTitle);
+            cardContentDiv.append(cardDescription);
+            cardActionDiv.append(cardActionLink);
+            cardDiv.append(cardImageDiv);
+            cardDiv.append(cardContentDiv);
+            cardDiv.append(cardActionDiv);
+            recommendationDiv.append(cardDiv);
+            recommendations.append(recommendationDiv);
+          });
+          break;
+        case 'permanent resident':
+          recommendationsArray.prRecommendations.forEach(function (recommendation) {
+            var recommendationDiv = $('<div>');
+            recommendationDiv.addClass('col s12 m6 l4');
+            var cardDiv = $('<div>');
+            cardDiv.addClass('recCards');
+            var cardImageDiv = $('<div>');
+            cardImageDiv.addClass('recCardsImage');
+            var cardImage = $('<img>');
+            cardImage.attr('src', recommendation.image);
+            cardImage.attr('alt', 'specific recommendation image');
+            var cardContentDiv = $('<div>');
+            cardContentDiv.addClass('recCardsContent');
+            var cardTitle = $('<span>');
+            cardTitle.addClass('recCardsTitle');
+            cardTitle.text(recommendation.title);
+            var cardDescription = $('<p>');
+            cardDescription.text(recommendation.description);
+            var cardActionDiv = $('<div>');
+            cardActionDiv.addClass('recCardsAction');
+            var cardActionLink = $('<a>');
+            cardActionLink.attr('href', recommendation.link);
+            cardActionLink.attr('target', '_blank');
+            cardActionLink.text('Learn More');
+            cardImageDiv.append(cardImage);
+            cardContentDiv.append(cardTitle);
+            cardContentDiv.append(cardDescription);
+            cardActionDiv.append(cardActionLink);
+            cardDiv.append(cardImageDiv);
+            cardDiv.append(cardContentDiv);
+            cardDiv.append(cardActionDiv);
+            recommendationDiv.append(cardDiv);
+            recommendations.append(recommendationDiv);
+          });
+          break;
+        default:
+          text = "No recommendation found";
+          
       }
     };
   };
@@ -590,5 +699,6 @@ $(document).ready(function () {
     logoutBtn.on('click', logoutUser);
     setInterval(carouselTimer, 5000);
     googleTranslateElementInit();
+    displayRecommendations();
 
 });
