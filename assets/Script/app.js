@@ -195,15 +195,14 @@ $(document).ready(function () {
   //News Section
   //https://ilikekillnerds.com/2023/02/handling-errors-with-the-fetch-api/
   //https://mediastack.com/
-  // http://api.mediastack.com/v1/
-  //key 400ac6f6b4a53023ad0df9c54d691c7b
-  //http://api.mediastack.com/v1/news? access_key = 400ac6f6b4a53023ad0df9c54d691c7b
+  
   //get dates in proper format for parameter filter to GET newest stories
   var today = dayjs();
   today = today.format('YYYY-MM-DD');
   var yesterday = dayjs().subtract(1, 'day');
   yesterday = yesterday.format('YYYY-MM-DD');
   
+  //GET API data
   var showNews = function() {
   var key = "400ac6f6b4a53023ad0df9c54d691c7b"
   var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&keywords=toronto&date="+ yesterday + "," + today;
@@ -218,49 +217,21 @@ $(document).ready(function () {
       .then(function (data) {
         console.log(data);
         
-          var topstory1 = $('#topStory1');
-          var newsTitle = $('<h3>').text(data.data[0].title);
-          var newsDescription = $('<p>').text(data.data[0].description);
-          var newsImageUrl = $('<img>').attr("src", data.data[0].image);
-          var newsUrl = $('<a>').attr("href", data.data[0].url).text('Click to read article');
-          topstory1.append(newsImageUrl, newsTitle, newsDescription, newsUrl);
-
-          var topstory2 = $('#topStory2');
-          var newsTitle2 = $('<h3>').text(data.data[1].title);
-          var newsDescription2 = $('<p>').text(data.data[1].description);
-          var newsImageUrl2 = $('<img>').attr("src", data.data[1].image);
-          var newsUrl2 = $('<a>').attr("href", data.data[1].url).text('Click to read article');
-          topstory2.append(newsImageUrl2, newsTitle2, newsDescription2, newsUrl2);
-
-          var topstory3 = $('#topStory3');
-          var newsTitle3 = $('<h3>').text(data.data[2].title);
-          var newsDescription3 = $('<p>').text(data.data[2].description);
-          var newsImageUrl3 = $('<img>').attr("src", data.data[2].image);
-          var newsUrl3 = $('<a>').attr("href", data.data[2].url).text('Click to read article');
-          topstory3.append(newsImageUrl3, newsTitle3, newsDescription3, newsUrl3);
-
-          var topstory4 = $('#topStory4');
-          var newsTitle4 = $('<h3>').text(data.data[3].title);
-          var newsDescription4 = $('<p>').text(data.data[3].description);
-          var newsImageUrl4 = $('<img>').attr("src", data.data[3].image);
-          var newsUrl4 = $('<a>').attr("href", data.data[3].url).text('Click to read article');
-          topstory4.append(newsImageUrl4, newsTitle4, newsDescription4, newsUrl4);
-
-          var topstory5 = $('#topStory5');
-          var newsTitle5 = $('<h3>').text(data.data[4].title);
-          var newsDescription5 = $('<p>').text(data.data[4].description);
-          var newsImageUrl5 = $('<img>').attr("src", data.data[4].image);
-          var newsUrl5 = $('<a>').attr("href", data.data[4].url).text('Click to read article');
-          topstory5.append(newsImageUrl5, newsTitle5, newsDescription5, newsUrl5);
+        //Display data
+        for (var i = 0; i < 6; i++) {
+          var topstory = $('#topStory' + (i + 1));
+          var newsTitle = $('<h3>').text(data.data[i].title);
+          var newsDescription = $('<p>').text(data.data[i].description);
+          var newsImageUrl = $('<img>').attr("src", data.data[i].image).css({'width':'100%'});
+          var newsUrl = $('<a>').attr("href", data.data[i].url).text('Click to read article');
+          topstory.append(newsImageUrl, newsTitle, newsDescription, newsUrl);
+        };
       })
       .catch(function (error) {
         console.error('Error: ', error);
       });
     };
     
-
-
-
     // // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
     // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate_dropdown
     // https://codepen.io/j_holtslander/pen/PjPWMe
