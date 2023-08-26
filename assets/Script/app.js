@@ -197,13 +197,15 @@ $(document).ready(function () {
   // http://api.mediastack.com/v1/
   //key 400ac6f6b4a53023ad0df9c54d691c7b
   //http://api.mediastack.com/v1/news? access_key = 400ac6f6b4a53023ad0df9c54d691c7b
-  //get todays date in proper format for parameter filter
+  //get dates in proper format for parameter filter to GET newest stories
   var today = dayjs();
   today = today.format('YYYY-MM-DD');
+  var yesterday = dayjs().subtract(1, 'day');
+  yesterday = yesterday.format('YYYY-MM-DD');
   
   var showNews = function() {
   var key = "400ac6f6b4a53023ad0df9c54d691c7b"
-  var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&keywords=toronto&date=2023-08-20," + today;
+  var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&keywords=toronto&date="+ yesterday + "," + today;
     fetch(queryURL)
       .then(function (response) {
         if(response.ok) {
