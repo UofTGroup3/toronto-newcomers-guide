@@ -504,10 +504,10 @@ $(document).ready(function () {
     var recommendationsList;
 
     switch (profileType) {
-      case 'Student':
+      case 'student':
         recommendationsList = recommendationsArray[0].studentRecommendations;
         break;
-      case 'Refugee':
+      case 'refugee':
         recommendationsList = recommendationsArray[1].refugeeRecommendations;
         break;
       case 'temporary resident':
@@ -529,13 +529,14 @@ $(document).ready(function () {
 
     });
 
-    // recommendations.show();
+    recommendations.show();
 
   };
 
   var openDashboard = function (event) {
 
     event.stopPropagation();
+    event.preventDefault();
     var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
     var storedUsername = localStorage.getItem('username');
     var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
@@ -554,7 +555,13 @@ $(document).ready(function () {
       displayRecommendations(storedProfileType);
       displayUsername.text(storedUsername);
       displayProfileType.text(storedProfileType);
-      // userProfile.show();
+      userProfile.show();
+      // if (document.title === 'Dashboard') {
+      //   displayRecommendations(storedProfileType);
+      //   dashboardContent.show();
+      //   usernameDisplay.text(storedUsername);
+      //   profileTypeDisplay.text(storedProfileType);
+      // }
     } else {
       userProfile.hide();
     }
