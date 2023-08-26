@@ -249,7 +249,7 @@ $(document).ready(function () {
     displayUserProfile();
     logoutBtn.on('click', logoutUser);
     setInterval(carouselTimer, 5000);
-    googleTranslateElementInit();
     showNews();
+    googleTranslateElementInit();
   
 });
