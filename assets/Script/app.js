@@ -215,14 +215,40 @@ $(document).ready(function () {
       .then(function (data) {
         console.log(data);
         
-
+          var topstory1 = $('#topStory1');
           var newsTitle = $('<h3>').text(data.data[0].title);
           var newsDescription = $('<p>').text(data.data[0].description);
           var newsImageUrl = $('<img>').attr("src", data.data[0].image);
           var newsUrl = $('<a>').attr("href", data.data[0].url).text('Click to read article');
+          topstory1.append(newsImageUrl, newsTitle, newsDescription, newsUrl);
 
+          var topstory2 = $('#topStory2');
+          var newsTitle2 = $('<h3>').text(data.data[1].title);
+          var newsDescription2 = $('<p>').text(data.data[1].description);
+          var newsImageUrl2 = $('<img>').attr("src", data.data[1].image);
+          var newsUrl2 = $('<a>').attr("href", data.data[1].url).text('Click to read article');
+          topstory2.append(newsImageUrl2, newsTitle2, newsDescription2, newsUrl2);
 
-          $('#newsCard1').append(newsImageUrl, newsTitle, newsDescription, newsUrl);
+          var topstory3 = $('#topStory3');
+          var newsTitle3 = $('<h3>').text(data.data[2].title);
+          var newsDescription3 = $('<p>').text(data.data[2].description);
+          var newsImageUrl3 = $('<img>').attr("src", data.data[2].image);
+          var newsUrl3 = $('<a>').attr("href", data.data[2].url).text('Click to read article');
+          topstory3.append(newsImageUrl3, newsTitle3, newsDescription3, newsUrl3);
+
+          var topstory4 = $('#topStory4');
+          var newsTitle4 = $('<h3>').text(data.data[3].title);
+          var newsDescription4 = $('<p>').text(data.data[3].description);
+          var newsImageUrl4 = $('<img>').attr("src", data.data[3].image);
+          var newsUrl4 = $('<a>').attr("href", data.data[3].url).text('Click to read article');
+          topstory4.append(newsImageUrl4, newsTitle4, newsDescription4, newsUrl4);
+
+          var topstory5 = $('#topStory5');
+          var newsTitle5 = $('<h3>').text(data.data[4].title);
+          var newsDescription5 = $('<p>').text(data.data[4].description);
+          var newsImageUrl5 = $('<img>').attr("src", data.data[4].image);
+          var newsUrl5 = $('<a>').attr("href", data.data[4].url).text('Click to read article');
+          topstory5.append(newsImageUrl5, newsTitle5, newsDescription5, newsUrl5);
       });
     };
     
