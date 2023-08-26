@@ -269,11 +269,6 @@ $(document).ready(function () {
       includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu', 
       layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
       };
-    // // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate
-    // function googleTranslateElementInit() {
-    //   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-    // };
-    // googleTranslateElementInit();
 
     profileTypeBtn.on('click', openProfileTypeModal);
     profileType.change(newProfileType);
