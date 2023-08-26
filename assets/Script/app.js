@@ -27,7 +27,6 @@ $(document).ready(function () {
   var users = JSON.parse(localStorage.getItem('users')) || [];
   var dropdownTrigger = $('.dropdown-trigger');
   var dashboardBtn = $('#dashboardBtn');
-  var dashboardContent = $('#dashboardContent');
   var usernameDisplay = $('#usernameDisplay');
   var profileTypeDisplay = $('#profileTypeDisplay');
   var recommendations = $('#recommendations');
@@ -403,6 +402,17 @@ $(document).ready(function () {
 
   };
 
+  // Creating a function to display username and profile type in the dashboard page inside the related span elements.
+  var displayUserDashboard = function () {
+
+    var storedUsername = localStorage.getItem('username').toUpperCase();
+    var storedProfileType = localStorage.getItem('profileType').toUpperCase();
+
+    usernameDisplay.text(storedUsername);
+    profileTypeDisplay.text(storedProfileType);
+
+  };
+
   //I'm creating needed divs and elements dynamicly and add them to the main div by id of recommendations.
   var createRecommendationCard = function (recommendation) {
 
@@ -534,6 +544,7 @@ $(document).ready(function () {
   dashboardBtn.on('click', openDashboard);
   displayUserProfile();
   logoutBtn.on('click', logoutUser);
+  displayUserDashboard();
   displayRecommendations();
   googleTranslateElementInit();
 
