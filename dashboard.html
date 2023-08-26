@@ -90,6 +90,7 @@
 
       <!-- Creating Login Modal Structure using Materialize CSS Library -->
       <div id="loginModal" class="modal">
+
         <div class="modal-content">
 
           <h4>Login</h4>
@@ -104,12 +105,14 @@
             <input id="password" type="password" />
             <label for="password">Password</label>
           </div>
-          <p class="red-text" id="loginError">Invalid username or password.</p>
+
         </div>
+
         <div class="modal-footer">
           <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="actualLoginBtn">Login</a>
           <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
+
       </div>
 
       <!-- Creating Signup Modal Structure using Materialize CSS Library -->
@@ -148,6 +151,7 @@
               </div>
             </div>
           </form>
+
         </div>
 
         <div class="modal-footer">
@@ -225,26 +229,6 @@
       <h2>Welcome, <span id="usernameDisplay"></span></h2>
       <h3><span id="profileTypeDisplay"></span> Personalized Recommendations</h3>
       <div id="recommendations"></div>
-    </section>
-
-    <section id="interactiveMapContainer">
-
-      <h2>Explore Essential Places Around You</h2>
-      <p>Use our interactive map to find key services and places in your vicinity.</p>
-
-      <!-- Container for the map; -->
-      <div id="map"></div>
-
-      <!-- Additional controls or info related to the map can be added here.
-          For example, filters to only show certain types of places, 
-          or an info panel with details about a selected place. -->
-      <div id="mapControls">
-        <button type="button" class="mapFilter" data-filter="schools">Schools</button>
-        <button type="button" class="mapFilter" data-filter="hospitals">Hospitals</button>
-        <button type="button" class="mapFilter" data-filter="banks">Banks</button>
-        <!-- ... More filter buttons ... -->
-      </div>
-
     </section>
 
   </main>

@@ -1,12 +1,9 @@
 // Used(https://learn.jquery.com/using-jquery-core) and (https://materializecss.com) documentations as reference.
 $(document).ready(function () {
 
-  var userBtn = $('#userBtn');
-  var userDropdown = $('#userDropdown');
   var modal = $('.modal');
   var select = $('select');
   var profileType = $('#profileType');
-  var profileTypeForm = $('#profileTypeForm');
   var profileTypeBtn = $('#profileTypeBtn');
   var profileTypeModal = $('#profileTypeModal');
   var actualLoginBtn = $('#actualLoginBtn');
@@ -14,7 +11,6 @@ $(document).ready(function () {
   var password = $('#password');
   var loginBtn = $('#loginBtn');
   var loginModal = $('#loginModal');
-  var loginError = $('#loginError');
   var signupBtn = $('#signupBtn');
   var signupForm = $('#signupForm');
   var signupModal = $('#signupModal');
@@ -29,7 +25,6 @@ $(document).ready(function () {
   var userProfile = $('#userProfile');
   var logoutBtn = $('#logoutBtn');
   var users = JSON.parse(localStorage.getItem('users')) || [];
-  var carouselImg = $('.carousel');
   var dropdownTrigger = $('.dropdown-trigger');
   var dashboardBtn = $('#dashboardBtn');
   var dashboardContent = $('#dashboardContent');
@@ -348,11 +343,6 @@ $(document).ready(function () {
   modal.modal();
   select.formSelect();
 
-  //giving users a fresh start when they try again.
-  loginModal.on('close', function () {
-    loginError.hide();
-  });
-
   var openProfileTypeModal = function () {
     profileTypeModal.modal('open');
   };
@@ -366,9 +356,9 @@ $(document).ready(function () {
     loginModal.modal('open');
   };
 
+  // Defining a global function by using window object to be able to make a function available for use across different parts of the codebase
   window.attemptLogin = function () {
 
-    loginError.hide();
     var loginUsername = username.val().toLowerCase();
     var loginPassword = password.val();
     // used(https://www.w3schools.com/jsref/jsref_some.asp) as a reference.
@@ -386,7 +376,7 @@ $(document).ready(function () {
       //using the jQuery method for closing modals with Materialize CSS.
       loginModal.modal('close');
     } else {
-      loginError.show();
+      showError('Invalid username or password');
     }
   };
 
@@ -401,10 +391,12 @@ $(document).ready(function () {
   var signupValidation = function (event) {
 
     event.preventDefault();
+
     var signupUsernameValue = signupUsername.val().toLowerCase();
     var signupEmailValue = signupEmail.val();
     var signupPasswordValue = signupPassword.val();
     var signupConfirmPasswordValue = signupConfirmPassword.val();
+
     newProfileType();
 
     //email validation regex from (https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript)
@@ -447,7 +439,7 @@ $(document).ready(function () {
     var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
     var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
     var isProfileTypeSelected = storedProfileType !== 'Not Selected';
-
+    
     if (isLoggedin && storedUsername && isProfileTypeSelected) {
       displayUsername.text(storedUsername);
       displayProfileType.text(storedProfileType);
@@ -499,44 +491,47 @@ $(document).ready(function () {
   };
 
   //Here I'm trying to loop over the recommendation array to dispaly the recommendations for each profile type by using the profile type selected.
-  var displayRecommendations = function (profileType) {
+  var displayRecommendations = function () {
 
+    var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
+    var storedUsername = localStorage.getItem('username');
+    var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
+    var isProfileTypeSelected = storedProfileType !== 'Not Selected';
     var recommendationsList;
 
-    switch (profileType) {
-      case 'student':
-        recommendationsList = recommendationsArray[0].studentRecommendations;
-        break;
-      case 'refugee':
-        recommendationsList = recommendationsArray[1].refugeeRecommendations;
-        break;
-      case 'temporary resident':
-        recommendationsList = recommendationsArray[2].temporaryRecommendations;
-        break;
-      case 'permanent resident':
-        recommendationsList = recommendationsArray[3].prRecommendations;
-        break;
-      default:
-        recommendations.text('No recommendations available');
-        return;
-    }
-        
+    if (isLoggedin && storedUsername && isProfileTypeSelected) {
+
+      switch (storedProfileType) {
+        case 'student':
+          recommendationsList = recommendationsArray[0].studentRecommendations;
+          break;
+        case 'refugee':
+          recommendationsList = recommendationsArray[1].refugeeRecommendations;
+          break;
+        case 'temporary resident':
+          recommendationsList = recommendationsArray[2].temporaryRecommendations;
+          break;
+        case 'permanent resident':
+          recommendationsList = recommendationsArray[3].prRecommendations;
+          break;
+        default:
+          recommendations.text('No recommendations available');
+          return;
+      }
+
+    };   
 
     recommendationsList.forEach(function (recommendation) {
-
       var recommendationCard = createRecommendationCard(recommendation);
       recommendations.append(recommendationCard);
-
     });
-
-    recommendations.show();
 
   };
 
   var openDashboard = function (event) {
 
-    event.stopPropagation();
     event.preventDefault();
+
     var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
     var storedUsername = localStorage.getItem('username');
     var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
@@ -545,26 +540,16 @@ $(document).ready(function () {
     if (storedProfileType === 'Not Selected') {
       showError('Please select a profile type');
       return;
-    }
+    };
     if (!isLoggedin) {
       showError('Please login or signup');
       return;
-    }
+    };
     if (isLoggedin && storedUsername && isProfileTypeSelected) {
       window.location.href = "dashboard.html";
-      displayRecommendations(storedProfileType);
       displayUsername.text(storedUsername);
       displayProfileType.text(storedProfileType);
-      userProfile.show();
-      // if (document.title === 'Dashboard') {
-      //   displayRecommendations(storedProfileType);
-      //   dashboardContent.show();
-      //   usernameDisplay.text(storedUsername);
-      //   profileTypeDisplay.text(storedProfileType);
-      // }
-    } else {
-      userProfile.hide();
-    }
+    };
 
   };
   
@@ -576,28 +561,27 @@ $(document).ready(function () {
   //Helper function for showing error messages.
   var showError = function (errorMessage) {
     errorMsgText.text(errorMessage);
-    //using the jQuery method for opening modals with Materialize CSS
     errorMsg.modal('open');
   };
 
   // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  };
 
-  // function googleTranslateElementInit() {
-  //   new google.translate.TranslateElement({
-  //     pageLanguage: 'en',
-  //     includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu',
-  //     layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  //   }, 'google_translate_element');
-  // };
-
-    profileTypeBtn.on('click', openProfileTypeModal);
-    profileType.change(newProfileType);
-    loginBtn.on('click', openLoginModal);
-    signupBtn.on('click', openSignupModal);
-    signupForm.submit(signupValidation);
-    dashboardBtn.on('click', openDashboard);
-    displayUserProfile();
-    logoutBtn.on('click', logoutUser);
-    // googleTranslateElementInit();
+  profileTypeBtn.on('click', openProfileTypeModal);
+  profileType.change(newProfileType);
+  loginBtn.on('click', openLoginModal);
+  signupBtn.on('click', openSignupModal);
+  signupForm.submit(signupValidation);
+  dashboardBtn.on('click', openDashboard);
+  displayUserProfile();
+  logoutBtn.on('click', logoutUser);
+  displayRecommendations();
+  googleTranslateElementInit();
 
 });
