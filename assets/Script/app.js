@@ -193,6 +193,7 @@ $(document).ready(function () {
   });
 
   //News Section
+  //https://ilikekillnerds.com/2023/02/handling-errors-with-the-fetch-api/
   //https://mediastack.com/
   // http://api.mediastack.com/v1/
   //key 400ac6f6b4a53023ad0df9c54d691c7b
@@ -211,7 +212,7 @@ $(document).ready(function () {
         if(response.ok) {
           return response.json();
         } else {
-          alert('Something went wrong'); //change later to proper throw error, no alerts allowed for project, 'catch (error)'?
+          throw new Error('Something went wrong');
         };
       })
       .then(function (data) {
@@ -251,6 +252,9 @@ $(document).ready(function () {
           var newsImageUrl5 = $('<img>').attr("src", data.data[4].image);
           var newsUrl5 = $('<a>').attr("href", data.data[4].url).text('Click to read article');
           topstory5.append(newsImageUrl5, newsTitle5, newsDescription5, newsUrl5);
+      })
+      .catch(function (error) {
+        console.error('Error: ', error);
       });
     };
     
