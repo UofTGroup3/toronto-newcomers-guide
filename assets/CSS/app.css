@@ -129,11 +129,30 @@ label[for="lanSelect"] {
   color: #005f73;
 }
 
-#parallaxImg {
-  /* width: 100%;
-  height: auto; */
-  background-image: url("../images/ParallaxImages/Torornro.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/**************Dashboard Page*****************/
+
+#dashFooter {
+  margin: 1em 2em;
+}
+
+#interactiveMapContainer {
+  border: 0.2em solid #9a031e;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+#interactiveMapContainer h2 {
+  font-family: "Comfortaa", cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fb8500;
+  margin: 0.5em 0;
+  border-bottom: 0.08em solid #fb8500;
+}
+
+#interactiveMapContainer p {
+  font-family: "Edu SA Beginner", cursive;
+  font-size: 1.3rem;
+  color: #219ebc;
+  margin: 0.5em 0;
 }

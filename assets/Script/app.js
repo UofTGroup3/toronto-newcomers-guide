@@ -529,7 +529,10 @@ $(document).ready(function () {
     }, 'google_translate_element');
   };
 
+  // https://materializecss.com/parallax.html
+  // Initialize parallax
   $('.parallax').parallax();
+
   profileTypeBtn.on('click', openProfileTypeModal);
   profileType.change(newProfileType);
   loginBtn.on('click', openLoginModal);
