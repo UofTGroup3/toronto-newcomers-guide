@@ -203,10 +203,6 @@ label[for="lanSelect"] {
   font-weight: 400;
 }
 
-.map {
-  max-height: 250px;
-}
-
 .news {
   background-color: rgba(0, 0, 0, 0.162);
   height: 800px;
@@ -280,13 +276,10 @@ label[for="lanSelect"] {
   color: #fb8500;
 }
 
-#dashFooter {
-  margin: 1em 2em;
-}
-
 #interactiveMapContainer {
   border: 0.2em solid #9a031e;
   border-radius: 1em;
+  margin: 1em 2em;
   padding: 1em;
 }
 

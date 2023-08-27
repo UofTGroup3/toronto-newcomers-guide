@@ -8,8 +8,6 @@
   <meta name="author" content="Code Breakers" />
   <!--********************CSS Reset************************-->
   <link rel="stylesheet" href="./assets/CSS/css-reset.css" />
-  <!--********************jQuery UI CSS************************-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
   <!--********************Materialize CSS link************************-->
   <link type="text/css" rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
@@ -45,7 +43,8 @@
 
       <div id="google_translate_element"></div>
 
-      <!-- Creating a section for the user dropdown-->
+      <!--*************************User Login************************-->
+
       <div id="user">
 
         <a class="btn-floating btn-large cyan pulse dropdown-trigger" href="#" data-target="userDropdown" id="userBtn"
@@ -173,8 +172,8 @@
       </div>
 
     </section>
+    <!--*************************Main Navbar*************************-->
 
-    <!--TODO: connect links -->
     <nav id="mainNav">
 
       <ul>
@@ -198,8 +197,10 @@
         <li><a href="#newsContainer" rel="bookmark" class="navTxt">News</a></li>
       </ul>
 
+      <!--**************************Social Media*****************************-->
+
+      <!-- Creating social media Icons using Fontawesome library -->
       <div id="socialMedia">
-        <!-- TODO: change the fontawesome icon -->
         <a href="https://www.facebook.com/" target="_blank" aria-label="facebook" rel="noopener"
           class="socialMediaIcons"><i class="fa-brands fa-square-facebook fa-bounce"></i></a>
         <a href="https://www.instagram.com/" target="_blank" aria-label="instagram" rel="noopener"
@@ -210,6 +211,7 @@
           class="socialMediaIcons"><i class="fa-brands fa-youtube fa-bounce"></i></a>
       </div>
 
+      <!--*********************Search form(just google for now)********************-->
       <form id="searchForm">
         <input type="text" name="search" id="search" placeholder="Search" />
         <button type="submit" name="query" id="searchBtn" aria-label="searchBtn">
@@ -222,6 +224,10 @@
   </header>
 
   <main>
+
+    <!--*****************************Sliders******************************-->
+
+    <!-- Creating sliders using Materialize CSS Library -->
     <div class="slideContainer">
       <div class="slider">
         <div class="slide">
@@ -325,7 +331,6 @@
 
       <div id="heroImgContainer">
         <div id="heroImage">
-          <!--NOTE: This element should hold the hero image as background image -->
           <a href="" rel="" draggable="false" target="_blank">
             <h2>New to GTA?</h2>
             <p>Learn about living and working in GTA</p>
@@ -334,13 +339,11 @@
       </div>
 
       <div id="heroText">
-        <!--NOTE: This element should hold a background image -->
         <h1>Canada</h1>
         <h2>Welcomes You</h2>
       </div>
 
       <div id="about">
-        <!--NOTE: This element should hold a background image -->
         <h3>Learn more about TNG Services</h3>
         <p>The Toronto Newcomers’ Guide (TNG) was developed by experienced immigrants
           who know the difficulties of adapting to life in a new land. We aim
@@ -757,37 +760,37 @@
       <div class="map" id="attractionsMap">
         <iframe
           src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/iwxq/neighborhood-discovery.html"
-          loading="lazy">
+          width="100%" height="100%" loading="lazy">
         </iframe>
       </div>
       <div class="map" id="schoolsMap">
         <iframe
           src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/5432/neighborhood-discovery.html"
-          loading="lazy">
+          width="100%" height="100%" loading="lazy">
         </iframe>
       </div>
       <div class="map" id="hospitals-pharmaciesMap">
         <iframe
           src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/5cdk/neighborhood-discovery.html"
-          loading="lazy">
+          width="100%" height="100%" loading="lazy">
         </iframe>
       </div>
       <div class="map" id="postLibraryMap">
         <iframe
           src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/7puo/neighborhood-discovery.html"
-          loading="lazy">
+          width="100%" height="100%" loading="lazy">
         </iframe>
       </div>
       <div class="map" id="policeFireMap">
         <iframe
           src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/mm37/neighborhood-discovery.html"
-          loading="lazy">
+          width="100%" height="100%" loading="lazy">
         </iframe>
       </div>
       <div class="map" id="housingSettlementMap">
         <iframe
           src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/va3y/neighborhood-discovery.html"
-          loading="lazy">
+          width="100%" height="100%" loading="lazy">
         </iframe>
       </div>
 
@@ -809,7 +812,6 @@
 
   </main>
 
-  <!-- TODO: Add links and other related stuff -->
   <footer>
 
     <div id="contact">
@@ -830,8 +832,6 @@
     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <!--********************JQuery CDN************************-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-  <!--********************JQuery UI CDN************************-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
   <!--********************Materialize JS link************************-->
   <script type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
