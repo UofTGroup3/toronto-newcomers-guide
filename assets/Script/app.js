@@ -199,13 +199,13 @@ $(document).ready(function () {
   //get dates in proper format for parameter filter to GET newest stories
   var today = dayjs();
   today = today.format('YYYY-MM-DD');
-  var yesterday = dayjs().subtract(1, 'day');
-  yesterday = yesterday.format('YYYY-MM-DD');
+  var twoDaysAgo = dayjs().subtract(2, 'day');
+  twoDaysAgo = twoDaysAgo.format('YYYY-MM-DD');
   
   //GET API data
   var showNews = function() {
   var key = "400ac6f6b4a53023ad0df9c54d691c7b"
-  var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&keywords=toronto&date="+ yesterday + "," + today;
+  var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&keywords=toronto&date="+ twoDaysAgo + "," + today;
     fetch(queryURL)
       .then(function (response) {
         if(response.ok) {
