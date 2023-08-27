@@ -131,27 +131,24 @@ label[for="lanSelect"] {
 
 .card {
   background-color: rgba(0, 0, 0, 0.162);
-  height: 800px;
+  height: 650px;
   padding: 3%;
   border: 2px solid black;
 }
 
 .card-image img {
   max-width: 100%;
-  height: 400px;
+  height: 25vh;
   object-fit: cover;
 }
 
 .card-content,
 .title {
   max-height: initial;
-  font-size: 18px;
+  font-size: 16px;
   color: rgb(17, 12, 12);
-}
-
-.card-links {
-  font-size: 20px;
-  color: #08339e;
+  text-align: left;
+  line-height: 25px;
 }
 
 .slider {
@@ -208,4 +205,13 @@ label[for="lanSelect"] {
 
 .map {
   height: 500px;
+}
+
+/*Media query is set for the cards to respond to the different screen sizes depending on the user's preference. */
+@media screen and (max-width: 600px) {
+  .card-content,
+  .title {
+    max-height: initial;
+    font-size: 12px;
+  }
 }
