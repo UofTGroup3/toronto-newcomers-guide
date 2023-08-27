@@ -34,6 +34,7 @@ $(document).ready(function () {
   var today = dayjs().format('YYYY-MM-DD');
   var twoDaysAgo = dayjs().subtract(2, 'day').format('YYYY-MM-DD');
   var slideIndex = 0;
+  var googleTranslateElement = $('#google_translate_element');
   // Here I'm trying to create an array to store the recommendations based on the profile type selected. based 
   //TODO: check all links and images
   var recommendationsArray = [
@@ -585,32 +586,25 @@ $(document).ready(function () {
   var displayRecommendations = function () {
 
     var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
-    var storedUsername = localStorage.getItem('username');
-    var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
-    var isProfileTypeSelected = storedProfileType !== 'Not Selected';
     var recommendationsList;
 
-    if (isLoggedin && storedUsername && isProfileTypeSelected) {
-
-      switch (storedProfileType) {
-        case 'student':
-          recommendationsList = recommendationsArray[0].studentRecommendations;
-          break;
-        case 'refugee':
-          recommendationsList = recommendationsArray[1].refugeeRecommendations;
-          break;
-        case 'temporary resident':
-          recommendationsList = recommendationsArray[2].temporaryRecommendations;
-          break;
-        case 'permanent resident':
-          recommendationsList = recommendationsArray[3].prRecommendations;
-          break;
-        default:
-          recommendations.text('No recommendations available');
-          return;
-      }
-
-    };   
+    switch (storedProfileType) {
+      case 'student':
+        recommendationsList = recommendationsArray[0].studentRecommendations;
+        break;
+      case 'refugee':
+        recommendationsList = recommendationsArray[1].refugeeRecommendations;
+        break;
+      case 'temporary resident':
+        recommendationsList = recommendationsArray[2].temporaryRecommendations;
+        break;
+      case 'permanent resident':
+        recommendationsList = recommendationsArray[3].prRecommendations;
+        break;
+      default:
+        recommendations.text('No recommendations available');
+        return;
+    }; 
 
     recommendationsList.forEach(function (recommendation) {
       var recommendationCard = createRecommendationCard(recommendation);
