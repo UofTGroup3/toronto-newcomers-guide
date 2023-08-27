@@ -181,6 +181,31 @@ label[for="lanSelect"] {
   transition: 2s;
 }
 
+.sliderContent {
+  position: absolute;
+  color: #222;
+  background: rgba(255, 255, 255, 0.9);
+  width: 80%;
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  transition: 0.7s;
+}
+
+.sliderContent h2 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.sliderContent p {
+  font-size: 20px;
+  font-weight: 20;
+  line-height: 35px;
+  font-weight: 400;
+}
+
 .map {
   height: 500px;
 }
