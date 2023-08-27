@@ -49,14 +49,14 @@
       <div id="user">
 
         <a class="btn-floating btn-large cyan pulse dropdown-trigger" href="#" data-target="userDropdown" id="userBtn"
-          aria-label="userBtn">
-          <i class="material-icons">account_box</i>
+          aria-label="userBtn"><i class="material-icons">account_box</i>
         </a>
 
         <!-- Dropdown Menu when user button is clicked -->
         <ul id="userDropdown" class="dropdown-content">
           <li><a href="#loginModal" id="loginBtn" aria-label="loginBtn">Login</a></li>
           <li><a href="#signupModal" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
+          <li><a href="#" id="dashboardBtn" aria-label="dashboard">Dashboard</a></li>
           <li><a href="#!" id="logoutBtn" aria-label="logoutBtn">Logout</a></li>
         </ul>
 
@@ -76,9 +76,8 @@
               <select name="profileType" id="profileType" aria-label="profileType">
                 <option value="student">Student</option>
                 <option value="refugee">Refugee</option>
-                <option value="skilledWorker">Skilled Worker</option>
-                <option value="tempWorker">Temporary Worker</option>
-                <option value="PR">Permanent Resident</option>
+                <option value="temporary resident">Temporary Resident</option>
+                <option value="permanent resident">Permanent Resident</option>
               </select>
             </div>
           </form>
@@ -106,13 +105,13 @@
             <label for="password">Password</label>
           </div>
 
-          <p class="red-text" id="loginError">Invalid username or password.</p>
-
         </div>
+
         <div class="modal-footer">
           <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="actualLoginBtn">Login</a>
           <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
+
       </div>
 
       <!-- Creating Signup Modal Structure using Materialize CSS Library -->
@@ -153,6 +152,7 @@
               </div>
             </div>
           </form>
+
         </div>
 
         <div class="modal-footer">
@@ -844,12 +844,9 @@
       <a href="" rel="" draggable="false" target="_blank">Contact Us</a>
     </div>
 
-    <div>
-      <p class="footerTxt">Toronto Newcomers' Guide</p>
-      <p class="footerTxt">
-        <i class="fa-regular fa-copyright"></i>
-        | Aug, 2023 | Developed by <span>Code Breakers Team</span>
-      </p>
+    <div id="copyRight">
+      <p>Toronto Newcomers' Guide</p>
+      <p><i class="fa-regular fa-copyright"></i>| Aug, 2023 | Developed by <span>Code Breakers Team</span></p>
     </div>
 
   </footer>
