@@ -207,6 +207,7 @@ label[for="lanSelect"] {
   height: 500px;
 }
 
+
 /*Media query is set for the cards to respond to the different screen sizes depending on the user's preference. */
 @media screen and (max-width: 600px) {
   .card-content,
@@ -215,3 +216,12 @@ label[for="lanSelect"] {
     font-size: 12px;
   }
 }
+
+.news {
+  background-color: rgba(0, 0, 0, 0.162);
+  height: 800px;
+  padding: 3%;
+  border: 2px solid black;
+  margin-bottom: 3%;
+}
+
