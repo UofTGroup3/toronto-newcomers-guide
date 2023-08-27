@@ -527,7 +527,7 @@ $(document).ready(function () {
           var newsTitle = $('<h3>').text(data.data[i].title);
           var newsDescription = $('<p>').text(data.data[i].description);
           var newsImageUrl = $('<img>').attr("src", data.data[i].image).css({'width':'100%'});
-          var newsUrl = $('<a>').attr("href", data.data[i].url).text('Click to read article');
+          var newsUrl = $('<a>').attr({ "href": data.data[i].url, "target": "_blank" }).text('Click to read article');
           topstory.append(newsImageUrl, newsTitle, newsDescription, newsUrl);
         };
       })
