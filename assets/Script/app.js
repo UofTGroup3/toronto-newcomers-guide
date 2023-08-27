@@ -1,38 +1,36 @@
-
 // Used(https://learn.jquery.com/using-jquery-core) and (https://materializecss.com) documentations as reference.
 $(document).ready(function () {
-
-  var userBtn = $('#userBtn');
-  var userDropdown = $('#userDropdown');
-  var modal = $('.modal');
-  var select = $('select');
-  var profileType = $('#profileType');
-  var profileTypeForm = $('#profileTypeForm');
-  var profileTypeBtn = $('#profileTypeBtn');
-  var profileTypeModal = $('#profileTypeModal');
+  var userBtn = $("#userBtn");
+  var userDropdown = $("#userDropdown");
+  var modal = $(".modal");
+  var select = $("select");
+  var profileType = $("#profileType");
+  var profileTypeForm = $("#profileTypeForm");
+  var profileTypeBtn = $("#profileTypeBtn");
+  var profileTypeModal = $("#profileTypeModal");
   // Used(https://learn.jquery.com/using-jquery-core/selecting-elements/) as reference.
-  var actualLoginBtn = $('#actualLoginBtn');
-  var username = $('#username');
-  var password = $('#password');
-  var loginBtn = $('#loginBtn');
-  var loginModal = $('#loginModal');
-  var loginError = $('#loginError');
-  var signupBtn = $('#signupBtn');
-  var signupForm = $('#signupForm');
-  var signupModal = $('#signupModal');
-  var signupUsername = $('#signupUsername');
-  var signupEmail = $('#signupEmail');
-  var signupPassword = $('#signupPassword');
-  var signupConfirmPassword = $('#signupConfirmPassword');
-  var errorMsg = $('#errorMsg');
-  var errorMsgText = $('#errorMsgText');
-  var displayUsername = $('#displayUsername');
-  var displayProfileType = $('#displayProfileType');
-  var userProfile = $('#userProfile');
-  var logoutBtn = $('#logoutBtn');
-  var users = JSON.parse(localStorage.getItem('users')) || [];
-  var carouselImg = $('.carousel');
-  var dropdownTrigger = $('.dropdown-trigger');
+  var actualLoginBtn = $("#actualLoginBtn");
+  var username = $("#username");
+  var password = $("#password");
+  var loginBtn = $("#loginBtn");
+  var loginModal = $("#loginModal");
+  var loginError = $("#loginError");
+  var signupBtn = $("#signupBtn");
+  var signupForm = $("#signupForm");
+  var signupModal = $("#signupModal");
+  var signupUsername = $("#signupUsername");
+  var signupEmail = $("#signupEmail");
+  var signupPassword = $("#signupPassword");
+  var signupConfirmPassword = $("#signupConfirmPassword");
+  var errorMsg = $("#errorMsg");
+  var errorMsgText = $("#errorMsgText");
+  var displayUsername = $("#displayUsername");
+  var displayProfileType = $("#displayProfileType");
+  var userProfile = $("#userProfile");
+  var logoutBtn = $("#logoutBtn");
+  var users = JSON.parse(localStorage.getItem("users")) || [];
+  var carouselImg = $(".carousel");
+  var dropdownTrigger = $(".dropdown-trigger");
 
   // Initialize dropdown, modals and select
   dropdownTrigger.dropdown();
@@ -40,43 +38,40 @@ $(document).ready(function () {
   select.formSelect();
 
   //giving users a fresh start when they try again.
-  loginModal.on('close', function () {
+  loginModal.on("close", function () {
     loginError.hide();
   });
 
   var openProfileTypeModal = function () {
-    profileTypeModal.modal('open');
+    profileTypeModal.modal("open");
   };
 
   var newProfileType = function () {
-
     var selectedProfile = profileType.val();
-    localStorage.setItem('profileType', selectedProfile);
-
+    localStorage.setItem("profileType", selectedProfile);
   };
 
   var openLoginModal = function () {
-    loginModal.modal('open');
+    loginModal.modal("open");
   };
 
   window.attemptLogin = function () {
-
     loginError.hide();
     var loginUsername = username.val();
     var loginPassword = password.val();
 
-    var userExists = users.some(function(user) {
-        return user.username === loginUsername && user.password === loginPassword;
+    var userExists = users.some(function (user) {
+      return user.username === loginUsername && user.password === loginPassword;
     });
 
     if (userExists) {
-      localStorage.setItem('isLoggedin', 'true');
-      localStorage.setItem('username', loginUsername);
-      localStorage.setItem('password', loginPassword);
+      localStorage.setItem("isLoggedin", "true");
+      localStorage.setItem("username", loginUsername);
+      localStorage.setItem("password", loginPassword);
       newProfileType();
       displayUserProfile();
       //using the jQuery method for closing modals with Materialize CSS.
-      loginModal.modal('close');
+      loginModal.modal("close");
     } else {
       loginError.show();
     }
@@ -87,7 +82,7 @@ $(document).ready(function () {
   });
 
   var openSignupModal = function () {
-    signupModal.modal('open');
+    signupModal.modal("open");
   };
 
   var signupValidation = function (event) {
@@ -102,17 +97,17 @@ $(document).ready(function () {
     //email validation regex from (https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript)
     var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailRegex.test(signupEmailValue)) {
-      showError('Invalid email address');
+      showError("Invalid email address");
       return;
     }
 
     if (signupPasswordValue.length < 8) {
-      showError('Password must be at least 8 characters');
+      showError("Password must be at least 8 characters");
       return;
     }
 
     if (signupPasswordValue !== signupConfirmPasswordValue) {
-      showError('Passwords do not match');
+      showError("Passwords do not match");
       return;
     }
 
@@ -120,24 +115,23 @@ $(document).ready(function () {
       username: signupUsernameValue,
       email: signupEmailValue,
       password: signupPasswordValue,
-      profileType: localStorage.getItem('profileType') || 'Not Selected'
+      profileType: localStorage.getItem("profileType") || "Not Selected",
     };
 
     users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem("users", JSON.stringify(users));
 
     //closing the modal and resetting the form.
-    signupModal.modal('close');
+    signupModal.modal("close");
     signupForm[0].reset();
     displayUserProfile();
-
   };
 
   var displayUserProfile = function () {
-
-    var storedUsername = localStorage.getItem('username');
-    var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
-    var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
+    var storedUsername = localStorage.getItem("username");
+    var storedProfileType =
+      localStorage.getItem("profileType") || "Not Selected";
+    var isLoggedin = localStorage.getItem("isLoggedin") === "true";
 
     if (isLoggedin && storedUsername) {
       displayUsername.text(storedUsername);
@@ -146,11 +140,10 @@ $(document).ready(function () {
     } else {
       userProfile.hide();
     }
-
   };
 
   var logoutUser = function () {
-    localStorage.setItem('isLoggedin', 'false');
+    localStorage.setItem("isLoggedin", "false");
     location.reload();
   };
 
@@ -158,16 +151,30 @@ $(document).ready(function () {
   var showError = function (errorMessage) {
     errorMsgText.text(errorMessage);
     //using the jQuery method for opening modals with Materialize CSS
-    errorMsg.modal('open');
+    errorMsg.modal("open");
   };
 
-  //Initializing the carousel
-  carouselImg.carousel({
-    indicators: true
-  });
-  var carouselTimer = function () {
-    carouselImg.carousel('next');
-  };
+  //function to autopay the slider every 8 seconds - reference from W3Schools.
+  //https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow_auto
+  var slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    var i;
+    var slides = document.querySelectorAll(".slide");
+
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 8000);
+  }
+  showSlides();
 
   //Map Functions
   //https://www.w3schools.com/jquery/jquery_hide_show.asp
@@ -175,45 +182,50 @@ $(document).ready(function () {
 
   //Hide All Maps
   function hideMaps() {
-    $('.map').hide();
-  };
+    $(".map").hide();
+  }
 
   //Show only 'attractions' map on load
   hideMaps();
-  $('#attractionsMap').show();
+  $("#attractionsMap").show();
 
   //Click event listeners for map buttons
-  $('.mapFilter').click(function () {
-  var filter = $(this).data('filter');
+  $(".mapFilter").click(function () {
+    var filter = $(this).data("filter");
 
-  //Hide all maps on click
-  hideMaps();
-  //Show clicked on map
-  $('#' + filter).show();
+    //Hide all maps on click
+    hideMaps();
+    //Show clicked on map
+    $("#" + filter).show();
   });
 
-    // // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
-    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate_dropdown
-    // https://codepen.io/j_holtslander/pen/PjPWMe
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({ pageLanguage: 'en', 
-      includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu', 
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
-      };
-    // // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate
-    // function googleTranslateElementInit() {
-    //   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-    // };
-    // googleTranslateElementInit();
+  // // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
+  // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate_dropdown
+  // https://codepen.io/j_holtslander/pen/PjPWMe
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: "en",
+        includedLanguages:
+          "en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu",
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      },
+      "google_translate_element"
+    );
+  }
+  // // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate
+  // function googleTranslateElementInit() {
+  //   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  // };
+  // googleTranslateElementInit();
 
-    profileTypeBtn.on('click', openProfileTypeModal);
-    profileType.change(newProfileType);
-    loginBtn.on('click', openLoginModal);
-    signupBtn.on('click', openSignupModal);
-    signupForm.submit(signupValidation);
-    displayUserProfile();
-    logoutBtn.on('click', logoutUser);
-    setInterval(carouselTimer, 5000);
-    googleTranslateElementInit();
-  
+  profileTypeBtn.on("click", openProfileTypeModal);
+  profileType.change(newProfileType);
+  loginBtn.on("click", openLoginModal);
+  signupBtn.on("click", openSignupModal);
+  signupForm.submit(signupValidation);
+  displayUserProfile();
+  logoutBtn.on("click", logoutUser);
+  setInterval(carouselTimer, 5000);
+  googleTranslateElementInit();
 });
