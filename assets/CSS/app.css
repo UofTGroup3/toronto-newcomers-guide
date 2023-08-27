@@ -131,6 +131,36 @@ label[for="lanSelect"] {
 
 /**************Dashboard Page*****************/
 
+#dashboardContent {
+  color: #219ebc;
+}
+
+#contactDash {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-top: 0.08em solid #fb8500;
+  color: #219ebc;
+}
+
+#contactDash p {
+  font-weight: bold;
+  color: #9a031e;
+}
+
+#contactDash a {
+  color: #540b0e;
+}
+
+#contactDash p,
+#contactDash a {
+  margin: 0 0 0.8em 0.5em;
+}
+
+#contactDash a:hover {
+  color: #fb8500;
+}
+
 #dashFooter {
   margin: 1em 2em;
 }
@@ -155,4 +185,9 @@ label[for="lanSelect"] {
   font-size: 1.3rem;
   color: #219ebc;
   margin: 0.5em 0;
+}
+
+#copyRight {
+  color: #540b0e;
+  margin: 1em;
 }
