@@ -192,6 +192,46 @@ $(document).ready(function () {
   $('#' + filter).show();
   });
 
+  //News Section
+  //https://ilikekillnerds.com/2023/02/handling-errors-with-the-fetch-api/
+  //https://mediastack.com/
+  
+  //get dates in proper format for parameter filter to GET newest stories
+  var today = dayjs();
+  today = today.format('YYYY-MM-DD');
+  var twoDaysAgo = dayjs().subtract(2, 'day');
+  twoDaysAgo = twoDaysAgo.format('YYYY-MM-DD');
+  
+  //GET API data
+  var showNews = function() {
+  var key = "400ac6f6b4a53023ad0df9c54d691c7b"
+  var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&keywords=toronto&date="+ twoDaysAgo + "," + today;
+    fetch(queryURL)
+      .then(function (response) {
+        if(response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Something went wrong');
+        };
+      })
+      .then(function (data) {
+        console.log(data);
+        
+        //Display data
+        for (var i = 0; i < 6; i++) {
+          var topstory = $('#topStory' + (i + 1));
+          var newsTitle = $('<h3>').text(data.data[i].title);
+          var newsDescription = $('<p>').text(data.data[i].description);
+          var newsImageUrl = $('<img>').attr("src", data.data[i].image).css({'width':'100%'});
+          var newsUrl = $('<a>').attr("href", data.data[i].url).text('Click to read article');
+          topstory.append(newsImageUrl, newsTitle, newsDescription, newsUrl);
+        };
+      })
+      .catch(function (error) {
+        console.error('Error: ', error);
+      });
+    };
+    
     // // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
     // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate_dropdown
     // https://codepen.io/j_holtslander/pen/PjPWMe
@@ -200,11 +240,6 @@ $(document).ready(function () {
       includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu', 
       layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
       };
-    // // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate
-    // function googleTranslateElementInit() {
-    //   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-    // };
-    // googleTranslateElementInit();
 
     profileTypeBtn.on('click', openProfileTypeModal);
     profileType.change(newProfileType);
@@ -214,6 +249,7 @@ $(document).ready(function () {
     displayUserProfile();
     logoutBtn.on('click', logoutUser);
     setInterval(carouselTimer, 5000);
+    showNews();
     googleTranslateElementInit();
   
 });
