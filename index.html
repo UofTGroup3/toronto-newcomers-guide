@@ -45,9 +45,9 @@
 
       <div id="google_translate_element"></div>
 
-
       <!-- Creating a section for the user dropdown-->
       <div id="user">
+
         <a class="btn-floating btn-large cyan pulse dropdown-trigger" href="#" data-target="userDropdown" id="userBtn"
           aria-label="userBtn"><i class="material-icons">account_box</i>
         </a>
@@ -92,7 +92,6 @@
       <div id="loginModal" class="modal">
 
         <div class="modal-content">
-
           <h4>Login</h4>
           <p>Please enter your username and password.</p>
 
@@ -118,17 +117,19 @@
       <!-- Creating Signup Modal Structure using Materialize CSS Library -->
       <div id="signupModal" class="modal">
         <div class="modal-content">
-
           <ul>
+
             <li>
               <h4>Sign Up</h4>
-              <p>Please enter a username, password and choose your current status by clicking on Profile Type Menu.</p>
+              <p>Please enter a username, password and choose your currentstatus by clicking on Profile Type Menu.</p>
               <p>After you sign up, you will be redirected to the main page.Then you can attempt to login.</p>
             </li>
+
             <li>
               <a href="#profileTypeModal" id="profileTypeBtn" aria-label="profileTypeBtn">Select Profile Type</a>
             </li>
             <li class="divider"></li>
+
           </ul>
 
           <form id="signupForm">
@@ -158,7 +159,6 @@
           <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
           <button type="submit" form="signupForm" class="waves-effect waves-green btn-flat">Sign Up</button>
         </div>
-
       </div>
 
       <!-- Creating Error Modal Structure using Materialize CSS Library -->
@@ -179,8 +179,7 @@
 
       <ul>
         <li><a href="./index.html" class="navTxt">Home</a></li>
-        <li>
-          <a href="#essentialServices" rel="bookmark" class="dropdown-trigger btn navTxt"
+        <li><a href="#essentialServices" rel="bookmark" class="dropdown-trigger btn navTxt"
             data-target="essentialsDropdown" aria-expanded="false" id="essentialsBtn">Essential Services</a>
           <ul id="essentialsDropdown" class="dropdown-content">
             <li><a href="#jobs" rel="bookmark" class="navTxt">Jobs</a></li>
@@ -213,9 +212,9 @@
 
       <form id="searchForm">
         <input type="text" name="search" id="search" placeholder="Search" />
-        <!-- TODO: change the fontawesome icon -->
-        <button type="submit" name="query" id="searchBtn" aria-label="searchBtn"> <i
-            class="material-icons">search</i></button>
+        <button type="submit" name="query" id="searchBtn" aria-label="searchBtn">
+          <i class="material-icons">search</i>
+        </button>
       </form>
 
     </nav>
@@ -223,6 +222,610 @@
   </header>
 
   <main>
+    <div class="slideContainer">
+      <div class="slider">
+        <div class="slide">
+          <img src="./assets/images/Header-images/Toronto.jpg" alt="Toronto-Word Image" />
+          <div class="sliderContent">
+            <h2>Welcome to Toronto Community</h2>
+            <p>
+              Welcome to Toronto, a diverse and welcoming city with endless
+              opportunities for personal and professional growth, cultural
+              experiences, and connections. Explore the neighborhoods, attend
+              local events, and become a part of this dynamic community.
+              <br />
+              <a
+                href="https://www.ircc.canada.ca/englishcode/newcomers/services/index.asp#table1caption"
+                target="_blank"
+                >Learn More</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <img src="./assets/images/Header-images/Niagara-Falls.jpg" alt="Niagara Falls Image" />
+          <div class="sliderContent">
+            <h2>
+              To obtain your Social Insurance Number (SIN), please visit Service
+              Canada.
+            </h2>
+            <p>
+              In Canada, a unique nine-digit Social Insurance Number (SIN) is
+              required to access government programs and benefits related to
+              employment and taxes. Newcomers can obtain a SIN by filling out an
+              application form with necessary documentation at a Service Canada
+              office.
+              <br />
+              <a
+                href="https://www.canada.ca/en/employment-social-development/services/sin.html"
+                target="_blank"
+                >Learn More</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <img
+            src="./assets/images/Header-images/Polson-Pier-Toronto.jpg"
+            alt="Polson Pier Toronto
+          Image"
+          />
+          <div class="sliderContent">
+            <h2>
+              Are you interested in learning how to obtain a driver's license?
+            </h2>
+            <p>
+              The process of obtaining a driver's license in Canada varies
+              depending on the province and the type of vehicle. To get accurate
+              and current information about the necessary requirements,
+              procedures, and fees, it is advisable to check the Service Ontario
+              website.
+              <br />
+              <a
+                href="https://www.ontario.ca/page/get-g-drivers-licence-new-drivers"
+                target="_blank"
+                >Learn More</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <img
+            src="./assets/images/Header-images/AerialShot-Toronto.jpg"
+            alt="Aerial Shot Toronto
+          Image"
+          />
+          <div class="sliderContent">
+
+              <h2>Ontario Health Insurance Plan (OHIP)</h2>
+              <p>
+                Ontario's health care plan is a service the province provides
+                that covers many of the health services you may require. To
+                obtain an Ontario health card, you must apply and be approved.
+                <a
+                  href="https://www.ontario.ca/page/apply-ohip-and-get-health-card"
+                  target="_blank"
+                  >Learn More</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <div class="slide">
+            <img src="./assets/images/Header-images/CanadaGoose.jpg" alt="Canada Goose Image" />
+            <div class="sliderContent">
+              <h2>
+                Are you a Refugee? <br />
+                Find out if you are eligible to apply for the Interim Federal
+                Health Program (IFHP)
+              </h2>
+              <p>
+                Certain groups of individuals in Canada can receive temporary
+                healthcare coverage if they are without provincial, territorial,
+                or private healthcare coverage.
+                <br />
+                <a
+                  href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/help-within-canada/health-care/interim-federal-health-program.html"
+                  target="_blank"
+                  >Learn More</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    <!--*********************************Hero Section***********************************-->
+
+    <section id="heroContainer">
+
+      <div id="heroImgContainer">
+        <div id="heroImage">
+          <!--NOTE: This element should hold the hero image as background image -->
+          <a href="" rel="" draggable="false" target="_blank">
+            <h2>New to GTA?</h2>
+            <p>Learn about living and working in GTA</p>
+          </a>
+        </div>
+      </div>
+
+      <div id="heroText">
+        <!--NOTE: This element should hold a background image -->
+        <h1>Canada</h1>
+        <h2>Welcomes You</h2>
+      </div>
+
+      <div id="about">
+        <!--NOTE: This element should hold a background image -->
+        <h3>Learn more about TNG Services</h3>
+        <p>The Toronto Newcomers’ Guide (TNG) was developed by experienced immigrants
+          who know the difficulties of adapting to life in a new land. We aim
+          to equip you with the essential information and resources needed to
+          explore the city and confidently embrace everything Toronto offers.</p>
+      </div>
+
+      <!--*********************************Essential Services***********************************-->
+
+      <div id="essentialServices">
+        <h2>Essential Services</h2>
+
+        <div class="row">
+          <div id="jobs" class="col l4 m5 s12">
+            <div class="card">
+              <div class="card-image">
+                <img src="./assets/images/Essential Services/Jobs.jpg" alt="job Image" />
+              </div>
+              <div class="card-content center">
+                <span class="card-title"><b>Jobs</b></span>
+                <p>
+                  The Toronto Newcomers’ Guide is a platform that offers
+                  direct links to job opportunities available in Toronto from
+                  the Government of Canada, the Government of Ontario, and the
+                  City of Toronto.
+                </p>
+                <br>
+                <ul>
+                  <li>
+                    <a href="https://jobs.toronto.ca/jobsatcity/" target="_blank" rel="noopener">
+                      Municipality Jobs Opportunity
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.gojobs.gov.on.ca/Search.aspx" target="_blank" rel="noopener">Government of
+                      Ontario Job
+                      Opportunity (Toronto Area)
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.jobbank.gc.ca/jobsearch/jobsearch?searchstring=&locationstring=Toronto%2C+ON&sort=M"
+                      target="_blank" rel="noopener">Government of Canada – Job Bank (Toronto Area)
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div id="housing" class="col l4 m5 s12">
+            <div class="card">
+              <div class="card-image">
+                <img src="./assets/images/Essential Services/House.jpg" alt="House Image" />
+              </div>
+              <div class="card-content center">
+                <span class="card-title"><b>Housing</b></span>
+                <p>
+                  As someone new to the area, searching for housing can be
+                  challenging. To assist you, we have compiled a list of
+                  potential housing providers sourced directly from the City
+                  of Toronto website. Additionally, we have included
+                  supplementary information from Yelp.com.
+                </p>
+                <br>
+                <ul>
+                  <li>
+                    <a href="https://www.toronto.ca/community-people/employment-social-support/housing-support/subsidized-housing-housing-benefits/housing-providers/"
+                      target="_blank" rel="noopener">City of Toronto (Housing Provider)
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.yelp.ca/search?find_desc=Rental+Agent&find_loc=Toronto%2C+ON" target="_blank"
+                      rel="noopener">Best Rental agent in Toronto as per Yelp
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div id="education" class="col l4 m5 s12">
+            <div class="card">
+              <div class="card-image">
+                <img src="./assets/images/Essential Services/education.jpg" alt="Classroom Image" />
+              </div>
+              <div class="card-content center">
+                <span class="card-title"><b>Education</b></span>
+                <p>
+                  We help connect students with information about educational
+                  institutions, scholarships, and credential assessment
+                  services.
+                </p>
+                <br>
+                <ul>
+                  <li>
+                    <a href="https://www.tdsb.on.ca/" target="_blank" rel="noopener">Toronto District School Board
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.ontario.ca/page/education-and-training" target="_blank" rel="noopener">
+                      Ministry of Education -Ontario
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/corporate/partners-service-providers/immigrant-serving-organizations/best-practices/foreign-educational-credential-assessment.html"
+                      target="_blank" rel="noopener">Educational Credential Assessment (ECA) – Service
+                      Providers
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div id="health" class="col l4 m5 s12">
+            <div class="card">
+              <div class="card-image">
+                <img src="./assets/images/Essential Services/Medical.jpg" alt="Clinic Image" />
+              </div>
+              <div class="card-content center">
+                <span class="card-title"><b>Health</b></span>
+                <p>
+                  Maintaining good health is important, and it's essential to
+                  know where to seek medical assistance if needed. Ontario has
+                  a provincial healthcare system, which you may be eligible
+                  for. If you are not eligible for this system, we can provide
+                  you with other useful information based on your status.
+                </p>
+                <br>
+                <ul>
+                  <li>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/new-life-canada/health-care/types-insurance.html"
+                      target="_blank" rel="noopener">Health Care in Canada – Government of Canada
+                      (Official Website)
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="https://www.toronto.ca/community-people/health-wellness-care/" target="_blank"
+                      rel="noopener">
+                      Toront Public Health
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="https://www.ontario.ca/page/general-hospital-locations#section-3" target="_blank"
+                      rel="noopener">
+                      Ministry of Health – Ontario
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="https://www.ontario.ca/page/apply-ohip-and-get-health-card" target="_blank" rel="noopener">
+                      Ontario Health Insurance Plan (OHIP)
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/help-within-canada/health-care/interim-federal-health-program.html"
+                      target="_blank" rel="noopener">For Refugees - Interim Federal Health Program (IFHP)
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div id="transportation" class="col l4 m5 s12">
+            <div class="card">
+              <div class="card-image">
+                <img src="./assets/images/Essential Services/Transportation.jpg" alt="Transportation Image" />
+              </div>
+              <div class="card-content center">
+                <span class="card-title"><b>Transportation</b></span>
+                <p>
+                  Our interactive map can assist you in finding nearby stores
+                  and locations. However, it is recommended to be familiar
+                  with the available public transportation options to avoid
+                  any confusion during your travels. We are happy to provide
+                  you with information regarding the Toronto Transit
+                  Commission (TTC), including schedules, routes, and rates.
+                  The Toronto Transit Commission (TTC) offers three modes of
+                  transportation: subway, streetcar, and bus.
+                </p>
+                <br>
+                <ul>
+                  <li>
+                    <a href="https://www.ttc.ca/en/." target="_blank" rel="noopener">Toronto Transit Commission (TTC)
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div id="banks" class="col l4 m5 s12">
+            <div class="card">
+              <div class="card-image">
+                <img src="./assets/images/Essential Services/Banks.jpg" alt="Banks Image" />
+              </div>
+              <div class="card-content center">
+                <span class="card-title"><b>Banks</b></span>
+                <p>
+                  It is important to open your bank account in Canada soon
+                  after your arrival. We can provide you with a comprehensive
+                  list of banks available in Toronto, along with links for
+                  your convenience. It is advisable to speak with an advisor
+                  to gain better insight into managing your finances and
+                  understanding the currency in Canada.
+                </p>
+                <br>
+                <ul>
+                  <li>
+                    <a href="https://www.bmo.com/en-ca/main/personal/" target="_blank" rel="noopener">
+                      Bank of Montreal, also known as BMO
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.cibc.com/en/personal-banking.html" target="_blank" rel="noopener">
+                      Canadian Imperial Bank of Commerce
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://coop.desjardins.com/oc/en.html" target="_blank" rel="noopener">
+                      Desjardins Group
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="https://www.nbc.ca/" target="_blank" rel="noopener">National Bank
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="https://www.rbcroyalbank.com/personal.html" target="_blank" rel="noopener">Royal Bank of
+                      Canada</a>
+                  </li>
+
+                  <li>
+                    <a href="https://www.scotiabank.com/ca/en/personal.html" target="_blank"
+                      rel="noopener">Scotiabank</a>
+                  </li>
+
+                  <li>
+                    <a href="https://www.td.com/ca/en/personal-banking" target="_blank" rel="noopener">TD Canada
+                      Trust</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div id="govenrment" class="col l4 m5 s12">
+            <div class="card">
+              <div class="card-image">
+                <img src="./assets/images/Essential Services/government.jpg" alt="Canada Flag Image" />
+              </div>
+              <div class="card-content center">
+                <span class="card-title"><b>Government</b></span>
+                <p>
+                  It is crucial to be aware of our rights, as knowledge
+                  empowers us. To aid in this, we are sharing a link to the
+                  official website of the Government of Canada's Immigration,
+                  Refugees and Citizenship Canada (IRCC) and other government
+                  websites that can provide useful information on the
+                  regulations and rules based on your status in Canada.
+                </p>
+                <br>
+                <ul>
+                  <li>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship.html" target="_blank"
+                      rel="noopener">Government of Canada Immigration, Refugees and Citizenship Canada (IRCC) Official
+                      Website.
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href=" https://www.canada.ca/en/immigration-refugees-citizenship/services/refugees/help-within-canada.html"
+                      target="_blank" rel="noopener">Refugees Services in Canada
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html"
+                      target="_blank" rel="noopener">Study in Canada</a>
+                  </li>
+
+                  <li>
+                    <a href="https://www.canada.ca/en/employment-social-development/services/foreign-workers/protected-rights.html"
+                      target="_blank" rel="noopener">Temporary foreign workers</a>
+                  </li>
+
+                  <li>
+                    <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/new-immigrants/pr-card/understand-pr-status.html"
+                      target="_blank" rel="noopener">Permanent Resident
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div id="library" class="col l4 m5 s12">
+            <div class="card">
+              <div class="card-image">
+                <img src="./assets/images/Essential Services/Library.jpg" alt="Library Image" />
+              </div>
+              <div class="card-content center">
+                <span class="card-title"><b>Library</b></span>
+                <p>
+                  Toronto Public Libraries offer a vast range of resources,
+                  including books, digital materials, multimedia resources,
+                  and educational programs. With many branches conveniently
+                  located throughout various neighborhoods, their programs
+                  cater to people of all ages.</p>
+                  <br>
+                  <ul>
+                    <li>
+                      <a href="https://www.torontopubliclibrary.ca/" target="_blank" rel="noopener">
+                        Toronto Public Librry official website
+                      </a>
+                    </li>
+                  </ul>
+                
+              </div>
+            </div>
+          </div>
+
+          <div id="sos" class="col l4 m5 s12">
+            <div class="card">
+              <div class="card-image">
+                <img src="./assets/images/Essential Services/SOS.jpg" alt="First Responder Image" />
+              </div>
+              <div class="card-content center">
+                <span class="card-title"><b>SOS</b></span>
+                <p>During times of crisis, Toronto Newcomers' Canada provides emergency contact information and
+                  resources to guarantee the safety and well-being of newcomers.</p>
+                  <br>
+                  <p>Emergency Lines</p>
+                <ul>
+                  <li>Dial 3-1-1: For city services support requests.</li>
+                  <li>Dial 9-1-1: For police, fire, and medical emergency.</li>
+                  <li>Dial 2-1-1: For Community, Mental Health Support, and Social Services.</li>
+                  <li>Contact 416-808-2222: Non-emergency line.</li>
+                  <li><a
+                    href="https://www.toronto.ca/community-people/public-safety-alerts/understanding-emergency-services/fire-station-locations/"
+                    target="_blank" rel="noopener">Fire Station available locations</a></li>
+                <li><a href=" https://www.tps.ca/my-neighbourhood/" target="_blank" rel="noopener">police division
+                    locations</a></li>
+                   </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </section>
+
+    <!--*********************************News Section***********************************-->
+    <section id="newsContainer">
+      <div id="newsTxt">
+        <h2>Featured News</h2>
+        <p>Stay up to date with the latest local news stories</p>
+        <div class="row">
+          <div class="col l4 m5 s12">
+            <div class="news">
+            <div id="topStory1"></div>
+          </div>
+        </div>
+        <div class="col l4 m5 s12">
+          <div class="news">
+          <div id="topStory2"></div>
+        </div>
+      </div>
+      <div class="col l4 m5 s12">
+        <div class="news">
+        <div id="topStory3"></div>
+      </div>
+    </div>
+    <div class="col l4 m5 s12">
+            <div class="news">
+            <div id="topStory4"></div>
+          </div>
+        </div>
+        <div class="col l4 m5 s12">
+          <div class="news">
+          <div id="topStory5"></div>
+        </div>
+      </div>
+      <div class="col l4 m5 s12">
+        <div class="news">
+        <div id="topStory6"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+    </section>
+
+    <!--*********************************Intractive Map***********************************-->
+
+    <section id="interactiveMapContainer">
+
+      <h2>Explore Essential Places Around You</h2>
+      <p>Use our interactive map to find key services and places in Toronto. You can also do a custom search for a
+        business name or
+        search for an address. If you zoom in to street level, you will see information about transit stations to make
+        planning
+        your trip easier. In the side panel you can access more information such as reviews, contact information, and
+        hours of operation.
+      </p>
+
+      <!-- Container for the map; -->
+      <!-- https://console.cloud.google.com/google/maps-apis/build/neighborhood-discovery;isMapsRedirect=true?project=persuasive-yeti-396216 -->
+      <div class="map" id="attractionsMap">
+        <iframe
+          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/iwxq/neighborhood-discovery.html"
+          width="75%" height="100%" style="border:0;" loading="lazy">
+        </iframe>
+      </div>
+      <div class="map" id="schoolsMap">
+        <iframe
+          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/5432/neighborhood-discovery.html"
+          width="75%" height="100%" style="border:0;" loading="lazy">
+        </iframe>
+      </div>
+      <div class="map" id="hospitals-pharmaciesMap">
+        <iframe
+          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/5cdk/neighborhood-discovery.html"
+          width="75%" height="100%" style="border:0;" loading="lazy">
+        </iframe>
+      </div>
+      <div class="map" id="postLibraryMap">
+        <iframe
+          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/7puo/neighborhood-discovery.html"
+          width="75%" height="100%" style="border:0;" loading="lazy">
+        </iframe>
+      </div>
+      <div class="map" id="policeFireMap">
+        <iframe
+          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/mm37/neighborhood-discovery.html"
+          width="75%" height="100%" style="border:0;" loading="lazy">
+        </iframe>
+      </div>
+      <div class="map" id="housingSettlementMap">
+        <iframe
+          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/va3y/neighborhood-discovery.html"
+          width="75%" height="100%" style="border:0;" loading="lazy">
+        </iframe>
+      </div>
+
+      <!-- Additional controls and filters related to the map.-->
+      <div id="mapControls">
+        <button id="attractionsBtn" type="button" class="mapFilter" data-filter="attractionsMap">Attractions</button>
+        <button id="schoolsBtn" type="button" class="mapFilter" data-filter="schoolsMap">Schools</button>
+        <button id="hospitalsBtn" type="button" class="mapFilter" data-filter="hospitals-pharmaciesMap">Hospitals &
+          Pharmacies</button>
+        <button id="postLibraryBtn" type="button" class="mapFilter" data-filter="postLibraryMap">Post Office &
+          Libraries</button>
+        <button id="policeFireBtn" type="button" class="mapFilter" data-filter="policeFireMap">Police & Fire
+          Stations</button>
+        <button id="housingSettlementBtn" type="button" class="mapFilter" data-filter="housingSettlementMap">Housing &
+          Settlement Services</button>
+      </div>
+
+    </section>
 
   </main>
 
@@ -249,7 +852,8 @@
   </footer>
 
   <!--******************************Google Translate Library**************-->
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript"
+  script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <!--********************JQuery CDN************************-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <!--********************JQuery UI CDN************************-->

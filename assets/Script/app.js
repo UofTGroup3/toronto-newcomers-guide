@@ -296,7 +296,7 @@ $(document).ready(function () {
   select.formSelect();
 
   var openProfileTypeModal = function () {
-    profileTypeModal.modal('open');
+    profileTypeModal.modal("open");
   };
 
   var newProfileType = function () {
@@ -305,7 +305,7 @@ $(document).ready(function () {
   };
 
   var openLoginModal = function () {
-    loginModal.modal('open');
+    loginModal.modal("open");
   };
 
   // Defining a global function by using window object to be able to make a function available for use across different parts of the codebase
@@ -320,13 +320,13 @@ $(document).ready(function () {
     });
 
     if (userExists) {
-      localStorage.setItem('isLoggedin', 'true');
-      localStorage.setItem('username', loginUsername);
-      localStorage.setItem('password', loginPassword);
+      localStorage.setItem("isLoggedin", "true");
+      localStorage.setItem("username", loginUsername);
+      localStorage.setItem("password", loginPassword);
       newProfileType();
       displayUserProfile();
       //using the jQuery method for closing modals with Materialize CSS.
-      loginModal.modal('close');
+      loginModal.modal("close");
     } else {
       showError('Invalid username or password');
     }
@@ -337,7 +337,7 @@ $(document).ready(function () {
   });
 
   var openSignupModal = function () {
-    signupModal.modal('open');
+    signupModal.modal("open");
   };
 
   var signupValidation = function (event) {
@@ -354,17 +354,17 @@ $(document).ready(function () {
     //email validation regex from (https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript)
     var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailRegex.test(signupEmailValue)) {
-      showError('Invalid email address');
+      showError("Invalid email address");
       return;
     }
 
     if (signupPasswordValue.length < 8) {
-      showError('Password must be at least 8 characters');
+      showError("Password must be at least 8 characters");
       return;
     }
 
     if (signupPasswordValue !== signupConfirmPasswordValue) {
-      showError('Passwords do not match');
+      showError("Passwords do not match");
       return;
     }
 
@@ -372,17 +372,16 @@ $(document).ready(function () {
       username: signupUsernameValue,
       email: signupEmailValue,
       password: signupPasswordValue,
-      profileType: localStorage.getItem('profileType') || 'Not Selected'
+      profileType: localStorage.getItem("profileType") || "Not Selected",
     };
 
     users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem("users", JSON.stringify(users));
 
     //closing the modal and resetting the form.
-    signupModal.modal('close');
+    signupModal.modal("close");
     signupForm[0].reset();
     displayUserProfile();
-
   };
 
   var displayUserProfile = function () {
@@ -399,7 +398,7 @@ $(document).ready(function () {
     } else {
       userProfile.hide();
     }
-
+    
   };
 
   // Creating a function to display username and profile type in the dashboard page inside the related span elements.
@@ -510,7 +509,7 @@ $(document).ready(function () {
   };
   
   var logoutUser = function () {
-    localStorage.setItem('isLoggedin', 'false');
+    localStorage.setItem("isLoggedin", "false");
     location.reload();
   };
 
@@ -518,15 +517,6 @@ $(document).ready(function () {
   var showError = function (errorMessage) {
     errorMsgText.text(errorMessage);
     errorMsg.modal('open');
-  };
-
-  // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
   };
 
   // https://materializecss.com/parallax.html
@@ -543,6 +533,104 @@ $(document).ready(function () {
   logoutBtn.on('click', logoutUser);
   displayUserDashboard();
   displayRecommendations();
+  showNews();
   googleTranslateElementInit();
 
+
+
+  //function to autopay the slider every 8 seconds - reference from W3Schools.
+  //https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow_auto
+  var slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    var i;
+    var slides = document.querySelectorAll(".slide");
+
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 8000);
+  }
+  showSlides();
+
+  //Map Functions
+  //https://www.w3schools.com/jquery/jquery_hide_show.asp
+  //https://www.geeksforgeeks.org/how-to-filter-objects-by-data-attribute-value-in-jquery/
+
+  //Hide All Maps
+  function hideMaps() {
+    $(".map").hide();
+  }
+
+  //Show only 'attractions' map on load
+  hideMaps();
+  $("#attractionsMap").show();
+
+  //Click event listeners for map buttons
+  $(".mapFilter").click(function () {
+    var filter = $(this).data("filter");
+
+
+    //Hide all maps on click
+    hideMaps();
+    //Show clicked on map
+    $("#" + filter).show();
+  });
+
+  //News Section
+  //https://ilikekillnerds.com/2023/02/handling-errors-with-the-fetch-api/
+  //https://mediastack.com/
+  
+  //get dates in proper format for parameter filter to GET newest stories
+  var today = dayjs();
+  today = today.format('YYYY-MM-DD');
+  var twoDaysAgo = dayjs().subtract(2, 'day');
+  twoDaysAgo = twoDaysAgo.format('YYYY-MM-DD');
+  
+  //GET API data
+  var showNews = function() {
+  var key = "400ac6f6b4a53023ad0df9c54d691c7b"
+  var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&keywords=toronto&date="+ twoDaysAgo + "," + today;
+    fetch(queryURL)
+      .then(function (response) {
+        if(response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Something went wrong');
+        };
+      })
+      .then(function (data) {
+        console.log(data);
+        
+        //Display data
+        for (var i = 0; i < 6; i++) {
+          var topstory = $('#topStory' + (i + 1));
+          var newsTitle = $('<h3>').text(data.data[i].title);
+          var newsDescription = $('<p>').text(data.data[i].description);
+          var newsImageUrl = $('<img>').attr("src", data.data[i].image).css({'width':'100%'});
+          var newsUrl = $('<a>').attr("href", data.data[i].url).text('Click to read article');
+          topstory.append(newsImageUrl, newsTitle, newsDescription, newsUrl);
+        };
+      })
+      .catch(function (error) {
+        console.error('Error: ', error);
+      });
+    };
+    
+    // // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
+    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate_dropdown
+    // https://codepen.io/j_holtslander/pen/PjPWMe
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'en', 
+      includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu', 
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+      };
+  
 });
