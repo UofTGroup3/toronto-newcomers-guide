@@ -47,7 +47,7 @@ $(document).ready(function () {
           link: "https://www.ontario.ca/page/getting-health-card",
         },
         {
-          tiltle: "How to get your TTC student card?",
+          title: "How to get your TTC student card?",
           description: "Instructions to secure a student card for discounted Toronto Transit Commission fares.",
           link: "https://www.ttc.ca/Fares_and_passes/Passes/Post-Secondary_Student_Pass.jsp",
         },

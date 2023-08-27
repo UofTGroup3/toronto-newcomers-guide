@@ -131,8 +131,41 @@ label[for="lanSelect"] {
 
 /**************Dashboard Page*****************/
 
+.dashHeadContent {
+  border-bottom: 0.08em solid #fb8500;
+}
+
 #dashboardContent {
   color: #219ebc;
+}
+
+#recommendations {
+  font-size: 1.2rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 2em;
+  padding: 1em 0;
+  color: #6f1d1b;
+}
+
+.recCards {
+  margin: 0.2em;
+  padding: 0.4em;
+  border: 0.1em solid rgba(129, 178, 154, 0.8);
+  border-radius: 0.5em;
+  line-height: 1.5;
+}
+
+.recCards:hover {
+  background-color: rgba(251, 134, 0, 0.2);
+}
+
+.recCardsTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 0.08em solid #adb5bd;
 }
 
 #contactDash {
