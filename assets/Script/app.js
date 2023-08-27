@@ -519,22 +519,20 @@ $(document).ready(function () {
     errorMsg.modal('open');
   };
 
+  // // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
+    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate_dropdown
+    // https://codepen.io/j_holtslander/pen/PjPWMe
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'en', 
+    includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu', 
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+    };
+
   // https://materializecss.com/parallax.html
   // Initialize parallax
   $('.parallax').parallax();
 
-  profileTypeBtn.on('click', openProfileTypeModal);
-  profileType.change(newProfileType);
-  loginBtn.on('click', openLoginModal);
-  signupBtn.on('click', openSignupModal);
-  signupForm.submit(signupValidation);
-  dashboardBtn.on('click', openDashboard);
-  displayUserProfile();
-  logoutBtn.on('click', logoutUser);
-  displayUserDashboard();
-  displayRecommendations();
-  showNews();
-  googleTranslateElementInit();
+  
 
 
 
@@ -624,13 +622,17 @@ $(document).ready(function () {
       });
     };
     
-    // // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
-    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate_dropdown
-    // https://codepen.io/j_holtslander/pen/PjPWMe
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({ pageLanguage: 'en', 
-      includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu', 
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
-      };
+  profileTypeBtn.on('click', openProfileTypeModal);
+  profileType.change(newProfileType);
+  loginBtn.on('click', openLoginModal);
+  signupBtn.on('click', openSignupModal);
+  signupForm.submit(signupValidation);
+  dashboardBtn.on('click', openDashboard);
+  displayUserProfile();
+  logoutBtn.on('click', logoutUser);
+  displayUserDashboard();
+  displayRecommendations();
+  showNews();
+  googleTranslateElementInit();
   
 });
