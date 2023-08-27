@@ -422,12 +422,6 @@ $(document).ready(function () {
     var cardDiv = $('<div>');
     cardDiv.addClass('recCards');
     
-    // var cardImageDiv = $('<div>');
-    // cardImageDiv.addClass('recCardsImage');
-    // var cardImage = $('<img>');
-    // cardImage.attr('src', recommendation.image);
-    // cardImage.attr('alt', 'specific recommendation image');
-    
     var cardContentDiv = $('<div>');
     cardContentDiv.addClass('recCardsContent');
     var cardTitle = $('<span>');
@@ -443,7 +437,6 @@ $(document).ready(function () {
     cardActionLink.attr('target', '_blank');
     cardActionLink.text('Learn More');
     
-    // cardImageDiv.append(cardImage);
     cardContentDiv.append(cardTitle).append(cardDescription);
     cardActionDiv.append(cardActionLink);
     cardDiv.append(cardContentDiv).append(cardActionDiv);
@@ -536,6 +529,7 @@ $(document).ready(function () {
     }, 'google_translate_element');
   };
 
+  $('.parallax').parallax();
   profileTypeBtn.on('click', openProfileTypeModal);
   profileType.change(newProfileType);
   loginBtn.on('click', openLoginModal);

@@ -128,3 +128,12 @@ label[for="lanSelect"] {
   font-weight: bold;
   color: #005f73;
 }
+
+#parallaxImg {
+  /* width: 100%;
+  height: auto; */
+  background-image: url("../images/ParallaxImages/Torornro.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

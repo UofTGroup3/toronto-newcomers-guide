@@ -30,282 +30,253 @@
 
 <body>
 
-  <header>
-
-    <section class="headContent" id="mainHeader">
-
-      <div id="logo">
-        <img class="responsive-img" src="./assets/images/TNG/FaviconLogo.png" alt="TNG Logo" />
-      </div>
-
-      <div id="title">
-        <h1>Toronto Newcomers' Guide(TNG)</h1>
-        <p>Helping you settle in Toronto</p>
-      </div>
-
-      <div id="google_translate_element"></div>
-
-
-      <!-- Creating a section for the user dropdown-->
-      <div id="user">
-        <a class="btn-floating btn-large cyan pulse dropdown-trigger" href="#" data-target="userDropdown" id="userBtn"
-          aria-label="userBtn">
-          <i class="material-icons">account_box</i>
-        </a>
-
-        <!-- Dropdown Menu when user button is clicked -->
-        <ul id="userDropdown" class="dropdown-content">
-          <li><a href="#loginModal" id="loginBtn" aria-label="loginBtn">Login</a></li>
-          <li><a href="#signupModal" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
-          <li><a href="#!" id="logoutBtn" aria-label="logoutBtn">Logout</a></li>
-        </ul>
-
-        <div id="userProfile">
-          <p id="displayUsername"></p>
-          <p id="displayProfileType"></p>
-        </div>
-
-      </div>
-
-      <!-- Creating a modal for profile type selector -->
-      <div id="profileTypeModal" class="modal">
-        <div class="modal-content">
-          <h4>Select Profile Type</h4>
-          <form id="profileTypeForm">
-            <div class="input-field">
-              <select name="profileType" id="profileType" aria-label="profileType">
-                <option value="student">Student</option>
-                <option value="refugee">Refugee</option>
-                <option value="temporary resident">Temporary Resident</option>
-                <option value="permanent resident">Permanent Resident</option>
-              </select>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Select</a>
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-      </div>
-
-      <!-- Creating Login Modal Structure using Materialize CSS Library -->
-      <div id="loginModal" class="modal">
-
-        <div class="modal-content">
-
-          <h4>Login</h4>
-          <p>Please enter your username and password.</p>
-
-          <div class="input-field">
-            <input id="username" type="text" />
-            <label for="username">Username</label>
-          </div>
-
-          <div class="input-field">
-            <input id="password" type="password" />
-            <label for="password">Password</label>
-          </div>
-
-        </div>
-
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="actualLoginBtn">Login</a>
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-
-      </div>
-
-      <!-- Creating Signup Modal Structure using Materialize CSS Library -->
-      <div id="signupModal" class="modal">
-        <div class="modal-content">
-
-          <ul>
-            <li>
-              <h4>Sign Up</h4>
-              <p>Please enter a username, password and choose your current status by clicking on Profile Type Menu.</p>
-              <p>After you sign up, you will be redirected to the main page.Then you can attempt to login.</p>
-            </li>
-            <li>
-              <a href="#profileTypeModal" id="profileTypeBtn" aria-label="profileTypeBtn">Select Profile Type</a>
-            </li>
-            <li class="divider"></li>
-          </ul>
-
-          <form id="signupForm">
-            <div>
-              <div class="input-field">
-                <input type="text" id="signupUsername" required />
-                <label for="signupUsername">Username</label>
-              </div>
-              <div class="input-field">
-                <input type="email" id="signupEmail" required />
-                <label for="signupEmail">Email</label>
-              </div>
-              <div class="input-field">
-                <input type="password" id="signupPassword" required />
-                <label for="signupPassword">Password</label>
-              </div>
-              <div class="input-field">
-                <input type="password" id="signupConfirmPassword" required />
-                <label for="signupConfirmPassword">Confirm Password</label>
-              </div>
-            </div>
-          </form>
-
-        </div>
-
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-          <button type="submit" form="signupForm" class="waves-effect waves-green btn-flat">Sign Up</button>
-        </div>
-
-      </div>
-
-      <!-- Creating Error Modal Structure using Materialize CSS Library -->
-      <div id="errorMsg" class="modal">
-        <div class="modal-content">
-          <h4>Error</h4>
-          <p id="errorMsgText"></p>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-      </div>
-
-    </section>
-
-    <!--TODO: connect links -->
-    <nav id="mainNav">
-
-      <ul>
-        <li><a href="./index.html" class="navTxt">Home</a></li>
-        <li>
-          <a href="#essentialServices" rel="bookmark" class="dropdown-trigger btn navTxt"
-            data-target="essentialsDropdown" aria-expanded="false" id="essentialsBtn">Essential Services</a>
-          <ul id="essentialsDropdown" class="dropdown-content">
-            <li><a href="#jobs" rel="bookmark" class="navTxt">Jobs</a></li>
-            <li><a href="#housing" rel="bookmark" class="navTxt">Housing</a></li>
-            <li><a href="#education" rel="bookmark" class="navTxt">Education</a></li>
-            <li><a href="#health" rel="bookmark" class="navTxt">Health</a></li>
-            <li><a href="#transportation" rel="bookmark" class="navTxt">Transportation</a></li>
-            <li><a href="#banks" rel="bookmark" class="navTxt">Banks</a></li>
-            <li><a href="#government" rel="bookmark" class="navTxt">Government</a></li>
-            <li><a href="#library" rel="bookmark" class="navTxt">Library Information</a></li>
-          </ul>
-        </li>
-        <li><a href="#sos" rel="bookmark" class="navTxt">SOS</a></li>
-        <li><a href="#about" rel="bookmark" class="navTxt">About Us</a></li>
-        <li><a href="#contact" rel="bookmark" class="navTxt">Contact Us</a></li>
-        <li><a href="#newsContainer" rel="bookmark" class="navTxt">News</a></li>
-      </ul>
-
-      <div id="socialMedia">
-        <!-- TODO: change the fontawesome icon -->
-        <a href="https://www.facebook.com/" target="_blank" aria-label="facebook" rel="noopener"
-          class="socialMediaIcons"><i class="fa-brands fa-square-facebook fa-bounce"></i></a>
-        <a href="https://www.instagram.com/" target="_blank" aria-label="instagram" rel="noopener"
-          class="socialMediaIcons"><i class="fa-brands fa-instagram fa-bounce"></i></a>
-        <a href="https://www.twitter.com/" target="_blank" aria-label="twitter" rel="noopener"
-          class="socialMediaIcons"><i class="fa-brands fa-twitter fa-bounce"></i></a>
-        <a href="https://www.youtube.com/" target="_blank" aria-label="youtube" rel="noopener"
-          class="socialMediaIcons"><i class="fa-brands fa-youtube fa-bounce"></i></a>
-      </div>
-
-      <form id="searchForm">
-        <input type="text" name="search" id="search" placeholder="Search" />
-        <!-- TODO: change the fontawesome icon -->
-        <button type="submit" name="query" id="searchBtn" aria-label="searchBtn"> <i
-            class="material-icons">search</i></button>
-      </form>
-
-    </nav>
-
-  </header>
-
   <main>
 
-    <!-- Make a card -->
-    <section id="dashboardContent">
-      <h2>Welcome, <span id="usernameDisplay"></span></h2>
-      <h3><span id="profileTypeDisplay"></span> Personalized Recommendations</h3>
-      <div id="recommendations"></div>
-    </section>
 
-    <section id="interactiveMapContainer">
 
-      <h2>Explore Essential Places Around You</h2>
-      <p>Use our interactive map to find key services and places in Toronto. You can also do a custom search for a
-        business name or
-        search for an address. If you zoom in to street level, you will see information about transit stations to make
-        planning
-        your trip easier. In the side panel you can access more information such as reviews, contact information, and
-        hours of operation.
-      </p>
+    <div class="parallax-container">
+      <div class="parallax"><img src="./assets/images/ParallaxImages/Torornro.jpg" alt="picture of city of Toronto">
+      </div>
+    </div>
 
-      <!-- Container for the map; -->
-      <!-- https://console.cloud.google.com/google/maps-apis/build/neighborhood-discovery;isMapsRedirect=true?project=persuasive-yeti-396216 -->
-      <div class="map" id="attractionsMap">
-        <iframe
-          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/iwxq/neighborhood-discovery.html"
-          width="75%" height="100%" style="border:0;" loading="lazy">
-        </iframe>
-      </div>
-      <div class="map" id="schoolsMap">
-        <iframe
-          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/5432/neighborhood-discovery.html"
-          width="75%" height="100%" style="border:0;" loading="lazy">
-        </iframe>
-      </div>
-      <div class="map" id="hospitals-pharmaciesMap">
-        <iframe
-          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/5cdk/neighborhood-discovery.html"
-          width="75%" height="100%" style="border:0;" loading="lazy">
-        </iframe>
-      </div>
-      <div class="map" id="postLibraryMap">
-        <iframe
-          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/7puo/neighborhood-discovery.html"
-          width="75%" height="100%" style="border:0;" loading="lazy">
-        </iframe>
-      </div>
-      <div class="map" id="policeFireMap">
-        <iframe
-          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/mm37/neighborhood-discovery.html"
-          width="75%" height="100%" style="border:0;" loading="lazy">
-        </iframe>
-      </div>
-      <div class="map" id="housingSettlementMap">
-        <iframe
-          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/va3y/neighborhood-discovery.html"
-          width="75%" height="100%" style="border:0;" loading="lazy">
-        </iframe>
-      </div>
+    <div class="section white">
+      <div class="row container">
 
-      <!-- Additional controls and filters related to the map.-->
-      <div id="mapControls">
-        <button id="attractionsBtn" type="button" class="mapFilter" data-filter="attractionsMap">Attractions</button>
-        <button id="schoolsBtn" type="button" class="mapFilter" data-filter="schoolsMap">Schools</button>
-        <button id="hospitalsBtn" type="button" class="mapFilter" data-filter="hospitals-pharmaciesMap">Hospitals &
-          Pharmacies</button>
-        <button id="postLibraryBtn" type="button" class="mapFilter" data-filter="postLibraryMap">Post Office &
-          Libraries</button>
-        <button id="policeFireBtn" type="button" class="mapFilter" data-filter="policeFireMap">Police & Fire
-          Stations</button>
-        <button id="housingSettlementBtn" type="button" class="mapFilter" data-filter="housingSettlementMap">Housing &
-          Settlement Services</button>
-      </div>
+        <section class="headContent" id="mainHeader">
 
-    </section>
+          <div id="logo">
+            <img class="responsive-img" src="./assets/images/TNG/FaviconLogo.png" alt="TNG Logo" />
+          </div>
+
+          <div id="title">
+            <h1>Toronto Newcomers' Guide(TNG)</h1>
+            <p>Helping you settle in Toronto</p>
+          </div>
+
+          <div id="google_translate_element"></div>
+
+          <!--**************************************User Login***************************************-->
+
+          <!-- Creating a section for the user dropdown-->
+          <div id="user">
+            <a class="btn-floating btn-large cyan pulse dropdown-trigger" href="#" data-target="userDropdown"
+              id="userBtn" aria-label="userBtn">
+              <i class="material-icons">account_box</i>
+            </a>
+
+            <!-- Dropdown Menu when user button is clicked -->
+            <ul id="userDropdown" class="dropdown-content">
+              <li><a href="#loginModal" id="loginBtn" aria-label="loginBtn">Login</a></li>
+              <li><a href="#signupModal" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
+              <li><a href="#!" id="logoutBtn" aria-label="logoutBtn">Logout</a></li>
+            </ul>
+
+            <div id="userProfile">
+              <p id="displayUsername"></p>
+              <p id="displayProfileType"></p>
+            </div>
+
+          </div>
+
+          <!-- Creating a modal for profile type selector -->
+          <div id="profileTypeModal" class="modal">
+            <div class="modal-content">
+              <h4>Select Profile Type</h4>
+              <form id="profileTypeForm">
+                <div class="input-field">
+                  <select name="profileType" id="profileType" aria-label="profileType">
+                    <option value="student">Student</option>
+                    <option value="refugee">Refugee</option>
+                    <option value="temporary resident">Temporary Resident</option>
+                    <option value="permanent resident">Permanent Resident</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Select</a>
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+          </div>
+
+          <!-- Creating Login Modal Structure using Materialize CSS Library -->
+          <div id="loginModal" class="modal">
+
+            <div class="modal-content">
+
+              <h4>Login</h4>
+              <p>Please enter your username and password.</p>
+
+              <div class="input-field">
+                <input id="username" type="text" />
+                <label for="username">Username</label>
+              </div>
+
+              <div class="input-field">
+                <input id="password" type="password" />
+                <label for="password">Password</label>
+              </div>
+
+            </div>
+
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="actualLoginBtn">Login</a>
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+
+          </div>
+
+          <!-- Creating Signup Modal Structure using Materialize CSS Library -->
+          <div id="signupModal" class="modal">
+            <div class="modal-content">
+
+              <ul>
+                <li>
+                  <h4>Sign Up</h4>
+                  <p>Please enter a username, password and choose your current status by clicking on Profile Type Menu.
+                  </p>
+                  <p>After you sign up, you will be redirected to the main page.Then you can attempt to login.</p>
+                </li>
+                <li>
+                  <a href="#profileTypeModal" id="profileTypeBtn" aria-label="profileTypeBtn">Select Profile Type</a>
+                </li>
+                <li class="divider"></li>
+              </ul>
+
+              <form id="signupForm">
+                <div>
+                  <div class="input-field">
+                    <input type="text" id="signupUsername" required />
+                    <label for="signupUsername">Username</label>
+                  </div>
+                  <div class="input-field">
+                    <input type="email" id="signupEmail" required />
+                    <label for="signupEmail">Email</label>
+                  </div>
+                  <div class="input-field">
+                    <input type="password" id="signupPassword" required />
+                    <label for="signupPassword">Password</label>
+                  </div>
+                  <div class="input-field">
+                    <input type="password" id="signupConfirmPassword" required />
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+              <button type="submit" form="signupForm" class="waves-effect waves-green btn-flat">Sign Up</button>
+            </div>
+
+          </div>
+
+          <!-- Creating Error Modal Structure using Materialize CSS Library -->
+          <div id="errorMsg" class="modal">
+            <div class="modal-content">
+              <h4>Error</h4>
+              <p id="errorMsgText"></p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+          </div>
+
+        </section>
+
+        <!--********************************Personalized Recommendations*********************************-->
+
+        <section id="dashboardContent">
+          <h2>Welcome, <span id="usernameDisplay"></span></h2>
+          <h3><span id="profileTypeDisplay"></span> Personalized Recommendations</h3>
+          <div id="recommendations"></div>
+        </section>
+
+        <!--**************************************Interactive Map***************************************-->
+
+        <section id="interactiveMapContainer">
+
+          <h2>Explore Essential Places Around You</h2>
+          <p>Use our interactive map to find key services and places in Toronto. You can also do a custom search for a
+            business name or
+            search for an address. If you zoom in to street level, you will see information about transit stations to
+            make
+            planning
+            your trip easier. In the side panel you can access more information such as reviews, contact information,
+            and
+            hours of operation.
+          </p>
+
+          <!-- Container for the map; -->
+          <!-- https://console.cloud.google.com/google/maps-apis/build/neighborhood-discovery;isMapsRedirect=true?project=persuasive-yeti-396216 -->
+          <div class="map" id="attractionsMap">
+            <iframe
+              src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/iwxq/neighborhood-discovery.html"
+              width="75%" height="100%" style="border:0;" loading="lazy">
+            </iframe>
+          </div>
+          <div class="map" id="schoolsMap">
+            <iframe
+              src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/5432/neighborhood-discovery.html"
+              width="75%" height="100%" style="border:0;" loading="lazy">
+            </iframe>
+          </div>
+          <div class="map" id="hospitals-pharmaciesMap">
+            <iframe
+              src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/5cdk/neighborhood-discovery.html"
+              width="75%" height="100%" style="border:0;" loading="lazy">
+            </iframe>
+          </div>
+          <div class="map" id="postLibraryMap">
+            <iframe
+              src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/7puo/neighborhood-discovery.html"
+              width="75%" height="100%" style="border:0;" loading="lazy">
+            </iframe>
+          </div>
+          <div class="map" id="policeFireMap">
+            <iframe
+              src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/mm37/neighborhood-discovery.html"
+              width="75%" height="100%" style="border:0;" loading="lazy">
+            </iframe>
+          </div>
+          <div class="map" id="housingSettlementMap">
+            <iframe
+              src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/va3y/neighborhood-discovery.html"
+              width="75%" height="100%" style="border:0;" loading="lazy">
+            </iframe>
+          </div>
+
+          <!-- Additional controls and filters related to the map.-->
+          <div id="mapControls">
+            <button id="attractionsBtn" type="button" class="mapFilter"
+              data-filter="attractionsMap">Attractions</button>
+            <button id="schoolsBtn" type="button" class="mapFilter" data-filter="schoolsMap">Schools</button>
+            <button id="hospitalsBtn" type="button" class="mapFilter" data-filter="hospitals-pharmaciesMap">Hospitals &
+              Pharmacies</button>
+            <button id="postLibraryBtn" type="button" class="mapFilter" data-filter="postLibraryMap">Post Office &
+              Libraries</button>
+            <button id="policeFireBtn" type="button" class="mapFilter" data-filter="policeFireMap">Police & Fire
+              Stations</button>
+            <button id="housingSettlementBtn" type="button" class="mapFilter" data-filter="housingSettlementMap">Housing
+              &
+              Settlement Services</button>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+
+    <div class="parallax-container">
+      <div class="parallax"><img src="./assets/images/ParallaxImages/vladimir-visotsky-ZQKk3AXTGlQ-unsplash.jpg"
+          alt="an office image" id="parallaxImg"></div>
+    </div>
 
   </main>
 
   <footer>
-
-    <div id="feedback">
-      <h3>Feedback & Reviews</h3>
-      <p>What do you think about our services?</p>
-      <a href="" rel="" draggable="false" target="_blank">Leave a Review</a>
-    </div>
 
     <div id="contact">
       <h3>Contact Us</h3>
