@@ -211,6 +211,12 @@ label[for="lanSelect"] {
   margin-bottom: 3%;
 }
 
+#contact {
+  color: #219ebc;
+  margin: 1em;
+  border-bottom: 0.08em solid #fb8500;
+}
+
 /**************Dashboard Page*****************/
 
 .dashHeadContent {
@@ -258,21 +264,26 @@ label[for="lanSelect"] {
   color: #219ebc;
 }
 
-#contactDash p {
+#contactDash p,
+#contact p {
   font-weight: bold;
   color: #9a031e;
 }
 
-#contactDash a {
+#contactDash a,
+#contact a {
   color: #540b0e;
 }
 
 #contactDash p,
-#contactDash a {
+#contactDash a,
+#contact p,
+#contact a {
   margin: 0 0 0.8em 0.5em;
 }
 
-#contactDash a:hover {
+#contactDash a:hover,
+#contact a:hover {
   color: #fb8500;
 }
 
