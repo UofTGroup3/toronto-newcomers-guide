@@ -626,7 +626,8 @@ $(document).ready(function () {
   displayUserDashboard();
   displayRecommendations();
   showNews();
-  googleTranslateElementInit();
+  //Set a timeout for the google translate element to load properly.
+  setTimeout(googleTranslateElementInit, 2000);
   showSlides();
   
 });
