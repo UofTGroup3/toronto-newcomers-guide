@@ -204,7 +204,7 @@ label[for="lanSelect"] {
 }
 
 .map {
-  height: 500px;
+  max-height: 250px;
 }
 
 .news {
@@ -308,7 +308,7 @@ label[for="lanSelect"] {
 
 #copyRight {
   color: #540b0e;
-  margin: 1em;
+  margin: 2em;
 }
 
 /*Media query is set for the cards to respond to the different screen sizes depending on the user's preference. */
