@@ -30,6 +30,10 @@ $(document).ready(function () {
   var usernameDisplay = $('#usernameDisplay');
   var profileTypeDisplay = $('#profileTypeDisplay');
   var recommendations = $('#recommendations');
+  //get dates in proper format for parameter filter to GET newest stories
+  var today = dayjs().format('YYYY-MM-DD');
+  var twoDaysAgo = dayjs().subtract(2, 'day').format('YYYY-MM-DD');
+  var slideIndex = 0;
   // Here I'm trying to create an array to store the recommendations based on the profile type selected. based 
   //TODO: check all links and images
   var recommendationsArray = [
@@ -401,6 +405,138 @@ $(document).ready(function () {
     
   };
 
+  var openDashboard = function (event) {
+
+    event.preventDefault();
+
+    var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
+    var storedUsername = localStorage.getItem('username');
+    var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
+    var isProfileTypeSelected = storedProfileType !== 'Not Selected';
+
+    if (storedProfileType === 'Not Selected') {
+      showError('Please select a profile type');
+      return;
+    };
+    if (!isLoggedin) {
+      showError('Please login or signup');
+      return;
+    };
+    if (isLoggedin && storedUsername && isProfileTypeSelected) {
+      window.location.href = "dashboard.html";
+      displayUsername.text(storedUsername);
+      displayProfileType.text(storedProfileType);
+    };
+
+  };
+  
+  var logoutUser = function () {
+    localStorage.setItem("isLoggedin", "false");
+    location.reload();
+  };
+
+  //Helper function for showing error messages.
+  var showError = function (errorMessage) {
+    errorMsgText.text(errorMessage);
+    errorMsg.modal('open');
+  };
+
+  //*****************************Google Translate***************************
+  
+  // // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
+    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate_dropdown
+    // https://codepen.io/j_holtslander/pen/PjPWMe
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({ pageLanguage: 'en', 
+    includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu', 
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+    };
+
+  //*****************************Parallax***************************
+
+  // https://materializecss.com/parallax.html
+  // Initialize parallax
+  $('.parallax').parallax();
+
+  //*****************************Sliders***************************
+
+  //function to autopay the slider every 8 seconds - reference from W3Schools.
+  //https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow_auto
+  function showSlides() {
+    var i;
+    var slides = document.querySelectorAll(".slide");
+
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+      slideIndex = 1;
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 8000);
+  };
+
+  //************************Interactive Map************************
+
+  //https://www.w3schools.com/jquery/jquery_hide_show.asp
+  //https://www.geeksforgeeks.org/how-to-filter-objects-by-data-attribute-value-in-jquery/
+
+  //Hide All Maps
+  function hideMaps() {
+    $(".map").hide();
+  }
+
+  //Show only 'attractions' map on load
+  hideMaps();
+  $("#attractionsMap").show();
+
+  //Click event listeners for map buttons
+  $(".mapFilter").click(function () {
+    var filter = $(this).data("filter");
+    //Hide all maps on click
+    hideMaps();
+    //Show clicked on map
+    $("#" + filter).show();
+  });
+  
+  //********************News Section************************
+
+  //https://ilikekillnerds.com/2023/02/handling-errors-with-the-fetch-api/
+  //https://mediastack.com/
+  //GET API data
+  var showNews = function() {
+  var key = "400ac6f6b4a53023ad0df9c54d691c7b"
+  var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&keywords=toronto&date="+ twoDaysAgo + "," + today;
+    fetch(queryURL)
+      .then(function (response) {
+        if(response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Something went wrong');
+        };
+      })
+      .then(function (data) {
+        // console.log(data);
+        
+        //Display data
+        for (var i = 0; i < 6; i++) {
+          var topstory = $('#topStory' + (i + 1));
+          var newsTitle = $('<h3>').text(data.data[i].title);
+          var newsDescription = $('<p>').text(data.data[i].description);
+          var newsImageUrl = $('<img>').attr("src", data.data[i].image).css({'width':'100%'});
+          var newsUrl = $('<a>').attr({ "href": data.data[i].url, "target": "_blank" }).text('Click to read article');
+          topstory.append(newsImageUrl, newsTitle, newsDescription, newsUrl);
+        };
+      })
+      .catch(function (error) {
+        // console.error('Error: ', error);
+      });
+    };
+    
+  //***********************Dashboard Section**************************
+  
   // Creating a function to display username and profile type in the dashboard page inside the related span elements.
   var displayUserDashboard = function () {
 
@@ -449,32 +585,25 @@ $(document).ready(function () {
   var displayRecommendations = function () {
 
     var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
-    var storedUsername = localStorage.getItem('username');
-    var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
-    var isProfileTypeSelected = storedProfileType !== 'Not Selected';
     var recommendationsList;
 
-    if (isLoggedin && storedUsername && isProfileTypeSelected) {
-
-      switch (storedProfileType) {
-        case 'student':
-          recommendationsList = recommendationsArray[0].studentRecommendations;
-          break;
-        case 'refugee':
-          recommendationsList = recommendationsArray[1].refugeeRecommendations;
-          break;
-        case 'temporary resident':
-          recommendationsList = recommendationsArray[2].temporaryRecommendations;
-          break;
-        case 'permanent resident':
-          recommendationsList = recommendationsArray[3].prRecommendations;
-          break;
-        default:
-          recommendations.text('No recommendations available');
-          return;
-      }
-
-    };   
+    switch (storedProfileType) {
+      case 'student':
+        recommendationsList = recommendationsArray[0].studentRecommendations;
+        break;
+      case 'refugee':
+        recommendationsList = recommendationsArray[1].refugeeRecommendations;
+        break;
+      case 'temporary resident':
+        recommendationsList = recommendationsArray[2].temporaryRecommendations;
+        break;
+      case 'permanent resident':
+        recommendationsList = recommendationsArray[3].prRecommendations;
+        break;
+      default:
+        recommendations.text('No recommendations available');
+        return;
+    }; 
 
     recommendationsList.forEach(function (recommendation) {
       var recommendationCard = createRecommendationCard(recommendation);
@@ -482,46 +611,8 @@ $(document).ready(function () {
     });
 
   };
-
-  var openDashboard = function (event) {
-
-    event.preventDefault();
-
-    var storedProfileType = localStorage.getItem('profileType') || 'Not Selected';
-    var storedUsername = localStorage.getItem('username');
-    var isLoggedin = localStorage.getItem('isLoggedin') === 'true';
-    var isProfileTypeSelected = storedProfileType !== 'Not Selected';
-
-    if (storedProfileType === 'Not Selected') {
-      showError('Please select a profile type');
-      return;
-    };
-    if (!isLoggedin) {
-      showError('Please login or signup');
-      return;
-    };
-    if (isLoggedin && storedUsername && isProfileTypeSelected) {
-      window.location.href = "dashboard.html";
-      displayUsername.text(storedUsername);
-      displayProfileType.text(storedProfileType);
-    };
-
-  };
   
-  var logoutUser = function () {
-    localStorage.setItem("isLoggedin", "false");
-    location.reload();
-  };
-
-  //Helper function for showing error messages.
-  var showError = function (errorMessage) {
-    errorMsgText.text(errorMessage);
-    errorMsg.modal('open');
-  };
-
-  // https://materializecss.com/parallax.html
-  // Initialize parallax
-  $('.parallax').parallax();
+  //***********************Event Listeners**************************
 
   profileTypeBtn.on('click', openProfileTypeModal);
   profileType.change(newProfileType);
@@ -534,103 +625,8 @@ $(document).ready(function () {
   displayUserDashboard();
   displayRecommendations();
   showNews();
-  googleTranslateElementInit();
-
-
-
-  //function to autopay the slider every 8 seconds - reference from W3Schools.
-  //https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow_auto
-  var slideIndex = 0;
+  //Set a timeout for the google translate element to load properly.
+  setTimeout(googleTranslateElementInit, 2000);
   showSlides();
-
-  function showSlides() {
-    var i;
-    var slides = document.querySelectorAll(".slide");
-
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    slideIndex++;
-    if (slideIndex > slides.length) {
-      slideIndex = 1;
-    }
-
-    slides[slideIndex - 1].style.display = "block";
-    setTimeout(showSlides, 8000);
-  }
-  showSlides();
-
-  //Map Functions
-  //https://www.w3schools.com/jquery/jquery_hide_show.asp
-  //https://www.geeksforgeeks.org/how-to-filter-objects-by-data-attribute-value-in-jquery/
-
-  //Hide All Maps
-  function hideMaps() {
-    $(".map").hide();
-  }
-
-  //Show only 'attractions' map on load
-  hideMaps();
-  $("#attractionsMap").show();
-
-  //Click event listeners for map buttons
-  $(".mapFilter").click(function () {
-    var filter = $(this).data("filter");
-
-
-    //Hide all maps on click
-    hideMaps();
-    //Show clicked on map
-    $("#" + filter).show();
-  });
-
-  //News Section
-  //https://ilikekillnerds.com/2023/02/handling-errors-with-the-fetch-api/
-  //https://mediastack.com/
-  
-  //get dates in proper format for parameter filter to GET newest stories
-  var today = dayjs();
-  today = today.format('YYYY-MM-DD');
-  var twoDaysAgo = dayjs().subtract(2, 'day');
-  twoDaysAgo = twoDaysAgo.format('YYYY-MM-DD');
-  
-  //GET API data
-  var showNews = function() {
-  var key = "400ac6f6b4a53023ad0df9c54d691c7b"
-  var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&keywords=toronto&date="+ twoDaysAgo + "," + today;
-    fetch(queryURL)
-      .then(function (response) {
-        if(response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Something went wrong');
-        };
-      })
-      .then(function (data) {
-        console.log(data);
-        
-        //Display data
-        for (var i = 0; i < 6; i++) {
-          var topstory = $('#topStory' + (i + 1));
-          var newsTitle = $('<h3>').text(data.data[i].title);
-          var newsDescription = $('<p>').text(data.data[i].description);
-          var newsImageUrl = $('<img>').attr("src", data.data[i].image).css({'width':'100%'});
-          var newsUrl = $('<a>').attr("href", data.data[i].url).text('Click to read article');
-          topstory.append(newsImageUrl, newsTitle, newsDescription, newsUrl);
-        };
-      })
-      .catch(function (error) {
-        console.error('Error: ', error);
-      });
-    };
-    
-    // // https://www.javatpoint.com/how-to-add-google-translate-button-on-your-webpage#:~:text=translator%20api%20%2D%2D%3E-,%3Cscript%20type%3D%22text%2Fjavascript%22,will%20be%20translated
-    // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_google_translate_dropdown
-    // https://codepen.io/j_holtslander/pen/PjPWMe
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({ pageLanguage: 'en', 
-      includedLanguages: 'en,es,fr,de,af,sq,ar,bs,bg,hy,zh-CN,hr,cs,da,nl,el,gu,he,hi,hu,it,ja,ko,fa,pl,pt,pa,ro,ru,sr,so,sv,ta,th,tr,uk,ur,vi,zu', 
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
-      };
   
 });
