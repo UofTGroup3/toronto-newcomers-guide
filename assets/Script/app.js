@@ -34,7 +34,6 @@ $(document).ready(function () {
   var today = dayjs().format('YYYY-MM-DD');
   var twoDaysAgo = dayjs().subtract(2, 'day').format('YYYY-MM-DD');
   var slideIndex = 0;
-  var googleTranslateElement = $('#google_translate_element');
   // Here I'm trying to create an array to store the recommendations based on the profile type selected. based 
   //TODO: check all links and images
   var recommendationsArray = [
