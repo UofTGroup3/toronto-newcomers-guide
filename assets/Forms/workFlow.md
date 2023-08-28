@@ -1,4 +1,4 @@
-![Toronto Newcomer's Guide](./images/TNG/400PngdpiLogo.png)
+![Toronto Newcomer's Guide](../images/TNG/FaviconLogo.png)
 
 # User Story:
 >**As a newcomer to the GTA,**
@@ -25,13 +25,6 @@
 *When I* select my preferred language,
 *Then* the site's content should be translated using the Google Translate API.
 
-### Given I attended an event or visited a place,
-*When I* navigate to that event or place in application
-*Then I* can save it to my favorite places/events.
-
-### Given I attended an event or visited a place,
-*When I* leave a review or feedback,
-*Then* it should be saved and displayed for other users to see.
 
 ### Given I am looking for specific assistance or information,
 *When I* navigate to the Essential Guides & Tips section,
@@ -50,9 +43,7 @@
 >4. Display an interactive map, showing essential places, services, transportation guides, and routes.
 >5. Incorporate a language selection tool to switch the website's content to the user's preferred language using the Google Translate API.
 >6. Introduce sections like "Essential Guides & Tips" and "Essential Places" for newcomers to navigate easily.
->7. Offer users an option to save places or events to a "Favorites" list and write reviews.
->8. Show user reviews for events, places, and services to help newcomers make informed decisions.
->9. Provide links and instructions in the "Essential Places" section that guide users to essential places and related information.
+>7. Provide links and instructions in the "Essential Places" section that guide users to essential places and related information.
 
 --- 
 ## Tasks:
@@ -83,10 +74,6 @@
 6. Essential Places Section:
   - Collate a list of vital places and services in GTA.
   - Display the list with relevant links, directions, and descriptions.
-
-7. Review & Favorites System:
-  - Allow users to mark places or events as "favorites".
-  - Provide options for users to write, save, and display reviews.
 
 ### Testing Phase:
 

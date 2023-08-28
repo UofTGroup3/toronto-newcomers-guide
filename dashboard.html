@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Toronto Newcomers' Guide Dashboard" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Code Breakers" />
+  <!--********************CSS Reset************************-->
+  <link rel="stylesheet" href="./assets/CSS/css-reset.css" />
+  <!--********************Materialize CSS link************************-->
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!--********************Google Fonts************************-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Comfortaa&family=Edu+SA+Beginner:wght@500&family=Josefin+Slab&family=Monoton&family=Quicksand&display=swap"
+    rel="stylesheet" />
+  <!--********************Favicon Icon************************-->
+  <link rel="icon" href="./assets/images/TNG/FaviconLogo.png" type="image/x-icon" />
+  <!--********************CSS custome file************************-->
+  <link rel="stylesheet" href="./assets/CSS/app.css" />
+  <!--********************Title************************-->
+  <title>TNG Dashboard</title>
+</head>
+
+<body>
+
+  <main>
+
+    <!--********************************Parallax Image Top*********************************-->
+
+    <!-- Creating a parallax containor using Materialize CSS Library. Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling. -->
+    <div class="parallax-container">
+      <div class="parallax"><img src="./assets/images/ParallaxImages/Torornro.jpg" alt="picture of city of Toronto">
+      </div>
+    </div>
+
+    <div class="section white">
+      <div class="row container">
+
+        <section class="dashHeadContent" id="mainHeader">
+
+          <div id="logo">
+            <a href="./index.html" draggable="false"><img class="responsive-img"
+                src="./assets/images/TNG/FaviconLogo.png" alt="TNG Logo" /></a>
+          </div>
+
+          <div id="title">
+            <h1>Toronto Newcomers' Guide(TNG)</h1>
+            <p>Helping you settle in Toronto</p>
+          </div>
+
+          <!--**************************************User Login***************************************-->
+
+          <!-- Creating a section for the user dropdown-->
+          <div id="user">
+            <a class="btn-floating btn-large cyan pulse dropdown-trigger" href="#" data-target="userDropdown"
+              id="userBtn" aria-label="userBtn">
+              <i class="material-icons">account_box</i>
+            </a>
+
+            <!-- Dropdown Menu when user button is clicked -->
+            <ul id="userDropdown" class="dropdown-content">
+              <li><a href="#loginModal" id="loginBtn" aria-label="loginBtn">Login</a></li>
+              <li><a href="#signupModal" id="signupBtn" aria-label="signupBtn">Sign Up</a></li>
+              <li><a href="#!" id="logoutBtn" aria-label="logoutBtn">Logout</a></li>
+            </ul>
+
+            <div id="userProfile">
+              <p id="displayUsername"></p>
+              <p id="displayProfileType"></p>
+            </div>
+
+          </div>
+
+          <!-- Creating a modal for profile type selector -->
+          <div id="profileTypeModal" class="modal">
+            <div class="modal-content">
+              <h4>Select Profile Type</h4>
+              <form id="profileTypeForm">
+                <div class="input-field">
+                  <select name="profileType" id="profileType" aria-label="profileType">
+                    <option value="student">Student</option>
+                    <option value="refugee">Refugee</option>
+                    <option value="temporary resident">Temporary Resident</option>
+                    <option value="permanent resident">Permanent Resident</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Select</a>
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+          </div>
+
+          <!-- Creating Login Modal Structure using Materialize CSS Library -->
+          <div id="loginModal" class="modal">
+
+            <div class="modal-content">
+
+              <h4>Login</h4>
+              <p>Please enter your username and password.</p>
+
+              <div class="input-field">
+                <input id="username" type="text" />
+                <label for="username">Username</label>
+              </div>
+
+              <div class="input-field">
+                <input id="password" type="password" />
+                <label for="password">Password</label>
+              </div>
+
+            </div>
+
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="actualLoginBtn">Login</a>
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+
+          </div>
+
+          <!-- Creating Signup Modal Structure using Materialize CSS Library -->
+          <div id="signupModal" class="modal">
+            <div class="modal-content">
+
+              <ul>
+                <li>
+                  <h4>Sign Up</h4>
+                  <p>Please enter a username, password and choose your current status by clicking on Profile Type Menu.
+                  </p>
+                  <p>After you sign up, you will be redirected to the main page.Then you can attempt to login.</p>
+                </li>
+                <li>
+                  <a href="#profileTypeModal" id="profileTypeBtn" aria-label="profileTypeBtn">Select Profile Type</a>
+                </li>
+                <li class="divider"></li>
+              </ul>
+
+              <form id="signupForm">
+                <div>
+                  <div class="input-field">
+                    <input type="text" id="signupUsername" required />
+                    <label for="signupUsername">Username</label>
+                  </div>
+                  <div class="input-field">
+                    <input type="email" id="signupEmail" required />
+                    <label for="signupEmail">Email</label>
+                  </div>
+                  <div class="input-field">
+                    <input type="password" id="signupPassword" required />
+                    <label for="signupPassword">Password</label>
+                  </div>
+                  <div class="input-field">
+                    <input type="password" id="signupConfirmPassword" required />
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+              <button type="submit" form="signupForm" class="waves-effect waves-green btn-flat">Sign Up</button>
+            </div>
+
+          </div>
+
+          <!-- Creating Error Modal Structure using Materialize CSS Library -->
+          <div id="errorMsg" class="modal">
+            <div class="modal-content">
+              <h4>Error</h4>
+              <p id="errorMsgText"></p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+          </div>
+
+        </section>
+
+        <!--******************************Personalized Recommendations*****************************-->
+
+        <section id="dashboardContent">
+          <h2>Welcome, <span id="usernameDisplay"></span></h2>
+          <h3><span id="profileTypeDisplay"></span> Personalized Recommendations</h3>
+          <div id="recommendations"></div>
+        </section>
+
+        <!--*******************************Contact US**********************************-->
+
+        <div id="contactDash">
+          <div>
+            <h3>Contact Us</h3>
+            <p>Have a question? Contact us</p>
+            <a href="mailto:uoftbootcamp.group3@gmail.com" draggable="false" target="_blank">TNG Developer Group</a>
+          </div>
+        </div>
+
+        <!--*************************Parallax's white section ends here****************************-->
+
+      </div>
+    </div>
+
+    <!--********************************Parallax Image Bottom*********************************-->
+
+    <div class="parallax-container">
+      <div class="parallax"><img src="./assets/images/ParallaxImages/vladimir-visotsky-ZQKk3AXTGlQ-unsplash.jpg"
+          alt="an office image"></div>
+    </div>
+
+  </main>
+
+  <footer id="dashFooter">
+
+    <!--********************************Interactive Map*********************************-->
+
+    <section id="interactiveMapContainer">
+
+      <h2>Explore Essential Places Around You</h2>
+      <p>Use our interactive map to find key services and places in Toronto. You can also do a custom search for a
+        business name or
+        search for an address. If you zoom in to street level, you will see information about transit stations to
+        make
+        planning
+        your trip easier. In the side panel you can access more information such as reviews, contact information,
+        and
+        hours of operation.
+      </p>
+
+      <!-- Container for the map; -->
+      <!-- https://console.cloud.google.com/google/maps-apis/build/neighborhood-discovery;isMapsRedirect=true?project=persuasive-yeti-396216 -->
+      <div class="map" id="attractionsMap">
+        <iframe
+          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/iwxq/neighborhood-discovery.html"
+          width="100%" height="100%" loading="lazy">
+        </iframe>
+      </div>
+      <div class="map" id="schoolsMap">
+        <iframe
+          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/5432/neighborhood-discovery.html"
+          width="100%" height="100%" loading="lazy">
+        </iframe>
+      </div>
+      <div class="map" id="hospitals-pharmaciesMap">
+        <iframe
+          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/5cdk/neighborhood-discovery.html"
+          width="100%" height="100%" loading="lazy">
+        </iframe>
+      </div>
+      <div class="map" id="postLibraryMap">
+        <iframe
+          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/7puo/neighborhood-discovery.html"
+          width="100%" height="100%" loading="lazy">
+        </iframe>
+      </div>
+      <div class="map" id="policeFireMap">
+        <iframe
+          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/mm37/neighborhood-discovery.html"
+          width="100%" height="100%" loading="lazy">
+        </iframe>
+      </div>
+      <div class="map" id="housingSettlementMap">
+        <iframe
+          src="https://storage.googleapis.com/maps-solutions-e2b0t2ylct/neighborhood-discovery/va3y/neighborhood-discovery.html"
+          width="100%" height="100%" loading="lazy">
+        </iframe>
+      </div>
+
+      <!-- Additional controls and filters related to the map.-->
+      <div id="mapControls">
+        <button id="attractionsBtn" type="button" class="mapFilter" data-filter="attractionsMap">Attractions</button>
+        <button id="schoolsBtn" type="button" class="mapFilter" data-filter="schoolsMap">Schools</button>
+        <button id="hospitalsBtn" type="button" class="mapFilter" data-filter="hospitals-pharmaciesMap">Hospitals &
+          Pharmacies</button>
+        <button id="postLibraryBtn" type="button" class="mapFilter" data-filter="postLibraryMap">Post Office &
+          Libraries</button>
+        <button id="policeFireBtn" type="button" class="mapFilter" data-filter="policeFireMap">Police & Fire
+          Stations</button>
+        <button id="housingSettlementBtn" type="button" class="mapFilter" data-filter="housingSettlementMap">Housing
+          &
+          Settlement Services</button>
+      </div>
+
+    </section>
+
+    <div id="copyRight">
+      <p>Toronto Newcomers' Guide</p>
+      <p><i class="fa-regular fa-copyright"></i>| Aug, 2023 | Developed by <span>Code Breakers Team</span></p>
+    </div>
+
+  </footer>
+
+  <!--******************************Google Translate Library**************-->
+  <script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <!--********************JQuery CDN************************-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <!--********************Materialize JS link************************-->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!--********************Dayjs************************-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.9/dayjs.min.js"></script>
+  <!--********************Fontawesome************************-->
+  <script src="https://kit.fontawesome.com/cf8b3b67bf.js" crossorigin="anonymous"></script>
+  <!--********************JS custome file************************-->
+  <script src="./assets/Script/app.js"></script>
+
+</body>
+
+</html>

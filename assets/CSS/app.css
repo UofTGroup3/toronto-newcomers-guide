@@ -1,0 +1,455 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  font-family: "Josefin Slab", serif;
+}
+
+header {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: space-evenly;
+  background-color: #ffecd1;
+}
+
+#mainHeader {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5em 0;
+  margin: 0.5em 0;
+  color: #005f73;
+}
+
+#title {
+  padding: 0.5em;
+  margin: 0.3em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#title h1 {
+  font-size: 2rem;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  font-family: "Monoton", cursive;
+}
+
+#title p {
+  font-size: 1.5rem;
+}
+
+label[for="lanSelect"] {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #005f73;
+}
+
+#user {
+  margin-left: 15%;
+}
+
+#userProfile {
+  align-self: flex-end;
+  font-family: "Edu SA Beginner", cursive;
+  font-size: 1rem;
+  padding: 0.5em;
+}
+
+#profileTypeModal h3,
+#profileTypeBtn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fb8500;
+}
+
+#signupModal p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #005f73;
+  margin-bottom: 1em;
+}
+
+#userDropdown,
+#userProfile,
+#essentialsDropdown {
+  display: none;
+}
+
+#mainNav {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(233, 237, 201, 0.6);
+  padding: 0.5em 0;
+  margin: 1em 0;
+}
+
+#essentialsBtn {
+  background-color: transparent;
+}
+
+.socialMediaIcons {
+  color: #3b5998;
+}
+
+#searchForm {
+  display: flex;
+  align-items: center;
+}
+
+#search {
+  flex: 1;
+}
+
+#searchBtn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#searchBtn:focuse {
+  outline: none;
+}
+
+#magnifyingGlass {
+  display: inline;
+}
+
+.navTxt,
+#search::placeholder {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #005f73;
+}
+
+.card,
+.news {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: rgba(0, 0, 0, 0.08); */
+  background-color: rgba(253, 240, 213, 0.3);
+  height: 36em;
+  padding: 3%;
+  border: 0.2em solid rgba(255, 184, 3, 0.8);
+  border-radius: 1em;
+  box-shadow: 0.3em 0.3em 0.3em rgba(0, 0, 0, 0.3);
+}
+
+.card-image img {
+  max-width: 100%;
+  height: 30vh;
+  object-fit: cover;
+}
+
+.card-content,
+.topStories h3,
+.topStories p {
+  font-family: "Comfortaa", cursive;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  /* max-height: initial; */
+  font-size: 0.8em;
+  color: #457b9d;
+  line-height: 1.3;
+}
+
+.topStories h3 {
+  font-size: 1.2em;
+  color: #9a031e;
+}
+
+.topStories p {
+  font-size: 1em;
+  margin-bottom: 0.5em;
+}
+
+.topStories a {
+  color: #e63946;
+  font-weight: bold;
+}
+
+.slider {
+  position: relative;
+  background: #000116;
+  width: 90%;
+  min-height: 70vh;
+  margin: 20px;
+  margin-left: 5%;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 5px solid white;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  position: absolute;
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+  transform: scale(1.2);
+  transition: 2s;
+}
+
+.sliderContent {
+  position: absolute;
+  color: #222;
+  background: rgba(255, 255, 255, 0.9);
+  width: 80%;
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  transition: 0.7s;
+}
+
+.sliderContent h2 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.sliderContent p {
+  font-size: 20px;
+  font-weight: 20;
+  line-height: 35px;
+  font-weight: 400;
+}
+
+#heroTitle {
+  font-family: "Monoton", cursive;
+  text-align: center;
+  margin: 1.5em;
+  border-bottom: 0.08em solid #fb8500;
+}
+
+#heroTitle h2 {
+  font-size: 4rem;
+  letter-spacing: 0.4em;
+  color: #6f1d1b;
+}
+
+#heroTitle p,
+#newsTxtDes {
+  font-size: 2rem;
+  letter-spacing: 0.2em;
+  color: #219ebc;
+  margin-bottom: 1.5em;
+}
+
+#about {
+  margin: 2em;
+  padding: 1em;
+  background-color: rgba(233, 237, 201, 0.3);
+  border: none;
+  border-radius: 2em;
+  box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.3);
+}
+
+#about h3 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #219ebc;
+  margin: 1.5em;
+}
+
+#about p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #415a77;
+  margin: 2em;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+}
+
+#essentialsTitle,
+#newsTxtTitle {
+  font-family: "Monoton", cursive;
+  margin: 3em 1em 1em;
+  color: #fb8500;
+}
+
+#newsTxtDes {
+  font-family: "Monoton", cursive;
+  margin-left: 1.5em;
+}
+
+.news {
+  margin-bottom: 3%;
+}
+
+#contact {
+  color: #219ebc;
+  margin: 1em;
+  border-bottom: 0.08em solid #fb8500;
+}
+
+/**************Dashboard Page*****************/
+
+.dashHeadContent {
+  border-bottom: 0.08em solid #fb8500;
+}
+
+#dashboardContent {
+  color: #219ebc;
+}
+
+#recommendations {
+  font-size: 1.2rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 2em;
+  padding: 1em 0;
+  color: #6f1d1b;
+}
+
+.recCards {
+  margin: 0.2em;
+  padding: 0.4em;
+  border: 0.1em solid rgba(129, 178, 154, 0.8);
+  border-radius: 0.5em;
+  line-height: 1.5;
+}
+
+.recCards:hover {
+  background-color: rgba(251, 134, 0, 0.2);
+}
+
+.recCardsTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 0.08em solid #adb5bd;
+}
+
+#contactDash {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-top: 0.08em solid #fb8500;
+  color: #219ebc;
+}
+
+#contactDash p,
+#contact p {
+  font-weight: bold;
+  color: #9a031e;
+}
+
+#contactDash a,
+#contact a {
+  color: #540b0e;
+}
+
+#contactDash p,
+#contactDash a,
+#contact p,
+#contact a {
+  margin: 0 0 0.8em 0.5em;
+}
+
+#contactDash a:hover,
+#contact a:hover,
+#heroTitle p:hover {
+  color: #fb8500;
+}
+
+#interactiveMapContainer {
+  border: 0.2em solid #9a031e;
+  border-radius: 1em;
+  margin: 1em 2em;
+  padding: 1em;
+}
+
+#interactiveMapContainer h2 {
+  font-family: "Comfortaa", cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fb8500;
+  margin: 0.5em 0;
+  border-bottom: 0.08em solid #fb8500;
+}
+
+#interactiveMapContainer p {
+  font-family: "Edu SA Beginner", cursive;
+  font-size: 1.3rem;
+  color: #219ebc;
+  margin: 0.5em 0;
+}
+
+#copyRight {
+  color: #540b0e;
+  margin: 2em;
+}
+
+@media only screen and (max-width: 1060px) {
+  .card-image img {
+    height: 20vh;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  #mainNav {
+    flex-flow: row wrap;
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  #title h1 {
+    font-size: 1.5rem;
+  }
+
+  #title p {
+    font-size: 1rem;
+  }
+
+  .navTxt,
+  #search::placeholder {
+    font-size: 0.8rem;
+  }
+
+  .card-image img {
+    height: 15vh;
+  }
+}
+
+/*Media query is set for the cards to respond to the different screen sizes depending on the user's preference. */
+@media screen and (max-width: 600px) {
+  .card-content,
+  .title {
+    max-height: initial;
+    font-size: 12px;
+  }
+
+  .card,
+  .news {
+    height: auto;
+  }
+
+  .card-image img {
+    height: auto;
+  }
+}
