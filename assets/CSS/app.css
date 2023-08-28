@@ -129,7 +129,8 @@ label[for="lanSelect"] {
   color: #005f73;
 }
 
-.card {
+.card,
+.news {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
@@ -149,7 +150,9 @@ label[for="lanSelect"] {
   object-fit: cover;
 }
 
-.card-content {
+.card-content,
+.topStories h3,
+.topStories p {
   font-family: "Comfortaa", cursive;
   display: flex;
   flex-flow: column nowrap;
@@ -226,9 +229,10 @@ label[for="lanSelect"] {
   color: #6f1d1b;
 }
 
-#heroTitle p {
+#heroTitle p,
+#newsTxtDes {
   font-size: 2rem;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.2em;
   color: #219ebc;
   margin-bottom: 1.5em;
 }
@@ -258,17 +262,19 @@ label[for="lanSelect"] {
   letter-spacing: 0.1em;
 }
 
-#essentialsTitle {
+#essentialsTitle,
+#newsTxtTitle {
   font-family: "Monoton", cursive;
   margin: 3em 1em 1em;
   color: #fb8500;
 }
 
+#newsTxtDes {
+  font-family: "Monoton", cursive;
+  margin-left: 1.5em;
+}
+
 .news {
-  background-color: rgba(0, 0, 0, 0.162);
-  height: 800px;
-  padding: 3%;
-  border: 2px solid black;
   margin-bottom: 3%;
 }
 
