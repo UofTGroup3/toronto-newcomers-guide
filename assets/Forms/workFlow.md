@@ -1,4 +1,4 @@
-![Toronto Newcomer's Guide](./images/TNG/400PngdpiLogo.png)
+![Toronto Newcomer's Guide](../images/TNG/FaviconLogo.png)
 
 # User Story:
 >**As a newcomer to the GTA,**
