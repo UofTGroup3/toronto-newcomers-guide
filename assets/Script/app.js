@@ -508,7 +508,7 @@ $(document).ready(function () {
   //GET API data
   var showNews = function() {
   var key = "400ac6f6b4a53023ad0df9c54d691c7b"
-  var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&date="+ yesterday + "," + today;
+  var queryURL = "https://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&date="+ yesterday + "," + today;
     fetch(queryURL)
       .then(function (response) {
         if(response.ok) {
