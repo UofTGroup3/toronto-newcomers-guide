@@ -132,4 +132,4 @@ _We welcome your feedback and suggestions to make this guide even better for all
 
 ![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
-[TNG]()
+[TNG]( https://uoftgroup3.github.io/toronto-newcomers-guide/)
