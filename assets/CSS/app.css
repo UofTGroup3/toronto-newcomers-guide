@@ -130,25 +130,35 @@ label[for="lanSelect"] {
 }
 
 .card {
-  background-color: rgba(0, 0, 0, 0.162);
-  height: 650px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: rgba(0, 0, 0, 0.08); */
+  background-color: rgba(253, 240, 213, 0.3);
+  height: 36em;
   padding: 3%;
-  border: 2px solid black;
+  border: 0.2em solid rgba(255, 184, 3, 0.8);
+  border-radius: 1em;
+  box-shadow: 0.3em 0.3em 0.3em rgba(0, 0, 0, 0.3);
 }
 
 .card-image img {
   max-width: 100%;
-  height: 25vh;
+  height: 30vh;
   object-fit: cover;
 }
 
-.card-content,
-.title {
+.card-content {
+  font-family: "Comfortaa", cursive;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
   max-height: initial;
-  font-size: 16px;
-  color: rgb(17, 12, 12);
-  text-align: left;
-  line-height: 25px;
+  font-size: 0.8em;
+  color: #457b9d;
+  line-height: 1.3;
 }
 
 .slider {
