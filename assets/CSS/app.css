@@ -223,6 +223,37 @@ label[for="lanSelect"] {
   margin-bottom: 1.5em;
 }
 
+#about {
+  margin: 2em;
+  padding: 1em;
+  background-color: rgba(233, 237, 201, 0.3);
+  border: none;
+  border-radius: 2em;
+  box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.3);
+}
+
+#about h3 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #219ebc;
+  margin: 1.5em;
+}
+
+#about p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #415a77;
+  margin: 2em;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+}
+
+#essentialsTitle {
+  font-family: "Monoton", cursive;
+  margin: 3em 1em 1em;
+  color: #fb8500;
+}
+
 .news {
   background-color: rgba(0, 0, 0, 0.162);
   height: 800px;
