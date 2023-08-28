@@ -66,6 +66,13 @@ label[for="lanSelect"] {
   padding: 0.5em;
 }
 
+#profileTypeModal h3,
+#profileTypeBtn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fb8500;
+}
+
 #signupModal p {
   font-size: 1rem;
   font-weight: bold;
@@ -162,6 +169,21 @@ label[for="lanSelect"] {
   font-size: 0.8em;
   color: #457b9d;
   line-height: 1.3;
+}
+
+.topStories h3 {
+  font-size: 1.2em;
+  color: #9a031e;
+}
+
+.topStories p {
+  font-size: 1em;
+  margin-bottom: 0.5em;
+}
+
+.topStories a {
+  color: #e63946;
+  font-weight: bold;
 }
 
 .slider {
