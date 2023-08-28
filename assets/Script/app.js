@@ -32,7 +32,7 @@ $(document).ready(function () {
   var recommendations = $('#recommendations');
   //get dates in proper format for parameter filter to GET newest stories
   var today = dayjs().format('YYYY-MM-DD');
-  var twoDaysAgo = dayjs().subtract(2, 'day').format('YYYY-MM-DD');
+  var yesterday = dayjs().subtract(1, 'day').format('YYYY-MM-DD');
   var slideIndex = 0;
   // Here I'm trying to create an array to store the recommendations based on the profile type selected. based 
   //TODO: check all links and images
@@ -508,7 +508,7 @@ $(document).ready(function () {
   //GET API data
   var showNews = function() {
   var key = "400ac6f6b4a53023ad0df9c54d691c7b"
-  var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&keywords=toronto&date="+ twoDaysAgo + "," + today;
+  var queryURL = "http://api.mediastack.com/v1/news?access_key=" + key + "&country=ca&sources=cp24&date="+ yesterday + "," + today;
     fetch(queryURL)
       .then(function (response) {
         if(response.ok) {
