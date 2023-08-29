@@ -438,6 +438,10 @@ label[for="lanSelect"] {
 
 /*Media query is set for the cards to respond to the different screen sizes depending on the user's preference. */
 @media screen and (max-width: 600px) {
+  #mainHeader {
+    flex-flow: row wrap;
+  }
+
   .card-content,
   .title {
     max-height: initial;
