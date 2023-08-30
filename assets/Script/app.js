@@ -531,7 +531,7 @@ $(document).ready(function () {
         };
       })
       .catch(function (error) {
-        // console.error('Error: ', error);
+        console.error('Error: ', error);
       });
     };
     
