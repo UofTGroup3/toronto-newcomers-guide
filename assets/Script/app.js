@@ -540,11 +540,16 @@ $(document).ready(function () {
   // Creating a function to display username and profile type in the dashboard page inside the related span elements.
   var displayUserDashboard = function () {
 
-    var storedUsername = localStorage.getItem('username').toUpperCase();
-    var storedProfileType = localStorage.getItem('profileType').toUpperCase();
+    var storedUsername = localStorage.getItem('username');
+    var storedProfileType = localStorage.getItem('profileType');
 
-    usernameDisplay.text(storedUsername);
-    profileTypeDisplay.text(storedProfileType);
+    if(storedUsername === null || storedProfileType === null) {
+      return;
+    };
+    if (storedUsername && storedProfileType) {
+    usernameDisplay.text(storedUsername.toUpperCase());
+    profileTypeDisplay.text(storedProfileType.toUpperCase());
+    };
 
   };
 
@@ -622,11 +627,11 @@ $(document).ready(function () {
   dashboardBtn.on('click', openDashboard);
   displayUserProfile();
   logoutBtn.on('click', logoutUser);
-  displayUserDashboard();
   displayRecommendations();
   showNews();
   //Set a timeout for the google translate element to load properly.
   setTimeout(googleTranslateElementInit, 2000);
   showSlides();
+  displayUserDashboard();
   
 });
