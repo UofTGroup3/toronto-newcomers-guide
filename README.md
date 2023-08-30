@@ -52,7 +52,7 @@ _Browse, interact, and get comfortable in your new surroundings with Toronto New
 
 ## Installation
 
-### Simply click on the link located at the bottom, using **Google Chrome**.
+### Simply click on the link located at the bottom.
 
 ---
 
@@ -134,4 +134,3 @@ _We welcome your feedback and suggestions to make this guide even better for all
 ![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
 [TNG]( https://uoftgroup3.github.io/toronto-newcomers-guide/) 
-### For better usage, Please open the link on Google Chrome.
